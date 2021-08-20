@@ -9,21 +9,38 @@
 /* Begin PBXBuildFile section */
 		FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02726CCD86200BA513B /* AppDelegate.swift */; };
 		FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02926CCD86200BA513B /* SceneDelegate.swift */; };
-		FA3FA02C26CCD86200BA513B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02B26CCD86200BA513B /* ViewController.swift */; };
+		FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02B26CCD86200BA513B /* WelcomeViewController.swift */; };
 		FA3FA02F26CCD86200BA513B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA02D26CCD86200BA513B /* Main.storyboard */; };
 		FA3FA03126CCD86600BA513B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA03026CCD86600BA513B /* Assets.xcassets */; };
 		FA3FA03426CCD86600BA513B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA03226CCD86600BA513B /* LaunchScreen.storyboard */; };
+		FA3FA03F26CCE64500BA513B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */; };
+		FA3FA04526CD111E00BA513B /* VideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA04426CD111E00BA513B /* VideosViewController.swift */; };
+		FA3FA04826CD3C3100BA513B /* BalooBhai2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04726CD3C3100BA513B /* BalooBhai2-Bold.ttf */; };
+		FA3FA04A26CD3C6800BA513B /* BalooBhai2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */; };
+		FA3FA04C26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */; };
+		FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */; };
+		FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04F26CE6E2600BA513B /* euro.mp4 */; };
+		FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA05326CEA21900BA513B /* kishta.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA3FA02426CCD86200BA513B /* EasyLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3FA02726CCD86200BA513B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA3FA02926CCD86200BA513B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA3FA02B26CCD86200BA513B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FA3FA02B26CCD86200BA513B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		FA3FA02E26CCD86200BA513B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA3FA03026CCD86600BA513B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA3FA03326CCD86600BA513B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA3FA03526CCD86600BA513B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		FA3FA04326CCEF4100BA513B /* FontsFree-Net-SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		FA3FA04426CD111E00BA513B /* VideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosViewController.swift; sourceTree = "<group>"; };
+		FA3FA04726CD3C3100BA513B /* BalooBhai2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-Bold.ttf"; sourceTree = "<group>"; };
+		FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-Regular.ttf"; sourceTree = "<group>"; };
+		FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-ExtraBold.ttf"; sourceTree = "<group>"; };
+		FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		FA3FA04F26CE6E2600BA513B /* euro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = euro.mp4; sourceTree = "<group>"; };
+		FA3FA05326CEA21900BA513B /* kishta.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kishta.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +73,56 @@
 		FA3FA02626CCD86200BA513B /* EasyLearn */ = {
 			isa = PBXGroup;
 			children = (
+				FA3FA05226CEA1F700BA513B /* Videos */,
+				FA3FA05126CE9EAF00BA513B /* ViewControllers */,
+				FA3FA04026CCE8D800BA513B /* Fonts */,
+				FA3FA03D26CCE62600BA513B /* Extensions */,
 				FA3FA02726CCD86200BA513B /* AppDelegate.swift */,
 				FA3FA02926CCD86200BA513B /* SceneDelegate.swift */,
-				FA3FA02B26CCD86200BA513B /* ViewController.swift */,
 				FA3FA02D26CCD86200BA513B /* Main.storyboard */,
 				FA3FA03026CCD86600BA513B /* Assets.xcassets */,
 				FA3FA03226CCD86600BA513B /* LaunchScreen.storyboard */,
 				FA3FA03526CCD86600BA513B /* Info.plist */,
 			);
 			path = EasyLearn;
+			sourceTree = "<group>";
+		};
+		FA3FA03D26CCE62600BA513B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA3FA04026CCE8D800BA513B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FA04726CD3C3100BA513B /* BalooBhai2-Bold.ttf */,
+				FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */,
+				FA3FA04326CCEF4100BA513B /* FontsFree-Net-SFProDisplay-Regular.ttf */,
+				FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */,
+				FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		FA3FA05126CE9EAF00BA513B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FA02B26CCD86200BA513B /* WelcomeViewController.swift */,
+				FA3FA04426CD111E00BA513B /* VideosViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FA3FA05226CEA1F700BA513B /* Videos */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FA04F26CE6E2600BA513B /* euro.mp4 */,
+				FA3FA05326CEA21900BA513B /* kishta.mp4 */,
+			);
+			path = Videos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,9 +182,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3FA04826CD3C3100BA513B /* BalooBhai2-Bold.ttf in Resources */,
 				FA3FA03426CCD86600BA513B /* LaunchScreen.storyboard in Resources */,
+				FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */,
+				FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */,
 				FA3FA03126CCD86600BA513B /* Assets.xcassets in Resources */,
+				FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */,
 				FA3FA02F26CCD86200BA513B /* Main.storyboard in Resources */,
+				FA3FA04A26CD3C6800BA513B /* BalooBhai2-Regular.ttf in Resources */,
+				FA3FA04C26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +201,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3FA02C26CCD86200BA513B /* ViewController.swift in Sources */,
+				FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */,
 				FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */,
 				FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */,
+				FA3FA04526CD111E00BA513B /* VideosViewController.swift in Sources */,
+				FA3FA03F26CCE64500BA513B /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
