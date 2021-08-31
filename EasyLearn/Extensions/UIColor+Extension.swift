@@ -27,4 +27,10 @@ extension UIColor {
     static var searchTextFieldColor: Self {
         .init(red: 235 / 255, green: 235 / 255, blue: 236 / 255, alpha: 1)
     }
+    static var redViewColor: Self {
+        .init(red: 239 / 255, green: 87 / 255, blue: 82 / 255, alpha: 0.5)
+    }
+    static var greenViewColor: Self {
+        .init(red: 89 / 255, green: 236 / 255, blue: 113 / 255, alpha: 0.5)
+    }
 }

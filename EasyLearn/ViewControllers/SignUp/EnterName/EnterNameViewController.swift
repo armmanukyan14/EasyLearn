@@ -12,7 +12,7 @@ import RxCocoa
 final class EnterNameViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
-    private let viewModel = EnterNameViewModel()
+     private let viewModel = EnterNameViewModel()
 
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
@@ -21,48 +21,48 @@ final class EnterNameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        bindOutputs()
-//        bindInputs()
+        bindOutputs()
+        bindInputs()
         setupTextFields()
         bindNavigation()
         setupNextButton()
     }
 
-//    private func bindInputs() {
-//        nameTextField.rx.text.orEmpty
-//            .bind(to: viewModel.nameTextInput)
-//            .disposed(by: disposeBag)
-//    }
+    private func bindInputs() {
+        nameTextField.rx.text.orEmpty
+            .bind(to: viewModel.nameText)
+            .disposed(by: disposeBag)
+    }
 
-//    private func bindOutputs() {
-//        viewModel.nameError.skip(3)
-//            .subscribe(onNext: { [weak self] error in
-//                if let error = error {
-//                    self?.nameErrorLabel.text = error
-//                    self?.nameErrorLabel.isHidden = false
-//                } else {
-//                    self?.nameErrorLabel.isHidden = true
-//                }
+    private func bindOutputs() {
+        viewModel.nameError.skip(2)
+            .subscribe(onNext: { [weak self] error in
+                if let error = error {
+                    self?.nameErrorLabel.text = error
+                    self?.nameErrorLabel.isHidden = false
+                } else {
+                    self?.nameErrorLabel.isHidden = true
+                }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.nameText.map { !$0.isEmpty }
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+
+//        viewModel.isNameEnabled.map { $0 != true }
+//            .subscribe(onNext: { [weak self] _ in
+//                    self?.nextButton.backgroundColor = .easyPurple
 //            })
 //            .disposed(by: disposeBag)
-//
-//        viewModel.isNameEnabled
-//            .bind(to: nextButton.rx.isEnabled)
-//            .disposed(by: disposeBag)
-//    }
+    }
 
 
     private func setupNextButton() {
         nextButton.layer.cornerRadius = 10.0
-        if nextButton.isEnabled {
-            nextButton.backgroundColor = .easyPurple
-        } else {
-            nextButton.backgroundColor = .nextButtonColor
-        }
     }
 
     private func setupTextFields() {
-        nextButton.layer.cornerRadius = 10.0
         nameTextField.layer.borderWidth = 1.0
         nameTextField.layer.cornerRadius = 10.0
         nameTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor

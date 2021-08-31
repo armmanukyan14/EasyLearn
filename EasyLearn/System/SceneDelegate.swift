@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-         let initialVC = UIStoryboard.main.instantiateViewController(identifier: "WelcomeViewController")
+         let initialVC = UIStoryboard.welcome.instantiateViewController(identifier: "WelcomeViewController")
         
             navigationController?.setViewControllers([initialVC], animated: false)
     }

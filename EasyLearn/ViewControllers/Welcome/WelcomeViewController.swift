@@ -33,6 +33,14 @@ class WelcomeViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+
+        logInButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                if let vc = self?.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController {
+                    self?.navigationController?.setViewControllers([vc], animated: true)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 

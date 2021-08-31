@@ -22,6 +22,7 @@
 		FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */; };
 		FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04F26CE6E2600BA513B /* euro.mp4 */; };
 		FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA05326CEA21900BA513B /* kishta.mp4 */; };
+		FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */; };
 		FA54FE9A26CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */; };
 		FA54FE9D26CFB21400E3A6D6 /* EnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FE9C26CFB21400E3A6D6 /* EnterNameViewController.swift */; };
 		FA54FE9F26CFC51F00E3A6D6 /* EnterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FE9E26CFC51F00E3A6D6 /* EnterEmailViewController.swift */; };
@@ -29,11 +30,22 @@
 		FA54FEA326CFD2CA00E3A6D6 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEA226CFD2CA00E3A6D6 /* EnterPasswordViewController.swift */; };
 		FA54FEA526CFF9E800E3A6D6 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEA426CFF9E800E3A6D6 /* UIStoryboard+Extension.swift */; };
 		FA54FEA826D0EF6900E3A6D6 /* EnterNameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEA726D0EF6900E3A6D6 /* EnterNameViewModel.swift */; };
-		FA54FEAD26D4F8EC00E3A6D6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEAC26D4F8EC00E3A6D6 /* TabBarViewController.swift */; };
 		FA54FEAF26D5013B00E3A6D6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEAE26D5013B00E3A6D6 /* SearchViewController.swift */; };
 		FA54FEB126D5024500E3A6D6 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB026D5024500E3A6D6 /* SearchTableViewCell.swift */; };
 		FA54FEB526D5031C00E3A6D6 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB426D5031C00E3A6D6 /* SearchCollectionViewCell.swift */; };
 		FA54FEB726D52B9B00E3A6D6 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FEB626D52B9B00E3A6D6 /* SearchTextField.swift */; };
+		FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */; };
+		FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */; };
+		FA846EC226D90AC700213E15 /* cutPaper.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC126D90AC700213E15 /* cutPaper.mp4 */; };
+		FA846EC426D90E8300213E15 /* takeAndPut.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC326D90E8300213E15 /* takeAndPut.mp4 */; };
+		FA846EC626D90F1B00213E15 /* carDrive.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC526D90F1B00213E15 /* carDrive.mp4 */; };
+		FA846EC826D917BD00213E15 /* treeAndGrass.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */; };
+		FA846ECA26D9341E00213E15 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EC926D9341E00213E15 /* EnterPasswordViewModel.swift */; };
+		FA846ECC26DA21BC00213E15 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */; };
+		FA846ED026DE29F500213E15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ECF26DE29F500213E15 /* LoginViewController.swift */; };
+		FA846ED226DE33B100213E15 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED126DE33B100213E15 /* LogInViewModel.swift */; };
+		FA846ED526DE555300213E15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED426DE555300213E15 /* BaseViewController.swift */; };
+		FA846EDB26DE62C800213E15 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA846EDA26DE62C800213E15 /* Base.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +69,7 @@
 		FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
 		FA3FA04F26CE6E2600BA513B /* euro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = euro.mp4; sourceTree = "<group>"; };
 		FA3FA05326CEA21900BA513B /* kishta.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kishta.mp4; sourceTree = "<group>"; };
+		FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
 		FA54FE9C26CFB21400E3A6D6 /* EnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewController.swift; sourceTree = "<group>"; };
 		FA54FE9E26CFC51F00E3A6D6 /* EnterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewController.swift; sourceTree = "<group>"; };
@@ -64,11 +77,22 @@
 		FA54FEA226CFD2CA00E3A6D6 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
 		FA54FEA426CFF9E800E3A6D6 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		FA54FEA726D0EF6900E3A6D6 /* EnterNameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewModel.swift; sourceTree = "<group>"; };
-		FA54FEAC26D4F8EC00E3A6D6 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		FA54FEAE26D5013B00E3A6D6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		FA54FEB026D5024500E3A6D6 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		FA54FEB426D5031C00E3A6D6 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA54FEB626D52B9B00E3A6D6 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
+		FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterConfirmationCodeViewModel.swift; sourceTree = "<group>"; };
+		FA846EC126D90AC700213E15 /* cutPaper.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutPaper.mp4; sourceTree = "<group>"; };
+		FA846EC326D90E8300213E15 /* takeAndPut.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = takeAndPut.mp4; sourceTree = "<group>"; };
+		FA846EC526D90F1B00213E15 /* carDrive.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = carDrive.mp4; sourceTree = "<group>"; };
+		FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = treeAndGrass.mp4; sourceTree = "<group>"; };
+		FA846EC926D9341E00213E15 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
+		FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		FA846ECF26DE29F500213E15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FA846ED126DE33B100213E15 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		FA846ED426DE555300213E15 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FA846EDA26DE62C800213E15 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3FA03526CCD86600BA513B /* Info.plist */,
+				FA846ED926DE628A00213E15 /* Storyboards */,
 				FA54FEB326D502C700E3A6D6 /* Cells */,
 				FA54FEA926D4E74A00E3A6D6 /* System */,
 				FA3FA05126CE9EAF00BA513B /* ViewControllers */,
@@ -137,6 +162,7 @@
 			children = (
 				FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */,
 				FA54FEA426CFF9E800E3A6D6 /* UIStoryboard+Extension.swift */,
+				FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -157,12 +183,10 @@
 		FA3FA05126CE9EAF00BA513B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA3FA02D26CCD86200BA513B /* Main.storyboard */,
-				FA54FEB226D502AA00E3A6D6 /* Search */,
-				FA54FEAB26D4E7B300E3A6D6 /* Videos */,
+				FA846ED326DE553300213E15 /* BaseViewController */,
+				FA846ECE26DE29DA00213E15 /* LogIn */,
 				FA54FEAA26D4E79D00E3A6D6 /* Welcome */,
 				FA54FE9B26CFB1EC00E3A6D6 /* SignUp */,
-				FA54FEAC26D4F8EC00E3A6D6 /* TabBarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,6 +196,10 @@
 			children = (
 				FA3FA04F26CE6E2600BA513B /* euro.mp4 */,
 				FA3FA05326CEA21900BA513B /* kishta.mp4 */,
+				FA846EC126D90AC700213E15 /* cutPaper.mp4 */,
+				FA846EC326D90E8300213E15 /* takeAndPut.mp4 */,
+				FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */,
+				FA846EC526D90F1B00213E15 /* carDrive.mp4 */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -179,8 +207,8 @@
 		FA4C1DDD26D78BAC00D12394 /* EnterName */ = {
 			isa = PBXGroup;
 			children = (
-				FA54FEA726D0EF6900E3A6D6 /* EnterNameViewModel.swift */,
 				FA54FE9C26CFB21400E3A6D6 /* EnterNameViewController.swift */,
+				FA54FEA726D0EF6900E3A6D6 /* EnterNameViewModel.swift */,
 			);
 			path = EnterName;
 			sourceTree = "<group>";
@@ -188,10 +216,11 @@
 		FA54FE9B26CFB1EC00E3A6D6 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				FA846ECD26DE29BC00213E15 /* AddPhoto */,
+				FA846EBC26D8F0E200213E15 /* EnterEmail */,
+				FA846EBB26D8F0DD00213E15 /* EnterConfirmationCode */,
+				FA846EBA26D8F0DA00213E15 /* EnterPassword */,
 				FA4C1DDD26D78BAC00D12394 /* EnterName */,
-				FA54FEA226CFD2CA00E3A6D6 /* EnterPasswordViewController.swift */,
-				FA54FEA026CFC6B800E3A6D6 /* EnterConfirmationCodeViewController.swift */,
-				FA54FE9E26CFC51F00E3A6D6 /* EnterEmailViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -209,7 +238,6 @@
 		FA54FEAA26D4E79D00E3A6D6 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				FA3FA03226CCD86600BA513B /* LaunchScreen.storyboard */,
 				FA3FA02B26CCD86200BA513B /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
@@ -239,6 +267,94 @@
 				FA54FEB426D5031C00E3A6D6 /* SearchCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		FA846EBA26D8F0DA00213E15 /* EnterPassword */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FEA226CFD2CA00E3A6D6 /* EnterPasswordViewController.swift */,
+				FA846EC926D9341E00213E15 /* EnterPasswordViewModel.swift */,
+			);
+			path = EnterPassword;
+			sourceTree = "<group>";
+		};
+		FA846EBB26D8F0DD00213E15 /* EnterConfirmationCode */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FEA026CFC6B800E3A6D6 /* EnterConfirmationCodeViewController.swift */,
+				FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */,
+			);
+			path = EnterConfirmationCode;
+			sourceTree = "<group>";
+		};
+		FA846EBC26D8F0E200213E15 /* EnterEmail */ = {
+			isa = PBXGroup;
+			children = (
+				FA54FE9E26CFC51F00E3A6D6 /* EnterEmailViewController.swift */,
+				FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */,
+			);
+			path = EnterEmail;
+			sourceTree = "<group>";
+		};
+		FA846ECD26DE29BC00213E15 /* AddPhoto */ = {
+			isa = PBXGroup;
+			children = (
+				FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */,
+			);
+			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		FA846ECE26DE29DA00213E15 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				FA846ECF26DE29F500213E15 /* LoginViewController.swift */,
+				FA846ED126DE33B100213E15 /* LogInViewModel.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		FA846ED326DE553300213E15 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA846ED426DE555300213E15 /* BaseViewController.swift */,
+				FA846ED826DE559600213E15 /* Profile */,
+				FA846ED726DE559300213E15 /* Saved */,
+				FA846ED626DE559000213E15 /* Add */,
+				FA54FEAB26D4E7B300E3A6D6 /* Videos */,
+				FA54FEB226D502AA00E3A6D6 /* Search */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		FA846ED626DE559000213E15 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		FA846ED726DE559300213E15 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		FA846ED826DE559600213E15 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		FA846ED926DE628A00213E15 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FA03226CCD86600BA513B /* LaunchScreen.storyboard */,
+				FA846EDA26DE62C800213E15 /* Base.storyboard */,
+				FA3FA02D26CCD86200BA513B /* Main.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,13 +416,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA846EC826D917BD00213E15 /* treeAndGrass.mp4 in Resources */,
+				FA846EC226D90AC700213E15 /* cutPaper.mp4 in Resources */,
 				FA3FA04826CD3C3100BA513B /* BalooBhai2-Bold.ttf in Resources */,
 				FA3FA03426CCD86600BA513B /* LaunchScreen.storyboard in Resources */,
 				FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */,
 				FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */,
 				FA3FA03126CCD86600BA513B /* Assets.xcassets in Resources */,
+				FA846EDB26DE62C800213E15 /* Base.storyboard in Resources */,
+				FA846EC426D90E8300213E15 /* takeAndPut.mp4 in Resources */,
 				FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */,
 				FA3FA02F26CCD86200BA513B /* Main.storyboard in Resources */,
+				FA846EC626D90F1B00213E15 /* carDrive.mp4 in Resources */,
 				FA3FA04A26CD3C6800BA513B /* BalooBhai2-Regular.ttf in Resources */,
 				FA54FE9A26CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF in Resources */,
 				FA3FA04C26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf in Resources */,
@@ -362,17 +483,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */,
 				FA54FE9D26CFB21400E3A6D6 /* EnterNameViewController.swift in Sources */,
 				FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */,
+				FA846ED526DE555300213E15 /* BaseViewController.swift in Sources */,
 				FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */,
+				FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */,
 				FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */,
-				FA54FEAD26D4F8EC00E3A6D6 /* TabBarViewController.swift in Sources */,
 				FA54FEA526CFF9E800E3A6D6 /* UIStoryboard+Extension.swift in Sources */,
 				FA54FE9F26CFC51F00E3A6D6 /* EnterEmailViewController.swift in Sources */,
 				FA54FEA126CFC6B800E3A6D6 /* EnterConfirmationCodeViewController.swift in Sources */,
+				FA846ED026DE29F500213E15 /* LoginViewController.swift in Sources */,
 				FA54FEAF26D5013B00E3A6D6 /* SearchViewController.swift in Sources */,
+				FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */,
+				FA846ECA26D9341E00213E15 /* EnterPasswordViewModel.swift in Sources */,
+				FA846ED226DE33B100213E15 /* LogInViewModel.swift in Sources */,
 				FA54FEA326CFD2CA00E3A6D6 /* EnterPasswordViewController.swift in Sources */,
 				FA3FA04526CD111E00BA513B /* VideosViewController.swift in Sources */,
+				FA846ECC26DA21BC00213E15 /* UIView+Extension.swift in Sources */,
 				FA54FEA826D0EF6900E3A6D6 /* EnterNameViewModel.swift in Sources */,
 				FA3FA03F26CCE64500BA513B /* UIColor+Extension.swift in Sources */,
 				FA54FEB126D5024500E3A6D6 /* SearchTableViewCell.swift in Sources */,
