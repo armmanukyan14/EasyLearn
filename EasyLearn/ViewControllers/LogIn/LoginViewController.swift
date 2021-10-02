@@ -5,20 +5,20 @@
 //  Created by MacBook on 31.08.21.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 final class LoginViewController: UIViewController {
-
     private let disposeBag = DisposeBag()
     private let viewModel = LogInViewModel()
 
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var loginButton: UIButton!
     @IBOutlet private var forgotPasswordButton: UIButton!
-    @IBOutlet private var errorLabel: UILabel!
+    @IBOutlet private var emailErrorLabel: UILabel!
+    @IBOutlet private var passwordErrorLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
 
     private lazy var eyeButton: UIButton = {
         let eyeButton = UIButton()
@@ -30,60 +30,68 @@ final class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindOutputs()
-        bindInputs()
-        bindNavigation()
+        doBindings()
         setupViews()
         addEyeButton()
         didTapEyeButton()
+        closeKeyboardWhenTapped()
+    }
+
+    private func doBindings() {
+        bindOutputs()
+        bindInputs()
+        bindNavigation()
     }
 
     private func bindNavigation() {
-        backButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "WelcomeViewController") as? WelcomeViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+        loginButton.rx.tap
+            .bind(to: viewModel.register)
+            .disposed(by: disposeBag)
+
+        viewModel.success
+            .subscribe(onNext: { [weak self] _ in
+                let baseViewController = UIStoryboard.base.instantiateViewController(identifier: "BaseViewController")
+                self?.navigationController?.pushViewController(baseViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
-        loginButton.rx.tap
+        emailTextField.rx.text.orEmpty
+            .bind(to: viewModel.email)
+            .disposed(by: disposeBag)
+        passwordTextField.rx.text.orEmpty
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
+
+        backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let storyboard = UIStoryboard.base
-                if let vc = storyboard.instantiateViewController(identifier: "BaseViewController") as? BaseViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
-        viewModel.emailError.skip(2)
+        viewModel.emailError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
-                    self?.errorLabel.textColor = .easyPurple
-                    self?.errorLabel.text = error
-                    self?.errorLabel.isHidden = false
+                    self?.emailErrorLabel.textColor = .easyPurple
+                    self?.emailErrorLabel.text = error
+                    self?.emailErrorLabel.isHidden = false
                 } else {
-                    self?.errorLabel.isHidden = true
+                    self?.emailErrorLabel.isHidden = true
                 }
             })
             .disposed(by: disposeBag)
 
-        viewModel.passwordError.skip(2)
+        viewModel.passwordError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
-                    self?.errorLabel.textColor = .easyPurple
-                    self?.errorLabel.text = error
-                    self?.errorLabel.isHidden = false
+                    self?.passwordErrorLabel.textColor = .easyPurple
+                    self?.passwordErrorLabel.text = error
+                    self?.passwordErrorLabel.isHidden = false
                 } else {
-                    self?.errorLabel.isHidden = true
+                    self?.passwordErrorLabel.isHidden = true
                 }
             })
-            .disposed(by: disposeBag)
-
-        viewModel.isSignInEnabled
-            .bind(to: loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
 
@@ -97,7 +105,6 @@ final class LoginViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
-    
     private func didTapEyeButton() {
         eyeButton.rx.tap.asDriver()
             .drive(onNext: { [weak self] _ in
@@ -109,6 +116,15 @@ final class LoginViewController: UIViewController {
                     self?.passwordTextField.isSecureTextEntry = true
                 }
             })
+            .disposed(by: disposeBag)
+    }
+
+    private func closeKeyboardWhenTapped() {
+        let tapBackground = UITapGestureRecognizer()
+        view.addGestureRecognizer(tapBackground)
+        tapBackground.rx.event.subscribe(onNext: { [weak self] _ in
+            self?.view.endEditing(true)
+        })
             .disposed(by: disposeBag)
     }
 

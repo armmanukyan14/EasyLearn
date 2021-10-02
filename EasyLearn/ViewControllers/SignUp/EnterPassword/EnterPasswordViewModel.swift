@@ -13,26 +13,45 @@ import RxCocoa
 class EnterPasswordViewModel {
     private let disposeBag = DisposeBag()
 
-    let passwordText = PublishRelay<String>()
+    // MARK: - Inputs
+
+    let password = PublishRelay<String>()
+    let register = PublishRelay<Void>()
+
+    // MARK: - Outputs
 
     let passwordError = BehaviorRelay<String?>(value: nil)
-    let isPasswordEnabled = BehaviorRelay(value: false)
+    let emailError = BehaviorRelay<String?>(value: nil)
+    let success = PublishRelay<Void>()
+
+    // MARK: - Guts
+
+    private let isValid = PublishRelay<Bool>()
+
+    // MARK: - Init
 
     init() {
         doBindings()
     }
 
+    // MARK: - Reactive
+
     private func doBindings() {
-        passwordText
-            .map { [weak self] in self?.validate(password: $0) }
+        register.withLatestFrom(password)
+            .map { Validator.validate(password: $0) }
             .bind(to: passwordError)
             .disposed(by: disposeBag)
 
-    }
+        Observable.combineLatest(passwordError, emailError) {
+            $0 == nil && $1 == nil
+        }
+        .bind(to: isValid)
+        .disposed(by: disposeBag)
 
-    private func validate(password: String) -> String? {
-        let isValid = !password.isEmpty
-        return isValid ? nil : "This field is required!"
-    }
+        register
+            .withLatestFrom(isValid).allowTrue()
+            .map(to: ())
+            .bind(to: success)
+            .disposed(by: disposeBag)
 }
-
+}

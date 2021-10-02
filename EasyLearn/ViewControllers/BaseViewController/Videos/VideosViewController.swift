@@ -66,9 +66,10 @@ class VideosViewController: UIViewController {
     private func setupViews() {
         redView.alpha = 0
         greenView.alpha = 0
-        redView.roundCorners(corners: [.bottomRight, .topRight], radius: 30.0)
+        redView.layer.cornerRadius = redView.frame.size.height / 2
         redView.backgroundColor = .redViewColor
-        greenView.roundCorners(corners: [.bottomLeft, .topLeft], radius: 30.0)
+//        greenView.roundCorners(corners: [.bottomLeft, .topLeft], radius: 30.0)
+        greenView.layer.cornerRadius = greenView.frame.size.height / 2
         greenView.backgroundColor = .greenViewColor
         videoView1.layer.cornerRadius = 10.0
         videoView2.layer.cornerRadius = 10.0
@@ -151,7 +152,6 @@ class VideosViewController: UIViewController {
         }
     }
 
-
     @objc
     private func didDragTheCurrentView(recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .began {
@@ -169,10 +169,10 @@ class VideosViewController: UIViewController {
             recognizer.setTranslation(CGPoint.zero, in: self.view)
 
             UIView.animate(withDuration: 1, animations: {
-                self.redView.alpha = 0.7
+                self.redView.alpha = 0.75
             })
             UIView.animate(withDuration: 1, animations: {
-                self.greenView.alpha = 0.7
+                self.greenView.alpha = 0.75
             })
 
         } else if recognizer.state == .ended {
@@ -226,10 +226,10 @@ class VideosViewController: UIViewController {
             recognizer.setTranslation(CGPoint.zero, in: self.view)
 
             UIView.animate(withDuration: 1, animations: {
-                self.redView.alpha = 0.7
+                self.redView.alpha = 0.75
             })
             UIView.animate(withDuration: 1, animations: {
-                self.greenView.alpha = 0.7
+                self.greenView.alpha = 0.75
             })
 
         } else if recognizer.state == .ended {
@@ -283,10 +283,10 @@ class VideosViewController: UIViewController {
             recognizer.setTranslation(CGPoint.zero, in: self.view)
 
             UIView.animate(withDuration: 1, animations: {
-                self.redView.alpha = 0.7
+                self.redView.alpha = 0.75
             })
             UIView.animate(withDuration: 1, animations: {
-                self.greenView.alpha = 0.7
+                self.greenView.alpha = 0.75
             })
 
         } else if recognizer.state == .ended {
@@ -340,10 +340,10 @@ class VideosViewController: UIViewController {
             recognizer.setTranslation(CGPoint.zero, in: self.view)
 
             UIView.animate(withDuration: 1, animations: {
-                self.redView.alpha = 0.7
+                self.redView.alpha = 0.75
             })
             UIView.animate(withDuration: 1, animations: {
-                self.greenView.alpha = 0.7
+                self.greenView.alpha = 0.75
             })
 
         } else if recognizer.state == .ended {

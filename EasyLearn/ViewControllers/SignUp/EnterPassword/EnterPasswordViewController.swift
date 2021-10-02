@@ -16,8 +16,8 @@ final class EnterPasswordViewController: UIViewController {
 
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var passwordErrorLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
 
     private lazy var eyeButton: UIButton = {
         let eyeButton = UIButton()
@@ -36,18 +36,25 @@ final class EnterPasswordViewController: UIViewController {
         bindNavigation()
         setupNextButton()
         didTapEyeButton()
+        setupBackButton()
+    }
+
+    private func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
 
     private func bindInputs() {
         passwordTextField.rx.text.orEmpty
-            .bind(to: viewModel.passwordText)
+            .bind(to: viewModel.password)
             .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
-        viewModel.passwordError.skip(2)
+        viewModel.passwordError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
+                    self?.passwordErrorLabel.textColor = .easyPurple
                     self?.passwordErrorLabel.text = error
                     self?.passwordErrorLabel.isHidden = false
                 } else {
@@ -55,12 +62,7 @@ final class EnterPasswordViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-
-        viewModel.passwordText.map { !$0.isEmpty }
-            .bind(to: nextButton.rx.isEnabled)
-            .disposed(by: disposeBag)
     }
-
 
     private func setupNextButton() {
         nextButton.layer.cornerRadius = 10.0
@@ -79,22 +81,26 @@ final class EnterPasswordViewController: UIViewController {
     }
 
     private func bindNavigation() {
-        backButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterConfirmationCodeViewController") as? EnterConfirmationCodeViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+        nextButton.rx.tap
+            .bind(to: viewModel.register)
+            .disposed(by: disposeBag)
+
+        viewModel.success
+            .subscribe(onNext: { [weak self] _ in
+                let addPhotoViewController = UIStoryboard.signUp.instantiateViewController(identifier: "AddPhotoViewController")
+                self?.navigationController?.pushViewController(addPhotoViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
-        nextButton.rx.tap
+        passwordTextField.rx.text.orEmpty
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
+
+        backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "AddPhotoViewController") as? AddPhotoViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
-        
     }
 
     private func didTapEyeButton() {

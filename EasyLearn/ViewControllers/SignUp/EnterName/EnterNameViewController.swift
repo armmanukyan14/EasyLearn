@@ -16,8 +16,8 @@ final class EnterNameViewController: UIViewController {
 
     @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var nameErrorLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,15 @@ final class EnterNameViewController: UIViewController {
 
     private func bindInputs() {
         nameTextField.rx.text.orEmpty
-            .bind(to: viewModel.nameText)
+            .bind(to: viewModel.name)
             .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
-        viewModel.nameError.skip(2)
+        viewModel.nameError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
+                    self?.nameErrorLabel.textColor = .easyPurple
                     self?.nameErrorLabel.text = error
                     self?.nameErrorLabel.isHidden = false
                 } else {
@@ -45,16 +46,6 @@ final class EnterNameViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-
-        viewModel.nameText.map { !$0.isEmpty }
-            .bind(to: nextButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-
-//        viewModel.isNameEnabled.map { $0 != true }
-//            .subscribe(onNext: { [weak self] _ in
-//                    self?.nextButton.backgroundColor = .easyPurple
-//            })
-//            .disposed(by: disposeBag)
     }
 
 
@@ -75,19 +66,24 @@ final class EnterNameViewController: UIViewController {
     }
 
     private func bindNavigation() {
-        backButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "WelcomeViewController") as? WelcomeViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+        nextButton.rx.tap
+            .bind(to: viewModel.register)
+            .disposed(by: disposeBag)
+
+        viewModel.success
+            .subscribe(onNext: { [weak self] _ in
+                let enterEmailViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterEmailViewController")
+                self?.navigationController?.pushViewController(enterEmailViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
-        nextButton.rx.tap
+        nameTextField.rx.text.orEmpty
+            .bind(to: viewModel.name)
+            .disposed(by: disposeBag)
+
+        backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterEmailViewController") as? EnterEmailViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }

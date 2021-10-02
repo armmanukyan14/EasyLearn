@@ -14,25 +14,45 @@ class EnterEmailViewModel {
 
     private let disposeBag = DisposeBag()
 
-    let emailText = PublishRelay<String>()
+    // MARK: - Inputs
+
+    let email = PublishRelay<String>()
+    let register = PublishRelay<Void>()
+
+    // MARK: - Outputs
 
     let emailError = BehaviorRelay<String?>(value: nil)
-    let isEmailEnabled = BehaviorRelay(value: false)
+    let passwordError = BehaviorRelay<String?>(value: nil)
+    let success = PublishRelay<Void>()
+
+    // MARK: - Guts
+
+    private let isValid = PublishRelay<Bool>()
+
+    // MARK: - Init
 
     init() {
         doBindings()
     }
 
+    // MARK: - Reactive
+
     private func doBindings() {
-        emailText
-            .map { [weak self] in self?.validate(email: $0) }
+        register.withLatestFrom(email)
+            .map { Validator.validate(email: $0) }
             .bind(to: emailError)
             .disposed(by: disposeBag)
 
-    }
+        Observable.combineLatest(emailError, passwordError) {
+            $0 == nil && $1 == nil
+        }
+        .bind(to: isValid)
+        .disposed(by: disposeBag)
 
-    private func validate(email: String) -> String? {
-        let isValid = !email.isEmpty
-        return isValid ? nil : "This field is required!"
-    }
+        register
+            .withLatestFrom(isValid).allowTrue()
+            .map(to: ())
+            .bind(to: success)
+            .disposed(by: disposeBag)
+}
 }

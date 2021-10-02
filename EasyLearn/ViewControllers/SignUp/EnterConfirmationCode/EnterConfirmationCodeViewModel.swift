@@ -13,25 +13,45 @@ import RxCocoa
 class EnterConfirmationCodeViewModel {
     private let disposeBag = DisposeBag()
 
-    let confirmationText = PublishRelay<String>()
+    // MARK: - Inputs
+
+    let code = PublishRelay<String>()
+    let register = PublishRelay<Void>()
+
+    // MARK: - Outputs
 
     let confirmationError = BehaviorRelay<String?>(value: nil)
-    let isConfirmationEnabled = BehaviorRelay(value: false)
+    let passwordError = BehaviorRelay<String?>(value: nil)
+    let success = PublishRelay<Void>()
+
+    // MARK: - Guts
+
+    private let isValid = PublishRelay<Bool>()
+
+    // MARK: - Init
 
     init() {
         doBindings()
     }
 
+    // MARK: - Reactive
+
     private func doBindings() {
-        confirmationText
-            .map { [weak self] in self?.validate(confirm: $0) }
+        register.withLatestFrom(code)
+            .map { Validator.validate(field: $0) }
             .bind(to: confirmationError)
             .disposed(by: disposeBag)
 
-    }
+        Observable.combineLatest(confirmationError, passwordError) {
+            $0 == nil && $1 == nil
+        }
+        .bind(to: isValid)
+        .disposed(by: disposeBag)
 
-    private func validate(confirm: String) -> String? {
-        let isValid = !confirm.isEmpty
-        return isValid ? nil : "This field is required!"
-    }
+        register
+            .withLatestFrom(isValid).allowTrue()
+            .map(to: ())
+            .bind(to: success)
+            .disposed(by: disposeBag)
+}
 }

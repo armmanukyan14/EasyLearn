@@ -14,25 +14,45 @@ class EnterNameViewModel {
 
     private let disposeBag = DisposeBag()
 
-    let nameText = PublishRelay<String>()
+    // MARK: - Inputs
+
+    let name = PublishRelay<String>()
+    let register = PublishRelay<Void>()
+
+    // MARK: - Outputs
 
     let nameError = BehaviorRelay<String?>(value: nil)
-    let isNameEnabled = BehaviorRelay(value: false)
+    let passwordError = BehaviorRelay<String?>(value: nil)
+    let success = PublishRelay<Void>()
+
+    // MARK: - Guts
+
+    private let isValid = PublishRelay<Bool>()
+
+    // MARK: - Init
 
     init() {
         doBindings()
     }
 
+    // MARK: - Reactive
+
     private func doBindings() {
-        nameText
-            .map { [weak self] in self?.validate(name: $0) }
+        register.withLatestFrom(name)
+            .map { Validator.validate(field: $0) }
             .bind(to: nameError)
             .disposed(by: disposeBag)
 
-    }
+        Observable.combineLatest(nameError, passwordError) {
+            $0 == nil && $1 == nil
+        }
+        .bind(to: isValid)
+        .disposed(by: disposeBag)
 
-    private func validate(name: String) -> String? {
-        let isValid = !name.isEmpty
-        return isValid ? nil : "This field is required!"
-    }
+        register
+            .withLatestFrom(isValid).allowTrue()
+            .map(to: ())
+            .bind(to: success)
+            .disposed(by: disposeBag)
+}
 }

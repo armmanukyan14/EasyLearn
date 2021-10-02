@@ -5,18 +5,17 @@
 //  Created by MacBook on 20.08.21.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class EnterEmailViewController: UIViewController {
-
     private let disposeBag = DisposeBag()
     private let viewModel = EnterEmailViewModel()
 
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var emailErrorLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,28 +24,31 @@ class EnterEmailViewController: UIViewController {
         setupViews()
         bindNavigation()
         setupNextButton()
+        setupBackButton()
+    }
+
+    private func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
 
     private func bindInputs() {
         emailTextField.rx.text.orEmpty
-            .bind(to: viewModel.emailText)
+            .bind(to: viewModel.email)
             .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
-        viewModel.emailError.skip(2)
+        viewModel.emailError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
+                    self?.emailErrorLabel.textColor = .easyPurple
                     self?.emailErrorLabel.text = error
                     self?.emailErrorLabel.isHidden = false
                 } else {
                     self?.emailErrorLabel.isHidden = true
                 }
             })
-            .disposed(by: disposeBag)
-
-        viewModel.emailText.map { !$0.isEmpty }
-            .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
 
@@ -68,18 +70,25 @@ class EnterEmailViewController: UIViewController {
 
     private func bindNavigation() {
         nextButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterConfirmationCodeViewController") as? EnterConfirmationCodeViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+            .bind(to: viewModel.register)
+            .disposed(by: disposeBag)
+
+        viewModel.success
+            .subscribe(onNext: { [weak self] _ in
+                let enterConfirmationCodeViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterConfirmationCodeViewController")
+                self?.navigationController?.pushViewController(enterConfirmationCodeViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
+        emailTextField.rx.text.orEmpty
+            .bind(to: viewModel.email)
+            .disposed(by: disposeBag)
+
+
+        
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterNameViewController") as? EnterNameViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }

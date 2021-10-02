@@ -28,17 +28,15 @@ class WelcomeViewController: UIViewController {
     private func didTapSignUpButton() {
         signUpButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterNameViewController") as? EnterNameViewController {
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
+                let enterNameViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterNameViewController")
+                self?.navigationController?.pushViewController(enterNameViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
         logInButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                let loginViewController = UIStoryboard.logIn.instantiateViewController(identifier: "LoginViewController")
+                self?.navigationController?.pushViewController(loginViewController, animated: true)
             })
             .disposed(by: disposeBag)
     }

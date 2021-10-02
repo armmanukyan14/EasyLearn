@@ -11,16 +11,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
+    func setLightMode() {
+        window?.overrideUserInterfaceStyle = .light
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
         guard (scene as? UIWindowScene) != nil else { return }
+
+        setLightMode()
 
         let navigationController = window?.rootViewController as? UINavigationController
 
         navigationController?.setNavigationBarHidden(true, animated: false)
-
-         let initialVC = UIStoryboard.welcome.instantiateViewController(identifier: "WelcomeViewController")
+        
+         let initialVC = UIStoryboard.main.instantiateViewController(identifier: "WelcomeViewController")
         
             navigationController?.setViewControllers([initialVC], animated: false)
     }

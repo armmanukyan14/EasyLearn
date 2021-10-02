@@ -15,8 +15,8 @@ class EnterConfirmationCodeViewController: UIViewController {
 
     @IBOutlet private var confirmationCodeTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var codeErrorLabel: UILabel!
+    @IBOutlet private var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +29,22 @@ class EnterConfirmationCodeViewController: UIViewController {
 
     private func bindInputs() {
         confirmationCodeTextField.rx.text.orEmpty
-            .bind(to: viewModel.confirmationText)
+            .bind(to: viewModel.code)
             .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {
-        viewModel.confirmationError.skip(2)
+        viewModel.confirmationError
             .subscribe(onNext: { [weak self] error in
                 if let error = error {
+                    self?.codeErrorLabel.textColor = .easyPurple
                     self?.codeErrorLabel.text = error
                     self?.codeErrorLabel.isHidden = false
                 } else {
                     self?.codeErrorLabel.isHidden = true
                 }
             })
-            .disposed(by: disposeBag)
-
-        viewModel.confirmationText.map { !$0.isEmpty }
-            .bind(to: nextButton.rx.isEnabled)
-            .disposed(by: disposeBag)
-    }
-
+            .disposed(by: disposeBag)    }
 
     private func setupNextButton() {
         nextButton.layer.cornerRadius = 10.0
@@ -70,18 +65,23 @@ class EnterConfirmationCodeViewController: UIViewController {
 
     private func bindNavigation() {
         nextButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterPasswordViewController") as? EnterPasswordViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+            .bind(to: viewModel.register)
+            .disposed(by: disposeBag)
+
+        viewModel.success
+            .subscribe(onNext: { [weak self] _ in
+                let enterPasswordViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterPasswordViewController")
+                self?.navigationController?.pushViewController(enterPasswordViewController, animated: true)
             })
+            .disposed(by: disposeBag)
+
+        confirmationCodeTextField.rx.text.orEmpty
+            .bind(to: viewModel.code)
             .disposed(by: disposeBag)
 
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterEmailViewController") as? EnterEmailViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }

@@ -12,38 +12,52 @@ import RxCocoa
 class AddPhotoViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
+    private let addedPhotoViewController = AddedPhotoViewController()
+    public var completionCandler: ((UIImage?) -> Void)?
 
-    @IBOutlet private var backButton: UIButton!
     @IBOutlet private var addPhotoButton: UIButton!
     @IBOutlet private var skipButton: UIButton!
     @IBOutlet private var avatarImageView: UIImageView!
+    @IBOutlet private var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bindNavigation()
         setupViews()
+        setupBackButton()
+    }
+
+    private func setupBackButton() {
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "", style: .plain, target: nil, action: nil)
     }
 
     private func setupViews() {
         addPhotoButton.layer.cornerRadius = 10.0
+//        avatarImageView.layer.cornerRadius = avatarImageView.layer.frame.height / 2
     }
 
     private func bindNavigation() {
-        backButton.rx.tap
+        skipButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "EnterPasswordViewController") as? EnterPasswordViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                let loginViewController = UIStoryboard.logIn.instantiateViewController(identifier: "LoginViewController")
+                    self?.navigationController?.pushViewController(loginViewController, animated: true)
             })
             .disposed(by: disposeBag)
 
-        skipButton.rx.tap
+        backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                if let vc = self?.storyboard?.instantiateViewController(identifier: "LoginViewController") as? LoginViewController {
-                    self?.navigationController?.setViewControllers([vc], animated: true)
-                }
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+
+        addPhotoButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let addedPhotoViewController = UIStoryboard.signUp.instantiateViewController(identifier: "AddedPhotoViewController")
+                    self?.navigationController?.pushViewController(addedPhotoViewController, animated: false)
             })
             .disposed(by: disposeBag)
     }
-
 }
+
+
