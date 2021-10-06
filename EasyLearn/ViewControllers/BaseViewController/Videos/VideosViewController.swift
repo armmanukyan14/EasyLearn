@@ -66,10 +66,10 @@ class VideosViewController: UIViewController {
     private func setupViews() {
         redView.alpha = 0
         greenView.alpha = 0
-        redView.layer.cornerRadius = redView.frame.size.height / 2
+        redView.layer.cornerRadius = 30
         redView.backgroundColor = .redViewColor
 //        greenView.roundCorners(corners: [.bottomLeft, .topLeft], radius: 30.0)
-        greenView.layer.cornerRadius = greenView.frame.size.height / 2
+        greenView.layer.cornerRadius = 30
         greenView.backgroundColor = .greenViewColor
         videoView1.layer.cornerRadius = 10.0
         videoView2.layer.cornerRadius = 10.0

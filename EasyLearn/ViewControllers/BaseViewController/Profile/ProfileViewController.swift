@@ -44,6 +44,4 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "videoCell") as! ProfileTableViewCell
         return cell
     }
-
-
 }

@@ -15,6 +15,12 @@
         <array key="Inter-Bold.ttf">
             <string>Inter-Bold</string>
         </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -52,11 +58,11 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Blob" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-Xj-zQe">
-                                <rect key="frame" x="72.5" y="240" width="269" height="237"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="astronaut" translatesAutoresizingMaskIntoConstraints="NO" id="e5d-Xj-zQe">
+                                <rect key="frame" x="72" y="239" width="270" height="250"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bPV-Ps-gmX">
-                                <rect key="frame" x="27" y="505" width="360" height="64"/>
+                                <rect key="frame" x="27" y="514" width="360" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5F1-cz-BEx">
                                         <rect key="frame" x="0.0" y="0.0" width="170" height="64"/>
@@ -69,7 +75,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="taS-S6-SzU">
-                                <rect key="frame" x="189.5" y="579" width="35" height="35"/>
+                                <rect key="frame" x="189.5" y="588" width="35" height="35"/>
                                 <color key="tintColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.82352941180000006" green="0.82352941180000006" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -87,16 +93,16 @@
                                 </state>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="PLz-Mt-HN3">
-                                <rect key="frame" x="96" y="717" width="222.5" height="44.5"/>
+                                <rect key="frame" x="96" y="717" width="222.5" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xC8-Wt-g5o">
-                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="44.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="171.5" height="44"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
                                         <color key="textColor" red="0.41960784309999999" green="0.41960784309999999" blue="0.41960784309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0GB-hp-34G">
-                                        <rect key="frame" x="174.5" y="0.0" width="48" height="44.5"/>
+                                        <rect key="frame" x="174.5" y="0.0" width="48" height="44"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                         <state key="normal" title="Log in">
                                             <color key="titleColor" red="0.3411764706" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,15 +111,26 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CE-rW-5NP">
-                                <rect key="frame" x="24" y="592" width="159" height="2"/>
+                                <rect key="frame" x="24" y="601" width="159" height="2"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pV8-QK-gu2">
-                                <rect key="frame" x="231" y="592" width="159" height="2"/>
+                                <rect key="frame" x="231" y="601" width="159" height="2"/>
                                 <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stroke" translatesAutoresizingMaskIntoConstraints="NO" id="VcF-bQ-JmM">
-                                <rect key="frame" x="373.5" y="141" width="44" height="76"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="saturn" translatesAutoresizingMaskIntoConstraints="NO" id="blc-R6-WsV">
+                                <rect key="frame" x="-19.5" y="102" width="80" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="7z9-ta-ocZ"/>
+                                    <constraint firstAttribute="width" constant="80" id="hcB-wl-9Gr"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="venera" translatesAutoresizingMaskIntoConstraints="NO" id="NsK-uX-ekO">
+                                <rect key="frame" x="368" y="184" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="BCM-D3-j1D"/>
+                                    <constraint firstAttribute="height" constant="80" id="u9q-wt-cmn"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bsL-ig-WBp"/>
@@ -122,8 +139,13 @@
                             <constraint firstItem="taS-S6-SzU" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="35:896" id="12t-y6-hWy"/>
                             <constraint firstItem="pV8-QK-gu2" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" multiplier="1.5" id="1Kn-l1-pka"/>
                             <constraint firstItem="bPV-Ps-gmX" firstAttribute="width" secondItem="qEH-nP-UJU" secondAttribute="width" multiplier="360:414" id="41L-10-4n7"/>
+                            <constraint firstItem="1CE-rW-5NP" firstAttribute="top" secondItem="bPV-Ps-gmX" secondAttribute="bottom" constant="23" id="5NW-k3-6LV"/>
+                            <constraint firstItem="bsL-ig-WBp" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PLz-Mt-HN3" secondAttribute="bottom" constant="30" id="6B1-zf-eJI"/>
                             <constraint firstItem="pV8-QK-gu2" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="2:896" id="6yR-h9-A5Q"/>
+                            <constraint firstItem="NsK-uX-ekO" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="0.5" id="7nm-9S-FRS"/>
+                            <constraint firstItem="blc-R6-WsV" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="0.3" id="9zf-Sm-22m"/>
                             <constraint firstItem="PLz-Mt-HN3" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" id="BzW-Wh-mIM"/>
+                            <constraint firstItem="bPV-Ps-gmX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e5d-Xj-zQe" secondAttribute="bottom" constant="25" id="FDn-8I-rK2"/>
                             <constraint firstItem="e5d-Xj-zQe" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" id="FGo-eY-dC1"/>
                             <constraint firstItem="SOm-kn-JJO" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="0.4" id="GUf-P3-0Ef"/>
                             <constraint firstItem="pV8-QK-gu2" firstAttribute="width" secondItem="qEH-nP-UJU" secondAttribute="width" multiplier="159:414" id="Gr1-sJ-Se5"/>
@@ -131,22 +153,21 @@
                             <constraint firstItem="bPV-Ps-gmX" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="64:896" id="Hap-Gm-eol"/>
                             <constraint firstItem="PLz-Mt-HN3" firstAttribute="top" secondItem="Ddo-cC-zC1" secondAttribute="bottom" constant="21" id="J91-5V-bYV"/>
                             <constraint firstItem="1CE-rW-5NP" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="1.3" priority="750" id="JKe-0z-OsC"/>
-                            <constraint firstItem="Ddo-cC-zC1" firstAttribute="top" secondItem="taS-S6-SzU" secondAttribute="bottom" constant="34" id="Ki4-uc-JU3"/>
+                            <constraint firstItem="Ddo-cC-zC1" firstAttribute="top" secondItem="taS-S6-SzU" secondAttribute="bottom" constant="25" id="Ki4-uc-JU3"/>
                             <constraint firstItem="PLz-Mt-HN3" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="1.65" priority="750" id="OdE-qL-rdd"/>
                             <constraint firstItem="taS-S6-SzU" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="1.35" priority="750" id="PbK-tw-uLQ"/>
                             <constraint firstItem="Ddo-cC-zC1" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" id="QGy-Mx-Qax"/>
-                            <constraint firstItem="e5d-Xj-zQe" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="237:896" id="QRM-iI-0Sx"/>
+                            <constraint firstItem="e5d-Xj-zQe" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="250:896" id="QRM-iI-0Sx"/>
                             <constraint firstItem="bPV-Ps-gmX" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" id="Qdc-97-IgJ"/>
-                            <constraint firstItem="VcF-bQ-JmM" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" multiplier="1.91" id="Tg9-fb-oXa"/>
-                            <constraint firstItem="1CE-rW-5NP" firstAttribute="top" secondItem="bPV-Ps-gmX" secondAttribute="bottom" constant="23" id="bke-22-dpK"/>
                             <constraint firstItem="taS-S6-SzU" firstAttribute="top" secondItem="bPV-Ps-gmX" secondAttribute="bottom" constant="10" id="fVn-w0-vOd"/>
                             <constraint firstItem="e5d-Xj-zQe" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SOm-kn-JJO" secondAttribute="bottom" constant="10" id="g1O-o6-A64"/>
                             <constraint firstItem="SOm-kn-JJO" firstAttribute="height" secondItem="qEH-nP-UJU" secondAttribute="height" multiplier="100:896" id="gWW-xQ-yhh"/>
+                            <constraint firstItem="blc-R6-WsV" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" multiplier="0.1" id="kUT-k0-ifr"/>
                             <constraint firstItem="taS-S6-SzU" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" priority="750" id="lUw-Pa-ZSu"/>
                             <constraint firstItem="bPV-Ps-gmX" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="1.2" priority="750" id="leW-M6-TTf"/>
+                            <constraint firstItem="NsK-uX-ekO" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" multiplier="1.97" id="ngq-hY-WvB"/>
                             <constraint firstItem="pV8-QK-gu2" firstAttribute="top" secondItem="bPV-Ps-gmX" secondAttribute="bottom" constant="23" id="npd-HX-RIU"/>
-                            <constraint firstItem="e5d-Xj-zQe" firstAttribute="width" secondItem="qEH-nP-UJU" secondAttribute="width" multiplier="269:414" id="oUM-ph-ENm"/>
-                            <constraint firstItem="VcF-bQ-JmM" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="0.4" id="pSL-a3-iAU"/>
+                            <constraint firstItem="e5d-Xj-zQe" firstAttribute="width" secondItem="qEH-nP-UJU" secondAttribute="width" multiplier="270:414" id="oUM-ph-ENm"/>
                             <constraint firstItem="SOm-kn-JJO" firstAttribute="width" secondItem="qEH-nP-UJU" secondAttribute="width" multiplier="320:414" id="qV9-Pl-9V8"/>
                             <constraint firstItem="SOm-kn-JJO" firstAttribute="centerX" secondItem="qEH-nP-UJU" secondAttribute="centerX" id="szR-UY-eR7"/>
                             <constraint firstItem="pV8-QK-gu2" firstAttribute="centerY" secondItem="qEH-nP-UJU" secondAttribute="centerY" multiplier="1.3" priority="750" id="t3i-xB-tlZ"/>
@@ -167,13 +188,169 @@
             </objects>
             <point key="canvasLocation" x="-2071.0144927536235" y="474.77678571428567"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="HFU-zU-5hc">
+            <objects>
+                <viewController storyboardIdentifier="AboutViewController" id="cgl-HM-tcH" customClass="AboutViewController" customModule="EasyLearn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kj1-0r-1gh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Forgot pass" translatesAutoresizingMaskIntoConstraints="NO" id="f4F-ks-IVp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht8-Uk-fGL">
+                                <rect key="frame" x="183" y="76" width="48.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcl-Fh-wQj">
+                                <rect key="frame" x="16" y="121" width="382" height="745"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r6t-9r-480">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="729"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZd-4l-iyS">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="729"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Wl-gG-Nmm">
+                                                        <rect key="frame" x="0.0" y="20" width="359.5" height="672"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="nKF-KL-NDv">
+                                                                <rect key="frame" x="0.0" y="0.0" width="359.5" height="232"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MN" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-mt-DkC">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="201" height="232"/>
+                                                                    </imageView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-kM-jr8">
+                                                                        <rect key="frame" x="204" y="0.0" width="155.5" height="232"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Sandra Ingerman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kU-gm-CDn">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="56"/>
+                                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jw5-Hx-4dV">
+                                                                                <rect key="frame" x="0.0" y="65" width="155.5" height="167"/>
+                                                                                <string key="text">Lorem Ipsum is simply
+dummy text of the printing
+and typesetting industry.
+Lorem Ipsum has been the
+industry's standard
+dummy text ever since the
+1500s, when an unknown
+printer took a galley of
+type and scramble Lorem 
+dummy text of the printing
+and typesetting industry.</string>
+                                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="hVy-kM-jr8" firstAttribute="width" secondItem="nKF-KL-NDv" secondAttribute="width" multiplier="155.5:359.5" id="1iG-Ay-Hha"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDP-u3-nq6">
+                                                                <rect key="frame" x="0.0" y="232" width="359.5" height="121.5"/>
+                                                                <string key="text">Contrary to popular belief, Lorem Ipsum is not simply
+random text. It has roots in a piece of classical Latin
+literature from 45 BC, making it over 2000 years old.
+Richard McClintock, a Latin professor at
+Hampden-Sydney shamanicteachers.com, looked up one
+of the more obscure Latin words, consectetur, from a
+Lorem Ipsum passage, and going through the cites of
+the word in classical literature, discovered the</string>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzi-I8-6wm">
+                                                                <rect key="frame" x="0.0" y="353.5" width="359.5" height="318.5"/>
+                                                                <string key="text">Contrary to popular belief, Lorem Ipsum is not simply
+random text. It has roots in a piece of classical Latin
+literature from 45 BC, making it over 2000 years old.
+Richard McClintock, a Latin professor at
+Hampden-Sydney shamanicteachers.com, looked up one
+of the more obscure Latin words, consectetur, from a
+Lorem Ipsum passage, and going through the cites of
+the word in classical literature, discovered the
+sandraingerman.com Lorem Ipsum comes from
+sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
+Malorum" (The Extremes of Good and Evil) by Cicero,
+written in 45 BC. This book is a treatise on the theory
+of ethics, very popular during the Renaissance. The first 
+line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
+comes from a line in section 1.10.32. The standard chunk
+of Lorem Ipsum collectivelight.com reproduced
+below for those interested. Sections 1.10.32 and 1.10.33
+from "de Finibus Bonorum et Malorum" by Cicero are
+also reproduced in their exact original form,
+accompanied by English versions from the 1914
+translation by H. Rackham.</string>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="729" id="TJt-7G-Xwd"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="r6t-9r-480" secondAttribute="bottom" id="99u-OP-QYX"/>
+                                    <constraint firstItem="r6t-9r-480" firstAttribute="top" secondItem="Rcl-Fh-wQj" secondAttribute="top" id="MBx-3e-EGV"/>
+                                    <constraint firstItem="r6t-9r-480" firstAttribute="width" secondItem="Rcl-Fh-wQj" secondAttribute="width" id="QLl-08-nFx"/>
+                                    <constraint firstAttribute="trailing" secondItem="r6t-9r-480" secondAttribute="trailing" id="i6i-Fs-9PU"/>
+                                    <constraint firstItem="r6t-9r-480" firstAttribute="leading" secondItem="Rcl-Fh-wQj" secondAttribute="leading" id="nKQ-xu-yPC"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="qUX-Yj-CNp"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="mM5-dd-25o"/>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="BWj-h7-xqU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BWj-h7-xqU" firstAttribute="trailing" secondItem="Rcl-Fh-wQj" secondAttribute="trailing" constant="16" id="3CF-t3-Fhd"/>
+                            <constraint firstItem="ht8-Uk-fGL" firstAttribute="centerX" secondItem="kj1-0r-1gh" secondAttribute="centerX" id="3aI-v3-nVa"/>
+                            <constraint firstItem="ht8-Uk-fGL" firstAttribute="top" secondItem="BWj-h7-xqU" secondAttribute="top" constant="32" id="4O9-vG-SSM"/>
+                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="leading" secondItem="BWj-h7-xqU" secondAttribute="leading" constant="16" id="79s-W1-xB4"/>
+                            <constraint firstItem="f4F-ks-IVp" firstAttribute="leading" secondItem="BWj-h7-xqU" secondAttribute="leading" id="Aw7-1R-hdh"/>
+                            <constraint firstItem="BWj-h7-xqU" firstAttribute="trailing" secondItem="f4F-ks-IVp" secondAttribute="trailing" id="PGa-of-9dz"/>
+                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="bottom" secondItem="BWj-h7-xqU" secondAttribute="bottom" id="cQn-SB-gS6"/>
+                            <constraint firstItem="BWj-h7-xqU" firstAttribute="bottom" secondItem="f4F-ks-IVp" secondAttribute="bottom" id="qja-aX-Srd"/>
+                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="top" secondItem="ht8-Uk-fGL" secondAttribute="bottom" constant="24" id="qot-uB-WZf"/>
+                            <constraint firstItem="f4F-ks-IVp" firstAttribute="top" secondItem="kj1-0r-1gh" secondAttribute="top" id="xIi-dw-NEL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="5M6-dM-3Og"/>
+                    <size key="freeformSize" width="414" height="900"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f5i-vz-o5h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1517.3913043478262" y="3129.6195652173915"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="Blob" width="269" height="237"/>
         <image name="EasyLearn-1" width="143" height="19"/>
         <image name="Facebook" width="169" height="56"/>
+        <image name="Forgot pass" width="138" height="245.5"/>
         <image name="Google" width="170" height="56"/>
-        <image name="Stroke" width="44" height="76"/>
+        <image name="MN" width="201" height="232"/>
+        <image name="astronaut" width="269" height="237"/>
+        <image name="saturn" width="82" height="69"/>
+        <image name="venera" width="75" height="76"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

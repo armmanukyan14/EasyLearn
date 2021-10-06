@@ -12,6 +12,9 @@ extension UIColor {
     static var easyPurple: Self {
         .init(red: 103 / 255, green: 45 / 255, blue: 227 / 255, alpha: 1)
     }
+    static var easyGray: Self {
+        .init(red: 87 / 255, green: 80 / 255, blue: 102 / 255, alpha: 1)
+    }
     static var labelColor: Self {
         .init(red: 107 / 255, green: 107 / 255, blue: 107 / 255, alpha: 1)
     }

@@ -12,6 +12,20 @@ class SearchViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var searchTextField: SearchTextField!
 
+    private lazy var searchIconImage: UIImageView = {
+        let searchIconImage = UIImageView(frame: CGRect(x: 8, y: 1, width: 18, height: 18))
+        let searchImage = UIImage(named: "search")
+        searchIconImage.image = searchImage
+        return searchIconImage
+
+    }()
+
+    private lazy var searchIcon: UIView = {
+        let searchIcon = UIView(frame: CGRect(x: 0, y: 0, width: 31, height: 20))
+        searchIcon.addSubview(searchIconImage)
+        return searchIcon
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -25,14 +39,11 @@ class SearchViewController: UIViewController {
         searchTextField.backgroundColor = UIColor.searchTextFieldColor
         searchTextField.layer.borderWidth = 1.0
         searchTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let imageView = UIImageView()
-        let image = UIImage(named: "shape-1")
-        imageView.image = image
-        searchTextField.leftView = imageView
+        searchTextField.leftView = searchIcon
         searchTextField.leftViewMode = .always
         searchTextField.attributedPlaceholder = NSAttributedString(
                     string: "Search",
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.easyGray])
 //        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: searchTextField.frame.height))
 //        searchTextField.leftView = padding
 //        searchTextField.leftViewMode = .always
