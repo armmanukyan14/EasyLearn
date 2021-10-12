@@ -27,8 +27,8 @@ class AddedPhotoViewController: UIViewController {
 
     private func setupViews() {
         completeSignUpButton.layer.cornerRadius = 10.0
-        userImageView.layer.masksToBounds = false
         userImageView.layer.cornerRadius = userImageView.frame.height / 2
+        userImageView.layer.masksToBounds = false
         userImageView.clipsToBounds = true
     }
 

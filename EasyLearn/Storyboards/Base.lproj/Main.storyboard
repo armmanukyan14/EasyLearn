@@ -15,12 +15,6 @@
         <array key="Inter-Bold.ttf">
             <string>Inter-Bold</string>
         </array>
-        <array key="Montserrat-Medium.ttf">
-            <string>Montserrat-Medium</string>
-        </array>
-        <array key="Montserrat-Regular.ttf">
-            <string>Montserrat-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -188,166 +182,11 @@
             </objects>
             <point key="canvasLocation" x="-2071.0144927536235" y="474.77678571428567"/>
         </scene>
-        <!--About View Controller-->
-        <scene sceneID="HFU-zU-5hc">
-            <objects>
-                <viewController storyboardIdentifier="AboutViewController" id="cgl-HM-tcH" customClass="AboutViewController" customModule="EasyLearn" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="kj1-0r-1gh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Forgot pass" translatesAutoresizingMaskIntoConstraints="NO" id="f4F-ks-IVp">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="866"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ht8-Uk-fGL">
-                                <rect key="frame" x="183" y="76" width="48.5" height="21"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcl-Fh-wQj">
-                                <rect key="frame" x="16" y="121" width="382" height="745"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="r6t-9r-480">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="729"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZd-4l-iyS">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="729"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5Wl-gG-Nmm">
-                                                        <rect key="frame" x="0.0" y="20" width="359.5" height="672"/>
-                                                        <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="nKF-KL-NDv">
-                                                                <rect key="frame" x="0.0" y="0.0" width="359.5" height="232"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MN" translatesAutoresizingMaskIntoConstraints="NO" id="s3P-mt-DkC">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="201" height="232"/>
-                                                                    </imageView>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="hVy-kM-jr8">
-                                                                        <rect key="frame" x="204" y="0.0" width="155.5" height="232"/>
-                                                                        <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Sandra Ingerman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kU-gm-CDn">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="56"/>
-                                                                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="13"/>
-                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jw5-Hx-4dV">
-                                                                                <rect key="frame" x="0.0" y="65" width="155.5" height="167"/>
-                                                                                <string key="text">Lorem Ipsum is simply
-dummy text of the printing
-and typesetting industry.
-Lorem Ipsum has been the
-industry's standard
-dummy text ever since the
-1500s, when an unknown
-printer took a galley of
-type and scramble Lorem 
-dummy text of the printing
-and typesetting industry.</string>
-                                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                        </subviews>
-                                                                    </stackView>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstItem="hVy-kM-jr8" firstAttribute="width" secondItem="nKF-KL-NDv" secondAttribute="width" multiplier="155.5:359.5" id="1iG-Ay-Hha"/>
-                                                                </constraints>
-                                                            </stackView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDP-u3-nq6">
-                                                                <rect key="frame" x="0.0" y="232" width="359.5" height="121.5"/>
-                                                                <string key="text">Contrary to popular belief, Lorem Ipsum is not simply
-random text. It has roots in a piece of classical Latin
-literature from 45 BC, making it over 2000 years old.
-Richard McClintock, a Latin professor at
-Hampden-Sydney shamanicteachers.com, looked up one
-of the more obscure Latin words, consectetur, from a
-Lorem Ipsum passage, and going through the cites of
-the word in classical literature, discovered the</string>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzi-I8-6wm">
-                                                                <rect key="frame" x="0.0" y="353.5" width="359.5" height="318.5"/>
-                                                                <string key="text">Contrary to popular belief, Lorem Ipsum is not simply
-random text. It has roots in a piece of classical Latin
-literature from 45 BC, making it over 2000 years old.
-Richard McClintock, a Latin professor at
-Hampden-Sydney shamanicteachers.com, looked up one
-of the more obscure Latin words, consectetur, from a
-Lorem Ipsum passage, and going through the cites of
-the word in classical literature, discovered the
-sandraingerman.com Lorem Ipsum comes from
-sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et
-Malorum" (The Extremes of Good and Evil) by Cicero,
-written in 45 BC. This book is a treatise on the theory
-of ethics, very popular during the Renaissance. The first 
-line of Lorem Ipsum, "Lorem ipsum dolor sit amet..",
-comes from a line in section 1.10.32. The standard chunk
-of Lorem Ipsum collectivelight.com reproduced
-below for those interested. Sections 1.10.32 and 1.10.33
-from "de Finibus Bonorum et Malorum" by Cicero are
-also reproduced in their exact original form,
-accompanied by English versions from the 1914
-translation by H. Rackham.</string>
-                                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="729" id="TJt-7G-Xwd"/>
-                                        </constraints>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="r6t-9r-480" secondAttribute="bottom" id="99u-OP-QYX"/>
-                                    <constraint firstItem="r6t-9r-480" firstAttribute="top" secondItem="Rcl-Fh-wQj" secondAttribute="top" id="MBx-3e-EGV"/>
-                                    <constraint firstItem="r6t-9r-480" firstAttribute="width" secondItem="Rcl-Fh-wQj" secondAttribute="width" id="QLl-08-nFx"/>
-                                    <constraint firstAttribute="trailing" secondItem="r6t-9r-480" secondAttribute="trailing" id="i6i-Fs-9PU"/>
-                                    <constraint firstItem="r6t-9r-480" firstAttribute="leading" secondItem="Rcl-Fh-wQj" secondAttribute="leading" id="nKQ-xu-yPC"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="qUX-Yj-CNp"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="mM5-dd-25o"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="BWj-h7-xqU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="BWj-h7-xqU" firstAttribute="trailing" secondItem="Rcl-Fh-wQj" secondAttribute="trailing" constant="16" id="3CF-t3-Fhd"/>
-                            <constraint firstItem="ht8-Uk-fGL" firstAttribute="centerX" secondItem="kj1-0r-1gh" secondAttribute="centerX" id="3aI-v3-nVa"/>
-                            <constraint firstItem="ht8-Uk-fGL" firstAttribute="top" secondItem="BWj-h7-xqU" secondAttribute="top" constant="32" id="4O9-vG-SSM"/>
-                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="leading" secondItem="BWj-h7-xqU" secondAttribute="leading" constant="16" id="79s-W1-xB4"/>
-                            <constraint firstItem="f4F-ks-IVp" firstAttribute="leading" secondItem="BWj-h7-xqU" secondAttribute="leading" id="Aw7-1R-hdh"/>
-                            <constraint firstItem="BWj-h7-xqU" firstAttribute="trailing" secondItem="f4F-ks-IVp" secondAttribute="trailing" id="PGa-of-9dz"/>
-                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="bottom" secondItem="BWj-h7-xqU" secondAttribute="bottom" id="cQn-SB-gS6"/>
-                            <constraint firstItem="BWj-h7-xqU" firstAttribute="bottom" secondItem="f4F-ks-IVp" secondAttribute="bottom" id="qja-aX-Srd"/>
-                            <constraint firstItem="Rcl-Fh-wQj" firstAttribute="top" secondItem="ht8-Uk-fGL" secondAttribute="bottom" constant="24" id="qot-uB-WZf"/>
-                            <constraint firstItem="f4F-ks-IVp" firstAttribute="top" secondItem="kj1-0r-1gh" secondAttribute="top" id="xIi-dw-NEL"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="5M6-dM-3Og"/>
-                    <size key="freeformSize" width="414" height="900"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f5i-vz-o5h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1517.3913043478262" y="3129.6195652173915"/>
-        </scene>
     </scenes>
     <resources>
         <image name="EasyLearn-1" width="143" height="19"/>
         <image name="Facebook" width="169" height="56"/>
-        <image name="Forgot pass" width="138" height="245.5"/>
         <image name="Google" width="170" height="56"/>
-        <image name="MN" width="201" height="232"/>
         <image name="astronaut" width="269" height="237"/>
         <image name="saturn" width="82" height="69"/>
         <image name="venera" width="75" height="76"/>

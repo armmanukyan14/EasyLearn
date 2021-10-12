@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    private let user = User(name: "gurgen_14", image: UIImage(named: "berlin"), videos: [])
+    var user = User(name: "gurgen_14", image: UIImage(named: "berlin"), videos: [])
 
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var avatarImageView: UIImageView!

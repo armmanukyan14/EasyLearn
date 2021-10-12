@@ -5,9 +5,9 @@
 //  Created by MacBook on 15.09.21.
 //
 
-import UIKit
 import AVFoundation
 import RxSwift
+import UIKit
 
 class CameraViewController: UIViewController {
 
@@ -19,6 +19,8 @@ class CameraViewController: UIViewController {
     @IBOutlet private var turnCameraButton: UIButton!
     @IBOutlet private var libraryButton: UIButton!
     @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var timerLabel: UILabel!
+    @IBOutlet private var addToVideosButton: UIButton!
 
     var session: AVCaptureSession?
     let output = AVCapturePhotoOutput()
@@ -27,7 +29,7 @@ class CameraViewController: UIViewController {
     let shape = CAShapeLayer()
     let animation = CABasicAnimation(keyPath: "strokeEnd")
 
-    var timer: Timer = Timer()
+    var timer = Timer()
     var count: Int = 0
     var timerCounting: Bool = false
 
@@ -38,6 +40,7 @@ class CameraViewController: UIViewController {
         bindNavigation()
         addGestureRecognizer()
         circle()
+        shootButtonTapped()
     }
 
     private func circle() {
@@ -63,7 +66,8 @@ class CameraViewController: UIViewController {
     }
 
     private func setupViews() {
-
+        addToVideosButton.isHidden = true
+        addToVideosButton.layer.cornerRadius = addToVideosButton.frame.size.width / 2
         previewLayer.frame = view.bounds
         view.backgroundColor = .black
         view.layer.addSublayer(previewLayer)
@@ -73,20 +77,13 @@ class CameraViewController: UIViewController {
         view.addSubview(turnCameraButton)
         view.addSubview(libraryButton)
         view.addSubview(backButton)
+        view.addSubview(timerLabel)
         backButton.titleLabel?.text = ""
-        turnCameraButton.layer.cornerRadius = turnCameraButton.frame.size.width / 2
-        libraryButton.layer.cornerRadius = libraryButton.frame.size.width / 2
-        timerButton.layer.cornerRadius = timerButton.frame.size.width / 2
-        timerButton.backgroundColor = .darkGray
-        timerButton.alpha = 0.5
-        lightButton.layer.cornerRadius = lightButton.frame.size.width / 2
-        lightButton.backgroundColor = .darkGray
-        lightButton.alpha = 0.5
         shootButton.layer.cornerRadius = shootButton.frame.size.width / 2
         shootButton.layer.borderWidth = 8.0
         shootButton.layer.borderColor = UIColor.white.cgColor
         shootButton.backgroundColor = .clear
-   }
+    }
 
     private func bindNavigation() {
         backButton.rx.tap
@@ -103,36 +100,52 @@ class CameraViewController: UIViewController {
 
     @objc
     private func didPressShoot(recognizer: UILongPressGestureRecognizer) {
-
         if recognizer.state == .began {
             timerCounting = true
-            timer.invalidate()
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
 
             shootButton.layer.borderColor = UIColor.clear.cgColor
             backButton.isHidden = true
+            timerButton.isHidden = true
             animation.toValue = 1
-            animation.duration = 10
+            animation.duration = 12
             animation.isRemovedOnCompletion = false
             animation.fillMode = .forwards
             shape.add(animation, forKey: "animation")
         } else if recognizer.state == .ended {
+
             timerCounting = false
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+            timer.invalidate()
 
             shootButton.layer.borderColor = UIColor.white.cgColor
+            timerButton.isHidden = false
             backButton.isHidden = false
             shape.removeAnimation(forKey: "animation")
-//            self.dismiss(animated: true)
+            self.dismiss(animated: true)
         }
     }
 
     @objc func timerCounter() {
-        count = count + 1
+        count += 1
+        let time = makeSeconds(seconds: count)
+        let timeString = makeTimeString(minutes: time.0, seconds: time.1)
+        timerLabel.text = timeString
+    }
+
+    func makeSeconds(seconds: Int) -> (Int, Int) {
+        (((seconds % 3600) / 60), ((seconds % 3600) % 60))
+    }
+
+    func makeTimeString(minutes: Int, seconds: Int) -> String {
+        var timeString = ""
+        timeString += String(format: "%0d", minutes)
+        timeString += ":"
+        timeString += String(format: "%02d",seconds)
+        return timeString
     }
 
     private func checkCameraPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
-
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { [weak self] granted in
                 guard granted else { return }
@@ -156,7 +169,7 @@ class CameraViewController: UIViewController {
         if let device = AVCaptureDevice.default(for: .video) {
             do {
                 let input = try AVCaptureDeviceInput(device: device)
-                if session .canAddInput(input) {
+                if session.canAddInput(input) {
                     session.addInput(input)
                 }
 
@@ -169,9 +182,7 @@ class CameraViewController: UIViewController {
 
                 session.startRunning()
                 self.session = session
-            }
-
-            catch {
+            } catch {
                 print(error)
             }
         }
@@ -201,33 +212,7 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = view.bounds
         view.addSubview(imageView)
-    }
-}
-
-extension AVCaptureDevice {
-    var isLocked: Bool {
-        do {
-            try lockForConfiguration()
-            return true
-        } catch {
-            print(error)
-            return false
-        }
-    }
-    func setTorch(intensity: Float) {
-       guard hasTorch && isLocked else { return }
-        defer { unlockForConfiguration() }
-        if intensity > 0 {
-            if torchMode == .off {
-                torchMode = .on
-            }
-            do {
-                try setTorchModeOn(level: intensity)
-            } catch {
-                print(error)
-            }
-        } else {
-            torchMode = .off
-        }
+        view.addSubview(addToVideosButton)
+        addToVideosButton.isHidden = false
     }
 }

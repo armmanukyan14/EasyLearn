@@ -56,7 +56,11 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onn-97-vRZ">
-                                <rect key="frame" x="20" y="64" width="11" height="22"/>
+                                <rect key="frame" x="15" y="64" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8Ac-iw-lgW"/>
+                                    <constraint firstAttribute="width" constant="35" id="SSq-rO-gTP"/>
+                                </constraints>
                                 <state key="normal" image="backButton"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdj-7c-AUo">
@@ -103,7 +107,7 @@
                             <constraint firstItem="uNo-KV-Gxw" firstAttribute="height" secondItem="chQ-nK-nA4" secondAttribute="height" multiplier="33.5:896" id="gr9-0q-hOf"/>
                             <constraint firstAttribute="trailing" secondItem="SA8-GK-e4l" secondAttribute="trailing" constant="27" id="hTR-KD-8Az"/>
                             <constraint firstItem="pPQ-4b-zaS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tdj-7c-AUo" secondAttribute="bottom" constant="20" id="iCq-t5-puA"/>
-                            <constraint firstItem="onn-97-vRZ" firstAttribute="leading" secondItem="GyB-E5-rgT" secondAttribute="leading" constant="20" id="iFe-TR-gIY"/>
+                            <constraint firstItem="onn-97-vRZ" firstAttribute="leading" secondItem="GyB-E5-rgT" secondAttribute="leading" constant="15" id="iFe-TR-gIY"/>
                             <constraint firstItem="pPQ-4b-zaS" firstAttribute="centerY" secondItem="chQ-nK-nA4" secondAttribute="centerY" multiplier="1.11" priority="750" id="ins-lg-DrX"/>
                             <constraint firstItem="SA8-GK-e4l" firstAttribute="top" secondItem="ihx-Bi-PzQ" secondAttribute="bottom" constant="1" id="iwq-go-LxP"/>
                             <constraint firstItem="ihx-Bi-PzQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uNo-KV-Gxw" secondAttribute="bottom" constant="40" id="r2x-fD-NAH"/>
@@ -126,6 +130,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkB-Gi-KRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1710.144927536232" y="-290.625"/>
+        </scene>
+        <!--Forgot Password View Controller-->
+        <scene sceneID="Q6Q-f6-WGm">
+            <objects>
+                <viewController storyboardIdentifier="ForgotPasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yWK-Ju-wdJ" customClass="ForgotPasswordViewController" customModule="EasyLearn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2jQ-te-Egh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-Vk-sge">
+                                <rect key="frame" x="143" y="437.5" width="128" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CMm-5O-0VB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eo2-Vk-sge" firstAttribute="centerY" secondItem="2jQ-te-Egh" secondAttribute="centerY" id="LZT-LD-dTj"/>
+                            <constraint firstItem="eo2-Vk-sge" firstAttribute="centerX" secondItem="2jQ-te-Egh" secondAttribute="centerX" id="iuV-2H-f1r"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GEc-Zk-JHr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-804" y="-291"/>
         </scene>
     </scenes>
     <resources>

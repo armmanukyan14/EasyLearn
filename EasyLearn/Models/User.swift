@@ -11,6 +11,6 @@ struct User {
     let name: String
 //    let email: String
 //    let password: String
-    let image: UIImage?
+    var image: UIImage?
     let videos: [Video]
 }

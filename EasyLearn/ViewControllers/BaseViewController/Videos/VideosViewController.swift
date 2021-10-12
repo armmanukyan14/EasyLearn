@@ -22,16 +22,55 @@ class VideosViewController: UIViewController {
     @IBOutlet private var videoView4: UIView!
     @IBOutlet private var redView: UIView!
     @IBOutlet private var greenView: UIView!
+    @IBOutlet private var okLabel: UILabel!
+    @IBOutlet private var laterLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupVideo()
         didAddGestureRecognizer()
+        addSubViews()
 //        didReplayVideo()
     }
 
-    private func setupVideo() {
+    private func addSubViews() {
+        videoView1.addSubview(okLabel)
+        videoView1.addSubview(laterLabel)
+    }
+
+   private func setupViews() {
+       setupLabels()
+       setupRedAndGreenViews()
+       setupVideoViews()
+       setupVideoLayers()
+    }
+
+    private func setupLabels() {
+        okLabel.alpha = 0
+        laterLabel.alpha = 0
+        okLabel.layer.cornerRadius = 10.0
+        okLabel.layer.masksToBounds  = true
+        laterLabel.layer.cornerRadius = 10.0
+        laterLabel.layer.masksToBounds  = true
+    }
+
+    private func setupRedAndGreenViews() {
+        redView.alpha = 0
+        greenView.alpha = 0
+        redView.layer.cornerRadius = 30
+        redView.backgroundColor = .redViewColor
+        greenView.layer.cornerRadius = 30
+        greenView.backgroundColor = .greenViewColor
+    }
+
+    private func setupVideoViews() {
+        videoView1.layer.cornerRadius = 10.0
+        videoView2.layer.cornerRadius = 10.0
+        videoView3.layer.cornerRadius = 10.0
+        videoView4.layer.cornerRadius = 10.0
+    }
+
+    private func setupVideoLayers() {
         let videoLayer1 = AVPlayerLayer(player: player1)
         videoLayer1.frame = videoView1.bounds
         videoLayer1.masksToBounds = true
@@ -60,21 +99,6 @@ class VideosViewController: UIViewController {
         videoLayer4.videoGravity = .resizeAspectFill
         videoView4.layer.addSublayer(videoLayer4)
         player4.pause()
-
-    }
-
-    private func setupViews() {
-        redView.alpha = 0
-        greenView.alpha = 0
-        redView.layer.cornerRadius = 30
-        redView.backgroundColor = .redViewColor
-//        greenView.roundCorners(corners: [.bottomLeft, .topLeft], radius: 30.0)
-        greenView.layer.cornerRadius = 30
-        greenView.backgroundColor = .greenViewColor
-        videoView1.layer.cornerRadius = 10.0
-        videoView2.layer.cornerRadius = 10.0
-        videoView3.layer.cornerRadius = 10.0
-        videoView4.layer.cornerRadius = 10.0
     }
 
     private func didAddGestureRecognizer() {
@@ -159,8 +183,23 @@ class VideosViewController: UIViewController {
 
         } else if recognizer.state == .changed {
 
+            if videoView1.center.x < 120 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.laterLabel.alpha = 0.65
+                })
+            } else if videoView1.center.x > self.view.frame.size.width - 120 {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.okLabel.alpha = 0.65
+                })
+            } else {
+                UIView.animate(withDuration: 1, animations: {
+                    self.laterLabel.alpha = 0
+                    self.okLabel.alpha = 0
+                })
+            }
+
             let translation = recognizer.translation(in: self.view)
-            tiltTheCurrentVideoView(with: translation)
+            tiltVideoView1(with: translation)
 
             let newX = videoView1.center.x + translation.x
             let newY = videoView1.center.y + translation.y
@@ -170,13 +209,12 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
-            })
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0.75
             })
 
         } else if recognizer.state == .ended {
             player1.play()
+
             if videoView1.center.x < 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView1.center.x = -self.videoView1.frame.size.width
@@ -185,7 +223,7 @@ class VideosViewController: UIViewController {
                     self.videoView1.isHidden = true
                     self.player1.volume = 0
                 })
-            }  else if videoView1.center.x > self.view.frame.size.width - 30 {
+            } else if videoView1.center.x > self.view.frame.size.width - 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView1.center.x = self.view.frame.size.width + self.videoView1.frame.size.width
                     self.player1.pause()
@@ -201,11 +239,10 @@ class VideosViewController: UIViewController {
             })
 
             UIView.animate(withDuration: 1, animations: {
-                self.redView.alpha = 0
-            })
-
-            UIView.animate(withDuration: 1, animations: {
+                self.laterLabel.alpha = 0
+                self.okLabel.alpha = 0
                 self.greenView.alpha = 0
+                self.redView.alpha = 0
             })
         }
     }
@@ -217,7 +254,7 @@ class VideosViewController: UIViewController {
         } else if recognizer.state == .changed {
 
             let translation = recognizer.translation(in: self.view)
-            tiltTheNextVideoView(with: translation)
+            tiltVideoView2(with: translation)
 
             let newX = videoView2.center.x + translation.x
             let newY = videoView2.center.y + translation.y
@@ -227,8 +264,6 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
-            })
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0.75
             })
 
@@ -259,9 +294,6 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0
-            })
-
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0
             })
         }
@@ -284,8 +316,6 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
-            })
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0.75
             })
 
@@ -316,9 +346,6 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0
-            })
-
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0
             })
         }
@@ -341,8 +368,6 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
-            })
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0.75
             })
 
@@ -371,22 +396,19 @@ class VideosViewController: UIViewController {
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0
-            })
-
-            UIView.animate(withDuration: 1, animations: {
                 self.greenView.alpha = 0
             })
         }
     }
 
-    private func tiltTheCurrentVideoView(with translationValue: CGPoint) {
+    private func tiltVideoView1(with translationValue: CGPoint) {
         let translationMoved = self.view.center.x - self.videoView1.center.x
         let tiltCorner = (self.view.frame.size.width / 2) / 0.2
 
         videoView1.transform = CGAffineTransform(rotationAngle: translationMoved / tiltCorner)
     }
 
-    private func tiltTheNextVideoView(with translation: CGPoint) {
+    private func tiltVideoView2(with translation: CGPoint) {
         let translationMoved = self.view.center.x - self.videoView2.center.x
         let tiltCorner = (self.view.frame.size.width / 2) / 0.2
 

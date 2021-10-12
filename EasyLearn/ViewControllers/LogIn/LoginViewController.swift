@@ -67,6 +67,13 @@ final class LoginViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+
+        forgotPasswordButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let vc = UIStoryboard.logIn.instantiateViewController(withIdentifier: "ForgotPasswordViewController")
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindOutputs() {

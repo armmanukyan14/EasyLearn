@@ -24,17 +24,11 @@ class AddPhotoViewController: UIViewController {
         super.viewDidLoad()
         bindNavigation()
         setupViews()
-        setupBackButton()
-    }
-
-    private func setupBackButton() {
-        navigationItem.backBarButtonItem = UIBarButtonItem(
-            title: "", style: .plain, target: nil, action: nil)
     }
 
     private func setupViews() {
         addPhotoButton.layer.cornerRadius = 10.0
-//        avatarImageView.layer.cornerRadius = avatarImageView.layer.frame.height / 2
+        avatarImageView.layer.cornerRadius = avatarImageView.layer.frame.height / 2
     }
 
     private func bindNavigation() {

@@ -20,8 +20,6 @@
 		FA3FA04A26CD3C6800BA513B /* BalooBhai2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */; };
 		FA3FA04C26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */; };
 		FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */; };
-		FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04F26CE6E2600BA513B /* euro.mp4 */; };
-		FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA05326CEA21900BA513B /* kishta.mp4 */; };
 		FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */; };
 		FA54FE9A26CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */; };
 		FA54FE9D26CFB21400E3A6D6 /* EnterNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54FE9C26CFB21400E3A6D6 /* EnterNameViewController.swift */; };
@@ -56,6 +54,8 @@
 		FAA1A1D426F0A95F006A5B36 /* AddedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D326F0A95F006A5B36 /* AddedPhotoViewController.swift */; };
 		FAA1A1D626F0D078006A5B36 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */; };
 		FAA1A1D826F22AF9006A5B36 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */; };
+		FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */; };
+		FAA279F127108BC4007BAD7D /* TakenVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,8 +77,6 @@
 		FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-Regular.ttf"; sourceTree = "<group>"; };
 		FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
-		FA3FA04F26CE6E2600BA513B /* euro.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = euro.mp4; sourceTree = "<group>"; };
-		FA3FA05326CEA21900BA513B /* kishta.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kishta.mp4; sourceTree = "<group>"; };
 		FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
 		FA54FE9C26CFB21400E3A6D6 /* EnterNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNameViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +111,8 @@
 		FAA1A1D326F0A95F006A5B36 /* AddedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedPhotoViewController.swift; sourceTree = "<group>"; };
 		FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenVideoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,8 +215,6 @@
 		FA3FA05226CEA1F700BA513B /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				FA3FA04F26CE6E2600BA513B /* euro.mp4 */,
-				FA3FA05326CEA21900BA513B /* kishta.mp4 */,
 				FA846EC126D90AC700213E15 /* cutPaper.mp4 */,
 				FA846EC326D90E8300213E15 /* takeAndPut.mp4 */,
 				FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */,
@@ -348,6 +346,7 @@
 		FA846ECE26DE29DA00213E15 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
+				FAA279E8270DE2D7007BAD7D /* ForgotPassword */,
 				FA846ECF26DE29F500213E15 /* LoginViewController.swift */,
 				FA846ED126DE33B100213E15 /* LogInViewModel.swift */,
 			);
@@ -372,6 +371,7 @@
 			children = (
 				FA846EDC26DE69A400213E15 /* AddVideoViewController.swift */,
 				FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */,
+				FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -401,6 +401,14 @@
 				FA58B52326F606C7004FC4C9 /* SignUp.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		FAA279E8270DE2D7007BAD7D /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -467,8 +475,6 @@
 				FA846EC226D90AC700213E15 /* cutPaper.mp4 in Resources */,
 				FA3FA04826CD3C3100BA513B /* BalooBhai2-Bold.ttf in Resources */,
 				FA3FA03426CCD86600BA513B /* LaunchScreen.storyboard in Resources */,
-				FA3FA05426CEA21900BA513B /* kishta.mp4 in Resources */,
-				FA3FA05026CE6E2900BA513B /* euro.mp4 in Resources */,
 				FA3FA03126CCD86600BA513B /* Assets.xcassets in Resources */,
 				FA58B52426F606C7004FC4C9 /* SignUp.storyboard in Resources */,
 				FA58B52026F60566004FC4C9 /* Base.storyboard in Resources */,
@@ -531,6 +537,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */,
 				FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */,
 				FA54FE9D26CFB21400E3A6D6 /* EnterNameViewController.swift in Sources */,
 				FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */,
@@ -558,6 +565,7 @@
 				FA846ECC26DA21BC00213E15 /* UIView+Extension.swift in Sources */,
 				FA54FEA826D0EF6900E3A6D6 /* EnterNameViewModel.swift in Sources */,
 				FA93A8762701DE3900374D5C /* ProfileTableViewCell.swift in Sources */,
+				FAA279F127108BC4007BAD7D /* TakenVideoViewController.swift in Sources */,
 				FA3FA03F26CCE64500BA513B /* UIColor+Extension.swift in Sources */,
 				FA54FEB126D5024500E3A6D6 /* SearchTableViewCell.swift in Sources */,
 				FA54FEB526D5031C00E3A6D6 /* SearchCollectionViewCell.swift in Sources */,
@@ -716,7 +724,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.armanmanukyan.EasyLearn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armanmanukyan.Easy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -736,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.armanmanukyan.EasyLearn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.armanmanukyan.Easy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

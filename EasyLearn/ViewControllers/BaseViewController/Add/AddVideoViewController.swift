@@ -24,6 +24,9 @@ class AddVideoViewController: UIViewController {
     private func openCamera() {
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] in
+//                let vc = UIStoryboard.base.instantiateViewController(withIdentifier: "TakenVideoViewController")
+//                self?.navigationController?.pushViewController(vc, animated: false)
+                
                 let cameraViewController = UIStoryboard.base.instantiateViewController(identifier: "CameraViewController")
                 cameraViewController.modalPresentationStyle = .fullScreen
                 self?.navigationController?.present(cameraViewController, animated: true)
