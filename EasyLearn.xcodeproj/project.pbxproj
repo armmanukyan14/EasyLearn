@@ -56,6 +56,7 @@
 		FAA1A1D826F22AF9006A5B36 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */; };
 		FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */; };
 		FAA279F127108BC4007BAD7D /* TakenVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */; };
+		FACA075327171344002FE705 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FACA075227171343002FE705 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +114,7 @@
 		FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenVideoViewController.swift; sourceTree = "<group>"; };
+		FACA075227171343002FE705 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3FA03526CCD86600BA513B /* Info.plist */,
+				FACA075227171343002FE705 /* GoogleService-Info.plist */,
 				FA54FEA926D4E74A00E3A6D6 /* System */,
 				FA846ED926DE628A00213E15 /* Storyboards */,
 				FA58B51A26F4ADB7004FC4C9 /* Helpers */,
@@ -479,6 +482,7 @@
 				FA58B52426F606C7004FC4C9 /* SignUp.storyboard in Resources */,
 				FA58B52026F60566004FC4C9 /* Base.storyboard in Resources */,
 				FA846EC426D90E8300213E15 /* takeAndPut.mp4 in Resources */,
+				FACA075327171344002FE705 /* GoogleService-Info.plist in Resources */,
 				FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */,
 				FA3FA02F26CCD86200BA513B /* Main.storyboard in Resources */,
 				FA846EC626D90F1B00213E15 /* carDrive.mp4 in Resources */,

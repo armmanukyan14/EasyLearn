@@ -212,6 +212,8 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = view.bounds
         view.addSubview(imageView)
+        view.addSubview(backButton)
+        backButton.isHidden = false
         view.addSubview(addToVideosButton)
         addToVideosButton.isHidden = false
     }

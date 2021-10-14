@@ -224,10 +224,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="lXe-4F-QPR">
-                                <rect key="frame" x="97" y="293" width="220" height="220"/>
+                                <rect key="frame" x="92" y="288" width="230" height="230"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="220" id="b5x-Ch-TXd"/>
-                                    <constraint firstAttribute="width" constant="220" id="ymX-WU-9vD"/>
+                                    <constraint firstAttribute="height" constant="230" id="b5x-Ch-TXd"/>
+                                    <constraint firstAttribute="width" constant="230" id="ymX-WU-9vD"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="BDr-Jo-gJ4">
@@ -318,10 +318,10 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="SCM-Nq-zmP">
-                                <rect key="frame" x="97" y="293" width="220" height="220"/>
+                                <rect key="frame" x="92" y="288" width="230" height="230"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="220" id="1q4-3j-mK0"/>
-                                    <constraint firstAttribute="height" constant="220" id="uYs-8d-7dP"/>
+                                    <constraint firstAttribute="width" constant="230" id="1q4-3j-mK0"/>
+                                    <constraint firstAttribute="height" constant="230" id="uYs-8d-7dP"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ACP-lH-YVk">
@@ -474,7 +474,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFr-nG-hXP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2014" y="1211"/>
+            <point key="canvasLocation" x="-2014.4927536231885" y="1210.0446428571429"/>
         </scene>
         <!--Enter Email View Controller-->
         <scene sceneID="Ajg-R0-QgK">
@@ -567,7 +567,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addPhoto" width="311" height="312"/>
+        <image name="addPhoto" width="311" height="310"/>
         <image name="backButton" width="11" height="19"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
