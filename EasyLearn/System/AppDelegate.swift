@@ -11,9 +11,21 @@ import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        Auth.auth().addStateDidChangeListener { [weak self] auth, user in
+            if user == nil {
+                self?.showAuth()
+            }
+        }
         return true
+    }
+
+    func showAuth() {
+        let vc = UIStoryboard.main.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+        self.window?.rootViewController?.present(vc, animated: false, completion: nil)
     }
 
     // MARK: UISceneSession Lifecycle
@@ -29,11 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-    private func configureFirebase(application: UIApplication) {
-        FirebaseApp.configure()
-    }
-
 }
 
 

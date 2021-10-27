@@ -24,6 +24,8 @@ class VideosViewController: UIViewController {
     @IBOutlet private var greenView: UIView!
     @IBOutlet private var okLabel: UILabel!
     @IBOutlet private var laterLabel: UILabel!
+    @IBOutlet private var phraseLabel: UILabel!
+    @IBOutlet private var saveVideoButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class VideosViewController: UIViewController {
     private func addSubViews() {
         videoView1.addSubview(okLabel)
         videoView1.addSubview(laterLabel)
+        videoView1.addSubview(phraseLabel)
+        videoView1.addSubview(saveVideoButton)
     }
 
    private func setupViews() {
@@ -52,6 +56,10 @@ class VideosViewController: UIViewController {
         okLabel.layer.masksToBounds  = true
         laterLabel.layer.cornerRadius = 10.0
         laterLabel.layer.masksToBounds  = true
+        phraseLabel.layer.cornerRadius = 10.0
+        phraseLabel.layer.masksToBounds  = true
+        phraseLabel.layer.borderWidth = 1
+        phraseLabel.layer.borderColor = UIColor.systemBackground.cgColor
     }
 
     private func setupRedAndGreenViews() {

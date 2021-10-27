@@ -53,5 +53,5 @@ class EnterPasswordViewModel {
             .map(to: ())
             .bind(to: success)
             .disposed(by: disposeBag)
-}
+    }
 }
