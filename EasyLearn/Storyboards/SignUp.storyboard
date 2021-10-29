@@ -417,19 +417,6 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igz-Sx-gbt">
                                         <rect key="frame" x="0.0" y="0.0" width="360" height="48"/>
-                                        <color key="backgroundColor" red="0.50588235290000005" green="0.0" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wr9-zN-DrM" userLabel="email">
-                                        <rect key="frame" x="0.0" y="61" width="360" height="0.0"/>
-                                        <color key="backgroundColor" red="0.50588235290000005" green="0.0" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fZ2-4Y-fNx" userLabel="password">
-                                        <rect key="frame" x="0.0" y="61" width="360" height="0.0"/>
-                                        <color key="backgroundColor" red="0.50588235290000005" green="0.0" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -480,12 +467,9 @@
                     </view>
                     <connections>
                         <outlet property="backButton" destination="Zjj-es-lLF" id="Xnu-tp-UuB"/>
-                        <outlet property="emailTextField" destination="Wr9-zN-DrM" id="eAm-XZ-cB8"/>
                         <outlet property="errorLabel" destination="2kc-zt-F18" id="cmZ-mM-iP2"/>
                         <outlet property="nameTextField" destination="igz-Sx-gbt" id="lGw-Ns-EeT"/>
                         <outlet property="nextButton" destination="dNQ-dM-OZY" id="EWV-gX-Hhv"/>
-                        <outlet property="passwordTextField" destination="fZ2-4Y-fNx" id="5rN-vd-ZuA"/>
-                        <outlet property="titleLabel" destination="izV-kL-ftp" id="dU4-ep-c0c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFr-nG-hXP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -573,7 +557,7 @@
                     <connections>
                         <outlet property="backButton" destination="2te-D9-WFR" id="YcT-G1-J1V"/>
                         <outlet property="emailErrorLabel" destination="yqg-7F-hjd" id="yHb-zn-6FP"/>
-                        <outlet property="emailTextField" destination="wOB-T7-W8K" id="bv4-Py-v93"/>
+                        <outlet property="emailTextField" destination="wOB-T7-W8K" id="y2U-2I-saT"/>
                         <outlet property="nextButton" destination="wOL-UW-Zcw" id="ff6-t2-tOW"/>
                     </connections>
                 </viewController>

@@ -83,15 +83,11 @@ class VideosViewController: UIViewController {
         okLabel.layer.cornerRadius = 10.0
         okLabel.layer.masksToBounds = true
         laterLabel.layer.cornerRadius = 10.0
-<<<<<<< HEAD
-        laterLabel.layer.masksToBounds = true
-=======
         laterLabel.layer.masksToBounds  = true
         phraseLabel.layer.cornerRadius = 10.0
         phraseLabel.layer.masksToBounds  = true
         phraseLabel.layer.borderWidth = 1
         phraseLabel.layer.borderColor = UIColor.systemBackground.cgColor
->>>>>>> esiminch
     }
 
     private func setupRedAndGreenViews() {

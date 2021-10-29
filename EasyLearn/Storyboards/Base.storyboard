@@ -480,11 +480,11 @@
                                             <constraint firstAttribute="height" constant="35" id="CVs-l5-Kgz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="go4-Wf-ZcP">
-                                        <rect key="frame" x="226" y="459" width="60" height="60"/>
+                                        <rect key="frame" x="231" y="469" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="MGm-MA-KHk"/>
                                             <constraint firstAttribute="height" constant="60" id="gsf-ga-8zt"/>
@@ -503,9 +503,9 @@
                                     <constraint firstItem="tac-Iv-bmI" firstAttribute="leading" secondItem="G1Q-UY-kAh" secondAttribute="trailing" constant="10" id="F8E-12-Hb4"/>
                                     <constraint firstItem="hK4-6i-wjz" firstAttribute="top" secondItem="Wdt-8C-2ed" secondAttribute="top" constant="25" id="GM4-vF-eZO"/>
                                     <constraint firstAttribute="height" constant="544" id="GV6-5b-Zbm"/>
-                                    <constraint firstAttribute="bottom" secondItem="go4-Wf-ZcP" secondAttribute="bottom" constant="25" id="YXT-4V-JFy"/>
+                                    <constraint firstAttribute="bottom" secondItem="go4-Wf-ZcP" secondAttribute="bottom" constant="15" id="YXT-4V-JFy"/>
                                     <constraint firstItem="hK4-6i-wjz" firstAttribute="leading" secondItem="tac-Iv-bmI" secondAttribute="trailing" constant="10" id="c7Z-5m-TwK"/>
-                                    <constraint firstAttribute="trailing" secondItem="go4-Wf-ZcP" secondAttribute="trailing" constant="20" id="ecd-ii-vet"/>
+                                    <constraint firstAttribute="trailing" secondItem="go4-Wf-ZcP" secondAttribute="trailing" constant="15" id="ecd-ii-vet"/>
                                     <constraint firstAttribute="width" secondItem="Wdt-8C-2ed" secondAttribute="height" multiplier="9:16" id="oRO-yH-hIx"/>
                                     <constraint firstItem="G1Q-UY-kAh" firstAttribute="leading" secondItem="Wdt-8C-2ed" secondAttribute="leading" constant="25" id="r2P-2B-Noa"/>
                                     <constraint firstItem="tac-Iv-bmI" firstAttribute="centerY" secondItem="hK4-6i-wjz" secondAttribute="centerY" id="t3l-ha-7si"/>
