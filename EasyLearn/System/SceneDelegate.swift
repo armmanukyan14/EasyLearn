@@ -8,7 +8,6 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
     func setLightMode() {
@@ -23,10 +22,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navigationController = window?.rootViewController as? UINavigationController
 
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-         let initialVC = UIStoryboard.main.instantiateViewController(identifier: "WelcomeViewController")
-        
-            navigationController?.setViewControllers([initialVC], animated: false)
+
+        let initialVC = UIStoryboard.base.instantiateViewController(identifier: "BaseViewController")
+
+        navigationController?.setViewControllers([initialVC], animated: false)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}
@@ -39,4 +38,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidEnterBackground(_ scene: UIScene) {}
 }
-

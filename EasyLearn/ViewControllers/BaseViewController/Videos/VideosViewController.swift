@@ -5,12 +5,13 @@
 //  Created by MacBook on 18.08.21.
 //
 
-import UIKit
-import AVKit
 import AVFoundation
+import AVKit
+import UIKit
+import FirebaseStorage
+import FirebaseAuth
 
 class VideosViewController: UIViewController {
-
     let player1 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!))
     let player2 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "takeAndPut", ofType: "mp4")!))
     let player3 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "carDrive", ofType: "mp4")!))
@@ -25,12 +26,39 @@ class VideosViewController: UIViewController {
     @IBOutlet private var okLabel: UILabel!
     @IBOutlet private var laterLabel: UILabel!
 
+    let storageReference = Storage.storage().reference()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         didAddGestureRecognizer()
         addSubViews()
 //        didReplayVideo()
+
+        uploadTestVideo()
+    }
+
+    private func uploadTestVideo() {
+        Auth.auth().signIn(withEmail: "armmanukyan2214@gmail.com", password: "katlet") { [weak self] result, error in
+            let treeAndGrassReference = self?.storageReference.child("videos/treeAndGrass.mp4")
+            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!)
+            guard let file = try? Data(contentsOf: url) else { return }
+
+            treeAndGrassReference?.putData(file, metadata: nil) { _, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("Successfully uploaded")
+                    treeAndGrassReference?.getData(maxSize: 10 * 1024 * 1024) { data, error in
+                        if let data = data {
+                            print("Successfully downloaded")
+                        }
+                    }.resume()
+                }
+            }.resume()
+        }
+
+        let randomID = UUID().uuidString
     }
 
     private func addSubViews() {
@@ -38,20 +66,20 @@ class VideosViewController: UIViewController {
         videoView1.addSubview(laterLabel)
     }
 
-   private func setupViews() {
-       setupLabels()
-       setupRedAndGreenViews()
-       setupVideoViews()
-       setupVideoLayers()
+    private func setupViews() {
+        setupLabels()
+        setupRedAndGreenViews()
+        setupVideoViews()
+        setupVideoLayers()
     }
 
     private func setupLabels() {
         okLabel.alpha = 0
         laterLabel.alpha = 0
         okLabel.layer.cornerRadius = 10.0
-        okLabel.layer.masksToBounds  = true
+        okLabel.layer.masksToBounds = true
         laterLabel.layer.cornerRadius = 10.0
-        laterLabel.layer.masksToBounds  = true
+        laterLabel.layer.masksToBounds = true
     }
 
     private func setupRedAndGreenViews() {
@@ -133,11 +161,12 @@ class VideosViewController: UIViewController {
             selector: #selector(video4DidEnd),
             name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
             object: nil
-        )}
+        )
+    }
 
     @objc func video4DidEnd(notification: NSNotification) {
-        self.player4.seek(to: CMTime.zero)
-        self.player4.play()
+        player4.seek(to: CMTime.zero)
+        player4.play()
     }
 
     @objc
@@ -182,12 +211,11 @@ class VideosViewController: UIViewController {
             player1.pause()
 
         } else if recognizer.state == .changed {
-
             if videoView1.center.x < 120 {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.laterLabel.alpha = 0.65
                 })
-            } else if videoView1.center.x > self.view.frame.size.width - 120 {
+            } else if videoView1.center.x > view.frame.size.width - 120 {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.okLabel.alpha = 0.65
                 })
@@ -198,14 +226,14 @@ class VideosViewController: UIViewController {
                 })
             }
 
-            let translation = recognizer.translation(in: self.view)
+            let translation = recognizer.translation(in: view)
             tiltVideoView1(with: translation)
 
             let newX = videoView1.center.x + translation.x
             let newY = videoView1.center.y + translation.y
 
             videoView1.center = CGPoint(x: newX, y: newY)
-            recognizer.setTranslation(CGPoint.zero, in: self.view)
+            recognizer.setTranslation(CGPoint.zero, in: view)
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
@@ -223,7 +251,7 @@ class VideosViewController: UIViewController {
                     self.videoView1.isHidden = true
                     self.player1.volume = 0
                 })
-            } else if videoView1.center.x > self.view.frame.size.width - 30 {
+            } else if videoView1.center.x > view.frame.size.width - 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView1.center.x = self.view.frame.size.width + self.videoView1.frame.size.width
                     self.player1.pause()
@@ -252,15 +280,14 @@ class VideosViewController: UIViewController {
         if recognizer.state == .began {
             player2.pause()
         } else if recognizer.state == .changed {
-
-            let translation = recognizer.translation(in: self.view)
+            let translation = recognizer.translation(in: view)
             tiltVideoView2(with: translation)
 
             let newX = videoView2.center.x + translation.x
             let newY = videoView2.center.y + translation.y
 
             videoView2.center = CGPoint(x: newX, y: newY)
-            recognizer.setTranslation(CGPoint.zero, in: self.view)
+            recognizer.setTranslation(CGPoint.zero, in: view)
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
@@ -277,7 +304,7 @@ class VideosViewController: UIViewController {
                     self.videoView2.isHidden = true
                     self.player2.volume = 0
                 })
-            } else if videoView2.center.x > self.view.frame.size.width - 30 {
+            } else if videoView2.center.x > view.frame.size.width - 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView2.center.x = self.view.frame.size.width + self.videoView1.frame.size.width
                     self.player2.pause()
@@ -304,15 +331,14 @@ class VideosViewController: UIViewController {
         if recognizer.state == .began {
             player3.pause()
         } else if recognizer.state == .changed {
-
-            let translation = recognizer.translation(in: self.view)
+            let translation = recognizer.translation(in: view)
             tiltVideoView3(with: translation)
 
             let newX = videoView3.center.x + translation.x
             let newY = videoView3.center.y + translation.y
 
             videoView3.center = CGPoint(x: newX, y: newY)
-            recognizer.setTranslation(CGPoint.zero, in: self.view)
+            recognizer.setTranslation(CGPoint.zero, in: view)
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
@@ -329,7 +355,7 @@ class VideosViewController: UIViewController {
                     self.videoView3.isHidden = true
                     self.player3.volume = 0
                 })
-            } else if videoView3.center.x > self.view.frame.size.width - 30 {
+            } else if videoView3.center.x > view.frame.size.width - 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView3.center.x = self.view.frame.size.width + self.videoView1.frame.size.width
                     self.player3.pause()
@@ -356,15 +382,14 @@ class VideosViewController: UIViewController {
         if recognizer.state == .began {
             player4.pause()
         } else if recognizer.state == .changed {
-
-            let translation = recognizer.translation(in: self.view)
+            let translation = recognizer.translation(in: view)
             tiltVideoView4(with: translation)
 
             let newX = videoView4.center.x + translation.x
             let newY = videoView4.center.y + translation.y
 
             videoView4.center = CGPoint(x: newX, y: newY)
-            recognizer.setTranslation(CGPoint.zero, in: self.view)
+            recognizer.setTranslation(CGPoint.zero, in: view)
 
             UIView.animate(withDuration: 1, animations: {
                 self.redView.alpha = 0.75
@@ -380,7 +405,7 @@ class VideosViewController: UIViewController {
                     self.videoView4.isHidden = true
                     self.player4.volume = 0
                 })
-            } else if videoView4.center.x > self.view.frame.size.width - 30 {
+            } else if videoView4.center.x > view.frame.size.width - 30 {
                 UIView.animate(withDuration: 0.2, animations: { [unowned self] in
                     self.videoView4.center.x = self.view.frame.size.width + self.videoView1.frame.size.width
                     self.player4.pause()
@@ -402,31 +427,30 @@ class VideosViewController: UIViewController {
     }
 
     private func tiltVideoView1(with translationValue: CGPoint) {
-        let translationMoved = self.view.center.x - self.videoView1.center.x
-        let tiltCorner = (self.view.frame.size.width / 2) / 0.2
+        let translationMoved = view.center.x - videoView1.center.x
+        let tiltCorner = (view.frame.size.width / 2) / 0.2
 
         videoView1.transform = CGAffineTransform(rotationAngle: translationMoved / tiltCorner)
     }
 
     private func tiltVideoView2(with translation: CGPoint) {
-        let translationMoved = self.view.center.x - self.videoView2.center.x
-        let tiltCorner = (self.view.frame.size.width / 2) / 0.2
+        let translationMoved = view.center.x - videoView2.center.x
+        let tiltCorner = (view.frame.size.width / 2) / 0.2
 
         videoView2.transform = CGAffineTransform(rotationAngle: translationMoved / tiltCorner)
     }
 
     private func tiltVideoView3(with translation: CGPoint) {
-        let translationMoved = self.view.center.x - self.videoView3.center.x
-        let tiltCorner = (self.view.frame.size.width / 2) / 0.2
+        let translationMoved = view.center.x - videoView3.center.x
+        let tiltCorner = (view.frame.size.width / 2) / 0.2
 
         videoView3.transform = CGAffineTransform(rotationAngle: translationMoved / tiltCorner)
     }
 
     private func tiltVideoView4(with translation: CGPoint) {
-        let translationMoved = self.view.center.x - self.videoView4.center.x
-        let tiltCorner = (self.view.frame.size.width / 2) / 0.2
+        let translationMoved = view.center.x - videoView4.center.x
+        let tiltCorner = (view.frame.size.width / 2) / 0.2
 
         videoView4.transform = CGAffineTransform(rotationAngle: translationMoved / tiltCorner)
     }
 }
-

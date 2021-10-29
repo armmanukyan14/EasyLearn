@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>993312404438-1d0ssl62eup524hg89ffj385siq1qns6.apps.googleusercontent.com</string>
+	<string>329538136964-ae51uilkf6pilo66ajvpfco1av5g2i6g.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.993312404438-1d0ssl62eup524hg89ffj385siq1qns6</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>993312404438-62hht0shaljb25sbmj9k5avm9naqkngc.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.329538136964-ae51uilkf6pilo66ajvpfco1av5g2i6g</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAwuQnmW5oJ3UsOToI1v-l2Tze6KSWKDy4</string>
+	<string>AIzaSyDX0-2xhTC3Mv23VSDb22KwvzvV36wBfvs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>993312404438</string>
+	<string>329538136964</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.cypress.transmutation</string>
+	<string>com.armanmanukyan.EasyLearn</string>
 	<key>PROJECT_ID</key>
-	<string>transmutation-14e9e</string>
+	<string>easylearn-fb4a1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>transmutation-14e9e.appspot.com</string>
+	<string>easylearn-fb4a1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:993312404438:ios:693d604929eb8312002a77</string>
+	<string>1:329538136964:ios:1e531a34babd412ecf4bd1</string>
+	<key>DATABASE_URL</key>
+	<string>https://easylearn-fb4a1-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
