@@ -474,15 +474,41 @@
                                         <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phrase" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tac-Iv-bmI">
+                                        <rect key="frame" x="95" y="25" width="116" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="CVs-l5-Kgz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="go4-Wf-ZcP">
+                                        <rect key="frame" x="226" y="459" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="MGm-MA-KHk"/>
+                                            <constraint firstAttribute="height" constant="60" id="gsf-ga-8zt"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="saveVideo">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="61Q-LJ-5sE"/>
                                     <constraint firstItem="G1Q-UY-kAh" firstAttribute="top" secondItem="Wdt-8C-2ed" secondAttribute="top" constant="25" id="DQy-YY-EUm"/>
+                                    <constraint firstItem="tac-Iv-bmI" firstAttribute="leading" secondItem="G1Q-UY-kAh" secondAttribute="trailing" constant="10" id="F8E-12-Hb4"/>
                                     <constraint firstItem="hK4-6i-wjz" firstAttribute="top" secondItem="Wdt-8C-2ed" secondAttribute="top" constant="25" id="GM4-vF-eZO"/>
                                     <constraint firstAttribute="height" constant="544" id="GV6-5b-Zbm"/>
+                                    <constraint firstAttribute="bottom" secondItem="go4-Wf-ZcP" secondAttribute="bottom" constant="25" id="YXT-4V-JFy"/>
+                                    <constraint firstItem="hK4-6i-wjz" firstAttribute="leading" secondItem="tac-Iv-bmI" secondAttribute="trailing" constant="10" id="c7Z-5m-TwK"/>
+                                    <constraint firstAttribute="trailing" secondItem="go4-Wf-ZcP" secondAttribute="trailing" constant="20" id="ecd-ii-vet"/>
                                     <constraint firstAttribute="width" secondItem="Wdt-8C-2ed" secondAttribute="height" multiplier="9:16" id="oRO-yH-hIx"/>
                                     <constraint firstItem="G1Q-UY-kAh" firstAttribute="leading" secondItem="Wdt-8C-2ed" secondAttribute="leading" constant="25" id="r2P-2B-Noa"/>
+                                    <constraint firstItem="tac-Iv-bmI" firstAttribute="centerY" secondItem="hK4-6i-wjz" secondAttribute="centerY" id="t3l-ha-7si"/>
                                     <constraint firstAttribute="trailing" secondItem="hK4-6i-wjz" secondAttribute="trailing" constant="25" id="xAO-sl-j6M"/>
                                 </constraints>
                             </view>
@@ -525,7 +551,9 @@
                         <outlet property="greenView" destination="1rZ-tb-eWf" id="VFG-y2-aAf"/>
                         <outlet property="laterLabel" destination="hK4-6i-wjz" id="i7t-Lb-8Pg"/>
                         <outlet property="okLabel" destination="G1Q-UY-kAh" id="HQE-2I-3AZ"/>
+                        <outlet property="phraseLabel" destination="tac-Iv-bmI" id="tZQ-mZ-mYf"/>
                         <outlet property="redView" destination="543-Nr-Drg" id="KEX-hn-nxY"/>
+                        <outlet property="saveVideoButton" destination="go4-Wf-ZcP" id="FwB-D8-Ije"/>
                         <outlet property="videoView1" destination="Wdt-8C-2ed" id="duj-vv-Bc6"/>
                         <outlet property="videoView2" destination="dH0-LF-2QK" id="BLd-ps-3xA"/>
                         <outlet property="videoView3" destination="J4f-Fk-bxO" id="Bb3-K2-FxG"/>
@@ -697,6 +725,7 @@
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="plus" width="18" height="19"/>
         <image name="profile" width="20" height="24"/>
+        <image name="saveVideo" width="26" height="24"/>
         <image name="search" width="25" height="25"/>
         <image name="timer" width="62" height="62"/>
         <image name="turnCamera" width="62" height="62"/>
