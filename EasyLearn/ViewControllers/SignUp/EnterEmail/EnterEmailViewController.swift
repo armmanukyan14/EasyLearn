@@ -10,10 +10,10 @@ import UIKit
 
 class EnterEmailViewController: UIViewController {
     private let disposeBag = DisposeBag()
-    private let viewModel = EnterEmailViewModel()
+    var viewModel: EnterEmailViewModel!
 
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet private var emailTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
     @IBOutlet private var emailErrorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
 
@@ -50,24 +50,26 @@ class EnterEmailViewController: UIViewController {
         nextButton.layer.cornerRadius = 10.0
     }
 
-
     private func bindNavigation() {
         nextButton.rx.tap
             .bind(to: viewModel.register)
             .disposed(by: disposeBag)
 
         viewModel.success
-            .subscribe(onNext: { [weak self] _ in
-                let enterConfirmationCodeViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterConfirmationCodeViewController")
-                self?.navigationController?.pushViewController(enterConfirmationCodeViewController, animated: true)
+            .withLatestFrom(viewModel.email)
+            .subscribe(onNext: { [weak self] email in
+                guard let self = self else { return }
+                let vc = EnterConfirmationCodeViewController.getInstance(from: .signUp)
+                var dependencies = self.viewModel.dependencies
+                dependencies.email = email
+                vc.viewModel = .init(dependencies: dependencies)
+                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
 
         emailTextField.rx.text.orEmpty
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
-
-
 
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -76,16 +78,16 @@ class EnterEmailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
+    private func setupEmailTextField() {
+        emailTextField.layer.borderWidth = 1.0
+        emailTextField.layer.cornerRadius = 10.0
+        emailTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
+        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: emailTextField.frame.height))
+        emailTextField.leftView = textFieldPadding
+        emailTextField.leftViewMode = .always
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Email",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
+    }
 
-private func setupEmailTextField() {
-    emailTextField.layer.borderWidth = 1.0
-    emailTextField.layer.cornerRadius = 10.0
-    emailTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-    let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: emailTextField.frame.height))
-    emailTextField.leftView = textFieldPadding
-    emailTextField.leftViewMode = .always
-    emailTextField.attributedPlaceholder = NSAttributedString(
-        string: "Email",
-        attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
-}
 }

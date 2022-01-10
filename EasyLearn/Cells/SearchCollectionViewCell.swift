@@ -10,7 +10,7 @@ import UIKit
 class SearchCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var previewImage: UIImageView! { didSet {
-        previewImage.backgroundColor = .green
+        previewImage.backgroundColor = .easyPurple
         previewImage.layer.cornerRadius = 10.0
     }
     }

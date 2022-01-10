@@ -8,24 +8,25 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Firebase
 
 final class EnterPasswordViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
-    private let viewModel = EnterPasswordViewModel()
+    var viewModel: EnterPasswordViewModel!
 
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
     @IBOutlet private var passwordErrorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
 
-private lazy var eyeButton: UIButton = {
-    let eyeButton = UIButton()
-    eyeButton.tintColor = UIColor.textFieldBorderColor
-    let eyeImage = UIImage(systemName: "eye")
-    eyeButton.setImage(eyeImage, for: .normal)
-    return eyeButton
-}()
+    private lazy var eyeButton: UIButton = {
+        let eyeButton = UIButton()
+        eyeButton.tintColor = UIColor.textFieldBorderColor
+        let eyeImage = UIImage(systemName: "eye")
+        eyeButton.setImage(eyeImage, for: .normal)
+        return eyeButton
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         bindOutputs()
@@ -79,22 +80,41 @@ private lazy var eyeButton: UIButton = {
             .disposed(by: disposeBag)
 
         viewModel.success
-            .subscribe(onNext: { [weak self] _ in
-                let addPhotoViewController = UIStoryboard.signUp.instantiateViewController(identifier: "AddPhotoViewController")
-                self?.navigationController?.pushViewController(addPhotoViewController, animated: true)
+            .do(onNext: { [weak self] in
+                let password = self?.passwordTextField.text
+                let name = self?.viewModel.dependencies.name
+                let email = self?.viewModel.dependencies.email
+                Auth.auth().createUser(withEmail: email!, password: password!) { result, error in
+                    if error == nil {
+                        if let result = result {
+                            print(result.user.uid)
+                            let ref = Database.database().reference().child("users")
+                            ref.child(result.user.uid).updateChildValues(["name" : name!, "email" : email!, "password" : password!])
+                        }
+                    }
+                }
             })
-            .disposed(by: disposeBag)
+                .withLatestFrom(viewModel.password)
+                .subscribe(onNext: { [weak self] password in
+                    guard let self = self else { return }
+                    let vc = LoginViewController.getInstance(from: .logIn)
+                    var dependencies = self.viewModel.dependencies
+                    dependencies.password = password
+                    vc.viewModel = .init(dependencies: dependencies)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                .disposed(by: disposeBag)
 
-        passwordTextField.rx.text.orEmpty
-            .bind(to: viewModel.password)
-            .disposed(by: disposeBag)
+                passwordTextField.rx.text.orEmpty
+                .bind(to: viewModel.password)
+                .disposed(by: disposeBag)
 
-        backButton.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.navigationController?.popViewController(animated: true)
-            })
-            .disposed(by: disposeBag)
-    }
+                backButton.rx.tap
+                .subscribe(onNext: { [weak self] in
+                    self?.navigationController?.popViewController(animated: true)
+                })
+                .disposed(by: disposeBag)
+                }
 
     private func didTapEyeButton() {
         eyeButton.rx.tap.asDriver()

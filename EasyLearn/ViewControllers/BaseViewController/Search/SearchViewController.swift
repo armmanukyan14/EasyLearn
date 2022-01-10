@@ -44,9 +44,6 @@ class SearchViewController: UIViewController {
         searchTextField.attributedPlaceholder = NSAttributedString(
                     string: "Search",
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.easyGray])
-//        let padding = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: searchTextField.frame.height))
-//        searchTextField.leftView = padding
-//        searchTextField.leftViewMode = .always
     }
 }
 

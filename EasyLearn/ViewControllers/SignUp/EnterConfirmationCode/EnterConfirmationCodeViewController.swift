@@ -11,7 +11,7 @@ import RxSwift
 class EnterConfirmationCodeViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
-    private let viewModel = EnterConfirmationCodeViewModel()
+    var viewModel: EnterConfirmationCodeViewModel!
 
     @IBOutlet private var confirmationCodeTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
@@ -69,9 +69,14 @@ class EnterConfirmationCodeViewController: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.success
-            .subscribe(onNext: { [weak self] _ in
-                let enterPasswordViewController = UIStoryboard.signUp.instantiateViewController(identifier: "EnterPasswordViewController")
-                self?.navigationController?.pushViewController(enterPasswordViewController, animated: true)
+            .withLatestFrom(viewModel.code)
+            .subscribe(onNext: { [weak self] code in
+                guard let self = self else { return }
+                let vc = EnterPasswordViewController.getInstance(from: .signUp)
+                var dependencies = self.viewModel.dependencies
+                dependencies.confirmationCode = code
+                vc.viewModel = .init(dependencies: dependencies)
+                self.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
 

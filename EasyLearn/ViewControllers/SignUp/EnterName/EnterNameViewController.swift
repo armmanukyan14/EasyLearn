@@ -20,7 +20,7 @@ final class EnterNameViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet private var nameTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
@@ -52,7 +52,7 @@ final class EnterNameViewController: UIViewController {
         nameTextField.leftView = textFieldPadding
         nameTextField.leftViewMode = .always
         nameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Name",
+            string: "Username",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
     }
 
@@ -96,29 +96,21 @@ final class EnterNameViewController: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.success
-            .subscribe(onNext: { [weak self] _ in
-                let vc = UIStoryboard.signUp.instantiateViewController(identifier: "EnterEmailViewController")
+            .withLatestFrom(viewModel.name)
+            .subscribe(onNext: { [weak self] name in
+
+                let vc = EnterEmailViewController.getInstance(from: .signUp)
+                vc.viewModel = .init(dependencies: .init(name: name))
                 self?.navigationController?.pushViewController(vc, animated: true)
+
+//                let editVC = EditViewController.getInstance(from: .base)
+//                editVC.viewModel = .init(dependencies: .init(name: name))
             })
             .disposed(by: disposeBag)
 
         nameTextField.rx.text.orEmpty
             .bind(to: viewModel.name)
             .disposed(by: disposeBag)
-
-//        viewModel.success
-//            .subscribe(onNext: { [weak self] in
-//                    Auth.auth().createUser(withEmail: email!, password: password!) { result, error in
-//                        if error == nil {
-//                            if let result = result {
-//                                print(result.user.uid)
-//                                let ref = Database.database().reference().child("users")
-//                                ref.child(result.user.uid).updateChildValues(["name" : name!, "email" : email!])
-//                            }
-//                        }
-//                    }
-//            })
-//            .disposed(by: disposeBag)
 
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
@@ -127,4 +119,6 @@ final class EnterNameViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 }
+
+
 

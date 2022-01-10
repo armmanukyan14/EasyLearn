@@ -14,7 +14,7 @@ class BaseViewController: UITabBarController {
         removeTitle()
     }
 
-    private func removeTitle(){
+    private func removeTitle() {
             if let tab = self.tabBar.items, let currentTab = self.selectedViewController {
                 tab.forEach {
                     if currentTab != self {
@@ -24,3 +24,4 @@ class BaseViewController: UITabBarController {
             }
         }
 }
+

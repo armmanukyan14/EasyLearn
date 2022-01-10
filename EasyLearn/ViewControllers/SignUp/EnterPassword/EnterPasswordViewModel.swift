@@ -30,7 +30,10 @@ class EnterPasswordViewModel {
 
     // MARK: - Init
 
-    init() {
+    let dependencies: LoginDependencies
+
+    init(dependencies: LoginDependencies) {
+        self.dependencies = dependencies
         doBindings()
     }
 

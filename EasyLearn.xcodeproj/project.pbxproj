@@ -20,6 +20,7 @@
 		FA3FA04A26CD3C6800BA513B /* BalooBhai2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */; };
 		FA3FA04C26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */; };
 		FA3FA04E26CE4E2500BA513B /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */; };
+		FA4A0276278C471800DDD3B1 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A0275278C471800DDD3B1 /* UserDefaultsHelper.swift */; };
 		FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */; };
 		FA4C65972729DA0B006E5BE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA4C65962729DA0B006E5BE3 /* GoogleService-Info.plist */; };
 		FA54FE9A26CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF in Resources */ = {isa = PBXBuildFile; fileRef = FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */; };
@@ -38,6 +39,8 @@
 		FA58B52026F60566004FC4C9 /* Base.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58B51F26F60565004FC4C9 /* Base.storyboard */; };
 		FA58B52226F605A4004FC4C9 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58B52126F605A4004FC4C9 /* LogIn.storyboard */; };
 		FA58B52426F606C7004FC4C9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58B52326F606C7004FC4C9 /* SignUp.storyboard */; };
+		FA7472A627495347004206A0 /* LoginDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7472A527495347004206A0 /* LoginDependencies.swift */; };
+		FA7472A8274BCE8A004206A0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */; };
 		FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */; };
 		FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */; };
 		FA846EC226D90AC700213E15 /* cutPaper.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC126D90AC700213E15 /* cutPaper.mp4 */; };
@@ -50,6 +53,9 @@
 		FA846ED226DE33B100213E15 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED126DE33B100213E15 /* LogInViewModel.swift */; };
 		FA846ED526DE555300213E15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED426DE555300213E15 /* BaseViewController.swift */; };
 		FA846EDD26DE69A400213E15 /* AddVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EDC26DE69A400213E15 /* AddVideoViewController.swift */; };
+		FA87C58D276A3287005B98CF /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA87C58C276A3287005B98CF /* EditViewController.swift */; };
+		FA8EDFD12770698600DAE9E0 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8EDFD02770698600DAE9E0 /* EditViewModel.swift */; };
+		FA8EDFD32774B79900DAE9E0 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8EDFD22774B79900DAE9E0 /* RecorderViewController.swift */; };
 		FA93A8762701DE3900374D5C /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93A8752701DE3900374D5C /* ProfileTableViewCell.swift */; };
 		FA93A878270203B200374D5C /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA93A877270203B200374D5C /* Video.swift */; };
 		FAA1A1D426F0A95F006A5B36 /* AddedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D326F0A95F006A5B36 /* AddedPhotoViewController.swift */; };
@@ -78,6 +84,7 @@
 		FA3FA04926CD3C6800BA513B /* BalooBhai2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-Regular.ttf"; sourceTree = "<group>"; };
 		FA3FA04B26CD3DC500BA513B /* BalooBhai2-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BalooBhai2-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FA3FA04D26CE4E2500BA513B /* Inter-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.ttf"; sourceTree = "<group>"; };
+		FA4A0275278C471800DDD3B1 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		FA4C1DDE26D7AB1700D12394 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		FA4C65962729DA0B006E5BE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FA54FE9926CFAE5300E3A6D6 /* SFPRODISPLAYBOLD.OTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFPRODISPLAYBOLD.OTF; sourceTree = "<group>"; };
@@ -96,6 +103,8 @@
 		FA58B51F26F60565004FC4C9 /* Base.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Base.storyboard; sourceTree = "<group>"; };
 		FA58B52126F605A4004FC4C9 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		FA58B52326F606C7004FC4C9 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		FA7472A527495347004206A0 /* LoginDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependencies.swift; sourceTree = "<group>"; };
+		FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
 		FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterConfirmationCodeViewModel.swift; sourceTree = "<group>"; };
 		FA846EC126D90AC700213E15 /* cutPaper.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutPaper.mp4; sourceTree = "<group>"; };
@@ -108,6 +117,9 @@
 		FA846ED126DE33B100213E15 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		FA846ED426DE555300213E15 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA846EDC26DE69A400213E15 /* AddVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVideoViewController.swift; sourceTree = "<group>"; };
+		FA87C58C276A3287005B98CF /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		FA8EDFD02770698600DAE9E0 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		FA8EDFD22774B79900DAE9E0 /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		FA93A8752701DE3900374D5C /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		FA93A877270203B200374D5C /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		FAA1A1D326F0A95F006A5B36 /* AddedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddedPhotoViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +199,7 @@
 				FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */,
 				FA54FEA426CFF9E800E3A6D6 /* UIStoryboard+Extension.swift */,
 				FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */,
+				FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,10 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				FA846ECD26DE29BC00213E15 /* AddPhoto */,
+				FA4C1DDD26D78BAC00D12394 /* EnterName */,
 				FA846EBC26D8F0E200213E15 /* EnterEmail */,
 				FA846EBB26D8F0DD00213E15 /* EnterConfirmationCode */,
 				FA846EBA26D8F0DA00213E15 /* EnterPassword */,
-				FA4C1DDD26D78BAC00D12394 /* EnterName */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -296,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				FA58B51826F48D43004FC4C9 /* User.swift */,
+				FA7472A527495347004206A0 /* LoginDependencies.swift */,
 				FA93A877270203B200374D5C /* Video.swift */,
 			);
 			path = Models;
@@ -306,6 +320,7 @@
 			children = (
 				FA3FA03D26CCE62600BA513B /* Extensions */,
 				FA58B51B26F4ADD6004FC4C9 /* Validator.swift */,
+				FA4A0275278C471800DDD3B1 /* UserDefaultsHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -375,6 +390,7 @@
 				FA846EDC26DE69A400213E15 /* AddVideoViewController.swift */,
 				FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */,
 				FAA279F027108BC4007BAD7D /* TakenVideoViewController.swift */,
+				FA8EDFD22774B79900DAE9E0 /* RecorderViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -390,6 +406,8 @@
 			isa = PBXGroup;
 			children = (
 				FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */,
+				FA87C58C276A3287005B98CF /* EditViewController.swift */,
+				FA8EDFD02770698600DAE9E0 /* EditViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -541,23 +559,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8EDFD32774B79900DAE9E0 /* RecorderViewController.swift in Sources */,
 				FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */,
 				FA4C1DDF26D7AB1700D12394 /* AddPhotoViewController.swift in Sources */,
 				FA54FE9D26CFB21400E3A6D6 /* EnterNameViewController.swift in Sources */,
 				FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */,
+				FA7472A627495347004206A0 /* LoginDependencies.swift in Sources */,
 				FA846ED526DE555300213E15 /* BaseViewController.swift in Sources */,
 				FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */,
 				FAA1A1D426F0A95F006A5B36 /* AddedPhotoViewController.swift in Sources */,
+				FA87C58D276A3287005B98CF /* EditViewController.swift in Sources */,
 				FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */,
 				FA846EDD26DE69A400213E15 /* AddVideoViewController.swift in Sources */,
 				FA93A878270203B200374D5C /* Video.swift in Sources */,
 				FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */,
 				FA54FEA526CFF9E800E3A6D6 /* UIStoryboard+Extension.swift in Sources */,
 				FAA1A1D626F0D078006A5B36 /* ProfileViewController.swift in Sources */,
+				FA8EDFD12770698600DAE9E0 /* EditViewModel.swift in Sources */,
+				FA4A0276278C471800DDD3B1 /* UserDefaultsHelper.swift in Sources */,
 				FA54FE9F26CFC51F00E3A6D6 /* EnterEmailViewController.swift in Sources */,
 				FA54FEA126CFC6B800E3A6D6 /* EnterConfirmationCodeViewController.swift in Sources */,
 				FA58B51C26F4ADD6004FC4C9 /* Validator.swift in Sources */,
 				FA846ED026DE29F500213E15 /* LoginViewController.swift in Sources */,
+				FA7472A8274BCE8A004206A0 /* UIViewController+Extension.swift in Sources */,
 				FA54FEAF26D5013B00E3A6D6 /* SearchViewController.swift in Sources */,
 				FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */,
 				FA846ECA26D9341E00213E15 /* EnterPasswordViewModel.swift in Sources */,

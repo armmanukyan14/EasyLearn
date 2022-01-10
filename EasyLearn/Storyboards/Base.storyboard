@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q7m-eU-uAJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -76,9 +76,9 @@
                                 <state key="normal" image="light"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obM-b3-h0p">
-                                <rect key="frame" x="5" y="64" width="81" height="89"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="backButtonFill"/>
+                                <rect key="frame" x="5" y="64" width="57" height="75"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="backButtonFill"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ros-Fx-Key">
                                 <rect key="frame" x="344" y="219" width="50" height="50"/>
@@ -346,14 +346,14 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIu-oC-TZq">
                                                             <rect key="frame" x="0.0" y="0.0" width="189" height="230.5"/>
-                                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                            <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="230" id="6cc-vY-HDt"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hEG-lu-KbJ">
                                                             <rect key="frame" x="201" y="0.0" width="189" height="230.5"/>
-                                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                            <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
@@ -396,15 +396,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bW2-9T-VXc">
-                        <barButtonItem key="leftBarButtonItem" image="edit" id="h4B-49-1UX">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="menu" id="D36-oM-blc">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="avatarImageView" destination="rpu-KL-7Zo" id="LRp-0H-09F"/>
+                        <outlet property="editBarButtonItem" destination="D36-oM-blc" id="mos-k2-FgO"/>
                         <outlet property="tableView" destination="Jhg-wC-2Bp" id="mXR-v2-U4a"/>
                         <outlet property="usernameLabel" destination="EJR-dS-5Mh" id="VE4-IR-all"/>
                         <outlet property="videosCountLabel" destination="M6k-Qe-azv" id="01o-HD-1Qc"/>
@@ -711,13 +709,121 @@
             </objects>
             <point key="canvasLocation" x="641" y="-1799"/>
         </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="GcT-4G-2du">
+            <objects>
+                <viewController storyboardIdentifier="EditViewController" id="O3d-Vz-CBj" customClass="EditViewController" customModule="EasyLearn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hd9-A5-WMP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="isr-Ez-Z3I">
+                                <rect key="frame" x="107" y="107.5" width="200" height="278"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="F9Y-G9-2FL">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="5Hw-VT-ZbX"/>
+                                            <constraint firstAttribute="width" constant="200" id="mRA-09-h0c"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sf7-4R-vpD">
+                                        <rect key="frame" x="0.0" y="230" width="200" height="48"/>
+                                        <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="scO-Ei-HAe"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
+                                        <state key="normal" title="EDIT PROFILE PHOTO">
+                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Tua-Hb-zkh">
+                                <rect key="frame" x="22" y="453.5" width="370" height="34"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fOY-nV-rSV">
+                                        <rect key="frame" x="0.0" y="0.0" width="109.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="[username]" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1m-UO-dqt">
+                                        <rect key="frame" x="124.5" y="0.0" width="245.5" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="CuV-UR-qml"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fw-U7-1Ys">
+                                <rect key="frame" x="149.5" y="693" width="115" height="48"/>
+                                <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="kBW-51-z6t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
+                                <state key="normal" title="LOG OUT">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="POU-Ux-8tG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="barTintColor" systemColor="systemBackgroundColor"/>
+                                <items>
+                                    <navigationItem id="XG6-o8-HAT">
+                                        <barButtonItem key="leftBarButtonItem" image="xmark" catalog="system" id="4iX-ve-6pY">
+                                            <color key="tintColor" red="0.3411764706" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Msm-E0-qtr"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6b6-Do-f3t"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="isr-Ez-Z3I" firstAttribute="centerY" secondItem="hd9-A5-WMP" secondAttribute="centerY" multiplier="0.55" priority="750" id="1Rl-vE-pqn"/>
+                            <constraint firstItem="Tua-Hb-zkh" firstAttribute="width" secondItem="hd9-A5-WMP" secondAttribute="width" multiplier="370:414" id="6EU-MA-Fke"/>
+                            <constraint firstItem="5fw-U7-1Ys" firstAttribute="centerY" secondItem="hd9-A5-WMP" secondAttribute="centerY" multiplier="1.6" priority="750" id="ApE-Jf-RqA"/>
+                            <constraint firstItem="POU-Ux-8tG" firstAttribute="trailing" secondItem="6b6-Do-f3t" secondAttribute="trailing" id="Aur-p8-V2W"/>
+                            <constraint firstItem="Tua-Hb-zkh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="isr-Ez-Z3I" secondAttribute="bottom" constant="50" id="LkB-Eb-92t"/>
+                            <constraint firstItem="6b6-Do-f3t" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5fw-U7-1Ys" secondAttribute="bottom" constant="40" id="QZw-5Q-nBw"/>
+                            <constraint firstItem="5fw-U7-1Ys" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Tua-Hb-zkh" secondAttribute="bottom" constant="50" id="YoU-EG-QXX"/>
+                            <constraint firstItem="POU-Ux-8tG" firstAttribute="leading" secondItem="6b6-Do-f3t" secondAttribute="leading" id="ZSD-bG-C91"/>
+                            <constraint firstItem="5fw-U7-1Ys" firstAttribute="centerX" secondItem="hd9-A5-WMP" secondAttribute="centerX" id="c7T-d0-ctg"/>
+                            <constraint firstItem="Tua-Hb-zkh" firstAttribute="centerX" secondItem="hd9-A5-WMP" secondAttribute="centerX" id="fpp-fJ-BBd"/>
+                            <constraint firstItem="Tua-Hb-zkh" firstAttribute="centerY" secondItem="hd9-A5-WMP" secondAttribute="centerY" multiplier="1.05" priority="750" id="ghL-eb-SyS"/>
+                            <constraint firstItem="POU-Ux-8tG" firstAttribute="top" secondItem="6b6-Do-f3t" secondAttribute="top" id="igE-3y-PMb"/>
+                            <constraint firstItem="5fw-U7-1Ys" firstAttribute="width" secondItem="hd9-A5-WMP" secondAttribute="width" multiplier="115:414" id="pE7-aA-82E"/>
+                            <constraint firstItem="isr-Ez-Z3I" firstAttribute="centerX" secondItem="hd9-A5-WMP" secondAttribute="centerX" id="seb-AK-yTq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="F9Y-G9-2FL" id="PC5-7O-lUA"/>
+                        <outlet property="backButton" destination="4iX-ve-6pY" id="LMl-mq-bmY"/>
+                        <outlet property="customNavigationBar" destination="POU-Ux-8tG" id="7wr-hr-A9a"/>
+                        <outlet property="editPhotoButton" destination="Sf7-4R-vpD" id="nGy-18-Z7v"/>
+                        <outlet property="logOutButton" destination="5fw-U7-1Ys" id="hdd-t3-ZWC"/>
+                        <outlet property="saveButton" destination="Msm-E0-qtr" id="1YI-Rh-px8"/>
+                        <outlet property="usernameLabel" destination="fOY-nV-rSV" id="aVq-k5-TVV"/>
+                        <outlet property="usernameTextField" destination="I1m-UO-dqt" id="8o5-b0-owi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Khd-3d-G7r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3845" y="-1680"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="addPhoto" width="311" height="310"/>
         <image name="addVideo" width="28" height="28"/>
         <image name="backButton" width="11" height="19"/>
         <image name="backButtonFill" width="57" height="75"/>
         <image name="download" width="24" height="23"/>
-        <image name="edit" width="25" height="25"/>
         <image name="home" width="25" height="27"/>
         <image name="libraryButton" width="46" height="46"/>
         <image name="light" width="62" height="62"/>
@@ -725,10 +831,11 @@
         <image name="paperplane.fill" catalog="system" width="128" height="118"/>
         <image name="plus" width="18" height="19"/>
         <image name="profile" width="20" height="24"/>
-        <image name="saveVideo" width="26" height="24"/>
+        <image name="saveVideo" width="24" height="23"/>
         <image name="search" width="25" height="25"/>
         <image name="timer" width="62" height="62"/>
         <image name="turnCamera" width="62" height="62"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -737,9 +844,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

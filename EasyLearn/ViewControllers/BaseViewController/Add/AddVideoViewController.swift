@@ -7,6 +7,9 @@
 
 import UIKit
 import RxSwift
+import MobileCoreServices
+import AVKit
+import Firebase
 
 class AddVideoViewController: UIViewController {
 
@@ -24,12 +27,16 @@ class AddVideoViewController: UIViewController {
     private func openCamera() {
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] in
-//                let vc = UIStoryboard.base.instantiateViewController(withIdentifier: "TakenVideoViewController")
-//                self?.navigationController?.pushViewController(vc, animated: false)
-                
-                let cameraViewController = UIStoryboard.base.instantiateViewController(identifier: "CameraViewController")
-                cameraViewController.modalPresentationStyle = .fullScreen
-                self?.navigationController?.present(cameraViewController, animated: true)
+                let picker = UIImagePickerController()
+                picker.sourceType = .camera
+                picker.mediaTypes = [kUTTypeMovie as String]
+                picker.allowsEditing = true
+                picker.delegate = self
+                self?.present(picker, animated: true)
+
+                //                let cameraViewController = UIStoryboard.base.instantiateViewController(identifier: "CameraViewController")
+                //                cameraViewController.modalPresentationStyle = .fullScreen
+                //                self?.navigationController?.present(cameraViewController, animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -46,4 +53,29 @@ class AddVideoViewController: UIViewController {
             string: "word / phrase / sentence",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
     }
+}
+
+extension AddVideoViewController: UIImagePickerControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let media = info[UIImagePickerController.InfoKey.mediaURL] as? String, media == (kUTTypeMovie as String)
+        else { return }
+
+        let player = AVPlayer(url: URL(string: media)!)
+        let layer = AVPlayerLayer(player: player)
+        layer.frame = view.bounds
+        layer.masksToBounds = true
+        layer.videoGravity = .resizeAspectFill
+        view.layer.addSublayer(layer)
+        player.play()
+    }
+}
+
+extension AddVideoViewController: UINavigationControllerDelegate {
+
 }

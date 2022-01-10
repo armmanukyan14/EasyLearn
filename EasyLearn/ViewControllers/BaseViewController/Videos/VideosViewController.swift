@@ -7,9 +7,9 @@
 
 import AVFoundation
 import AVKit
-import UIKit
-import FirebaseStorage
 import FirebaseAuth
+import FirebaseStorage
+import UIKit
 
 class VideosViewController: UIViewController {
     let player1 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!))
@@ -35,13 +35,13 @@ class VideosViewController: UIViewController {
         setupViews()
         didAddGestureRecognizer()
         addSubViews()
-//        didReplayVideo()
+        //        didReplayVideo()
 
         uploadTestVideo()
     }
 
     private func uploadTestVideo() {
-        Auth.auth().signIn(withEmail: "armmanukyan2214@gmail.com", password: "katlet") { [weak self] result, error in
+        Auth.auth().signIn(withEmail: "armmanukyan2214@gmail.com", password: "katlet") { [weak self] _, error in
             let treeAndGrassReference = self?.storageReference.child("videos/treeAndGrass.mp4")
             let url = URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!)
             guard let file = try? Data(contentsOf: url) else { return }
@@ -51,7 +51,7 @@ class VideosViewController: UIViewController {
                     print(error.localizedDescription)
                 } else {
                     print("Successfully uploaded")
-                    treeAndGrassReference?.getData(maxSize: 10 * 1024 * 1024) { data, error in
+                    treeAndGrassReference?.getData(maxSize: 10 * 1024 * 1024) { data, _ in
                         if let data = data {
                             print("Successfully downloaded")
                         }
@@ -83,9 +83,9 @@ class VideosViewController: UIViewController {
         okLabel.layer.cornerRadius = 10.0
         okLabel.layer.masksToBounds = true
         laterLabel.layer.cornerRadius = 10.0
-        laterLabel.layer.masksToBounds  = true
+        laterLabel.layer.masksToBounds = true
         phraseLabel.layer.cornerRadius = 10.0
-        phraseLabel.layer.masksToBounds  = true
+        phraseLabel.layer.masksToBounds = true
         phraseLabel.layer.borderWidth = 1
         phraseLabel.layer.borderColor = UIColor.systemBackground.cgColor
     }

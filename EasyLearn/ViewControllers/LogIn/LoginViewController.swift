@@ -5,12 +5,14 @@
 //  Created by MacBook on 31.08.21.
 //
 
+import Firebase
 import RxSwift
 import UIKit
 
 final class LoginViewController: UIViewController {
+    private let userDefaultsHelper = UserDefaultsHelper.shared
     private let disposeBag = DisposeBag()
-    private let viewModel = LogInViewModel()
+    var viewModel = LogInViewModel(dependencies: LoginDependencies())
 
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
@@ -19,6 +21,7 @@ final class LoginViewController: UIViewController {
     @IBOutlet private var emailErrorLabel: UILabel!
     @IBOutlet private var passwordErrorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
+    @IBOutlet private var loginErrorLabel: UILabel!
 
     private lazy var eyeButton: UIButton = {
         let eyeButton = UIButton()
@@ -45,13 +48,26 @@ final class LoginViewController: UIViewController {
 
     private func bindNavigation() {
         loginButton.rx.tap
+            .do(onNext: { [weak self] in
+                self?.userDefaultsHelper.set(isLoggedIn: true)
+            })
             .bind(to: viewModel.register)
             .disposed(by: disposeBag)
 
         viewModel.success
-            .subscribe(onNext: { [weak self] _ in
-                let baseViewController = UIStoryboard.base.instantiateViewController(identifier: "BaseViewController")
-                self?.navigationController?.pushViewController(baseViewController, animated: true)
+            .subscribe(onNext: { [weak self] in
+                guard let email = self?.emailTextField.text,
+                      let password = self?.passwordTextField.text
+                else { fatalError() }
+                Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
+                    if error == nil {
+                        guard let self = self else { return }
+                        let vc = BaseViewController.getInstance(from: .base)
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        self?.showLoginErrorAlert()
+                    }
+                }
             })
             .disposed(by: disposeBag)
 
@@ -133,6 +149,12 @@ final class LoginViewController: UIViewController {
             self?.view.endEditing(true)
         })
             .disposed(by: disposeBag)
+    }
+
+    private func showLoginErrorAlert() {
+        let alert = UIAlertController(title: "Login Error", message: "There are no users with this email and password", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 
     private func setupViews() {

@@ -19,14 +19,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         setLightMode()
 
+        let userDefaultsHelper = UserDefaultsHelper.shared
+
         let navigationController = window?.rootViewController as? UINavigationController
 
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-        let initialVC = UIStoryboard.main.instantiateViewController(identifier: "WelcomeViewController")
+        var initialVC: UIViewController
+        if userDefaultsHelper.isLoggedIn {
+            initialVC = BaseViewController.getInstance(from: .base)
+        } else {
+            initialVC = WelcomeViewController.getInstance(from: .main)
+        }
 
         navigationController?.setViewControllers([initialVC], animated: false)
 
+//        let initialVC = BaseViewController.getInstance(from: .base)
+//
+//        navigationController?.setViewControllers([initialVC], animated: false)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

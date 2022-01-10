@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import RxSwift
-import RxRelay
 import RxCocoa
+import RxRelay
+import RxSwift
 
 class EnterConfirmationCodeViewModel {
     private let disposeBag = DisposeBag()
@@ -30,7 +30,10 @@ class EnterConfirmationCodeViewModel {
 
     // MARK: - Init
 
-    init() {
+    let dependencies: LoginDependencies
+
+    init(dependencies: LoginDependencies) {
+        self.dependencies = dependencies
         doBindings()
     }
 
@@ -53,5 +56,5 @@ class EnterConfirmationCodeViewModel {
             .map(to: ())
             .bind(to: success)
             .disposed(by: disposeBag)
-}
+    }
 }
