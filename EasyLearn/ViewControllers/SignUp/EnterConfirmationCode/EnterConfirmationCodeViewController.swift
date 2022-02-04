@@ -5,33 +5,55 @@
 //  Created by MacBook on 20.08.21.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class EnterConfirmationCodeViewController: UIViewController {
+    // MARK: - Properties
 
     private let disposeBag = DisposeBag()
     var viewModel: EnterConfirmationCodeViewModel!
+
+    // MARK: - Outlets
 
     @IBOutlet private var confirmationCodeTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
     @IBOutlet private var codeErrorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupViews()
+        doBindings()
+    }
+
+    // MARK: - Methods
+
+    private func setupViews() {
+        nextButton.layer.cornerRadius = 10
+        UITextField.setupTextField(placeholder: "Confirmation code", textField: confirmationCodeTextField)
+    }
+
+    // MARK: - Reactive
+
+    private func doBindings() {
         bindOutputs()
         bindInputs()
-        setupViews()
         bindNavigation()
-        setupNextButton()
     }
+
+    // MARK: - Inputs
 
     private func bindInputs() {
         confirmationCodeTextField.rx.text.orEmpty
             .bind(to: viewModel.code)
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Outputs
 
     private func bindOutputs() {
         viewModel.confirmationError
@@ -44,24 +66,10 @@ class EnterConfirmationCodeViewController: UIViewController {
                     self?.codeErrorLabel.isHidden = true
                 }
             })
-            .disposed(by: disposeBag)    }
-
-    private func setupNextButton() {
-        nextButton.layer.cornerRadius = 10.0
-        }
-
-
-    private func setupViews() {
-        confirmationCodeTextField.layer.borderWidth = 1.0
-        confirmationCodeTextField.layer.cornerRadius = 10.0
-        confirmationCodeTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: confirmationCodeTextField.frame.height))
-        confirmationCodeTextField.leftView = textFieldPadding
-        confirmationCodeTextField.leftViewMode = .always
-        confirmationCodeTextField.attributedPlaceholder = NSAttributedString(
-            string: "Confirmation code",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
+            .disposed(by: disposeBag)
     }
+
+    // MARK: - Navigation
 
     private func bindNavigation() {
         nextButton.rx.tap

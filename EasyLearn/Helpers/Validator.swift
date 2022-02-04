@@ -34,9 +34,9 @@ enum Validator {
             return nil
         }
     }
+
     static func validate(field: String) -> String? {
         let isValid = !field.isEmpty
         return isValid ? nil : "This field cannot be empty!"
     }
 }
-

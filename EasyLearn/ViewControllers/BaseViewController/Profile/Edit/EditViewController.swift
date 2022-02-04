@@ -23,6 +23,7 @@ class EditViewController: UIViewController {
     weak var delegate: EditViewControllerDelegate?
 
     private let disposeBag = DisposeBag()
+    private let userDefaultsHelper = UserDefaultsHelper.shared
 
     @IBOutlet var customNavigationBar: UINavigationBar!
     @IBOutlet private var backButton: UIBarButtonItem!
@@ -51,6 +52,7 @@ class EditViewController: UIViewController {
         editPhotoButton.layer.cornerRadius = 10.0
         logOutButton.layer.cornerRadius = 10.0
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
+        UITextField.setupTextField(placeholder: "Username", textField: usernameTextField)
     }
 
     private func bindNavigation() {
@@ -81,6 +83,9 @@ class EditViewController: UIViewController {
             .disposed(by: disposeBag)
 
         logOutButton.rx.tap
+            .do(onNext: { [ weak self ] in
+                self?.userDefaultsHelper.set(isLoggedOut: true)
+            })
             .subscribe(onNext: { [weak self] in
                 self?.logOut()
             })

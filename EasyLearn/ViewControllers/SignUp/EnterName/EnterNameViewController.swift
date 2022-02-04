@@ -5,14 +5,13 @@
 //  Created by MacBook on 20.08.21.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import Firebase
 import FirebaseDatabase
+import RxCocoa
+import RxSwift
+import UIKit
 
 final class EnterNameViewController: UIViewController {
-
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
@@ -20,7 +19,7 @@ final class EnterNameViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet private var nameTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
     @IBOutlet private var errorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
@@ -29,6 +28,7 @@ final class EnterNameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupViews()
         doBindings()
     }
@@ -36,24 +36,8 @@ final class EnterNameViewController: UIViewController {
     // MARK: - Methods
 
     private func setupViews() {
-        setupNameTextField()
-        setupNextButton()
-    }
-
-     private func setupNextButton() {
-        nextButton.layer.cornerRadius = 10.0
-    }
-
-    private func setupNameTextField() {
-        nameTextField.layer.borderWidth = 1.0
-        nameTextField.layer.cornerRadius = 10.0
-        nameTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: nameTextField.frame.height))
-        nameTextField.leftView = textFieldPadding
-        nameTextField.leftViewMode = .always
-        nameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Username",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
+        nextButton.layer.cornerRadius = 10
+        UITextField.setupTextField(placeholder: "Username", textField: nameTextField)
     }
 
     // MARK: - Reactive
@@ -65,7 +49,7 @@ final class EnterNameViewController: UIViewController {
     }
 
     // MARK: - Inputs
-    
+
     private func bindInputs() {
         nameTextField.rx.text.orEmpty
             .bind(to: viewModel.name)
@@ -119,6 +103,3 @@ final class EnterNameViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 }
-
-
-

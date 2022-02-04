@@ -5,15 +5,18 @@
 //  Created by MacBook on 20.08.21.
 //
 
-import UIKit
-import RxSwift
-import RxCocoa
 import Firebase
+import RxCocoa
+import RxSwift
+import UIKit
 
 final class EnterPasswordViewController: UIViewController {
+    // MARK: - Properties
 
     private let disposeBag = DisposeBag()
     var viewModel: EnterPasswordViewModel!
+
+    // MARK: - Outlets
 
     @IBOutlet private var passwordTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
@@ -27,22 +30,49 @@ final class EnterPasswordViewController: UIViewController {
         eyeButton.setImage(eyeImage, for: .normal)
         return eyeButton
     }()
+
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupViews()
+        didTapEyeButton()
+        doBindings()
+    }
+
+    // MARK: - Methods
+
+    private func setupViews() {
+        nextButton.layer.cornerRadius = 10
+        UITextField.setupTextField(placeholder: "Password", textField: passwordTextField)
+
+        addEyeButton()
+    }
+
+    func addEyeButton() {
+        passwordTextField.rightView = eyeButton
+        passwordTextField.rightViewMode = .always
+        eyeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
+    }
+
+    // MARK: - Reactive
+
+    private func doBindings() {
         bindOutputs()
         bindInputs()
-        setupPasswordTextField()
-        addEyeButton()
         bindNavigation()
-        setupNextButton()
-        didTapEyeButton()
     }
+
+    // MARK: - Inputs
 
     private func bindInputs() {
         passwordTextField.rx.text.orEmpty
             .bind(to: viewModel.password)
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Outputs
 
     private func bindOutputs() {
         viewModel.passwordError
@@ -58,21 +88,7 @@ final class EnterPasswordViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
-    private func setupNextButton() {
-        nextButton.layer.cornerRadius = 10.0
-    }
-
-    private func setupPasswordTextField() {
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.cornerRadius = 10.0
-        passwordTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: passwordTextField.frame.height))
-        passwordTextField.leftView = textFieldPadding
-        passwordTextField.leftViewMode = .always
-        passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
-    }
+    // MARK: - Navigation
 
     private func bindNavigation() {
         nextButton.rx.tap
@@ -89,32 +105,32 @@ final class EnterPasswordViewController: UIViewController {
                         if let result = result {
                             print(result.user.uid)
                             let ref = Database.database().reference().child("users")
-                            ref.child(result.user.uid).updateChildValues(["name" : name!, "email" : email!, "password" : password!])
+                            ref.child(result.user.uid).updateChildValues(["name": name!, "email": email!, "password": password!])
                         }
                     }
                 }
             })
-                .withLatestFrom(viewModel.password)
-                .subscribe(onNext: { [weak self] password in
-                    guard let self = self else { return }
-                    let vc = LoginViewController.getInstance(from: .logIn)
-                    var dependencies = self.viewModel.dependencies
-                    dependencies.password = password
-                    vc.viewModel = .init(dependencies: dependencies)
-                    self.navigationController?.pushViewController(vc, animated: true)
-                })
-                .disposed(by: disposeBag)
+            .withLatestFrom(viewModel.password)
+            .subscribe(onNext: { [weak self] password in
+                guard let self = self else { return }
+                let vc = LoginViewController.getInstance(from: .logIn)
+                var dependencies = self.viewModel.dependencies
+                dependencies.password = password
+                vc.viewModel = .init(dependencies: dependencies)
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            .disposed(by: disposeBag)
 
-                passwordTextField.rx.text.orEmpty
-                .bind(to: viewModel.password)
-                .disposed(by: disposeBag)
+        passwordTextField.rx.text.orEmpty
+            .bind(to: viewModel.password)
+            .disposed(by: disposeBag)
 
-                backButton.rx.tap
-                .subscribe(onNext: { [weak self] in
-                    self?.navigationController?.popViewController(animated: true)
-                })
-                .disposed(by: disposeBag)
-                }
+        backButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                self?.navigationController?.popViewController(animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
 
     private func didTapEyeButton() {
         eyeButton.rx.tap.asDriver()
@@ -128,11 +144,5 @@ final class EnterPasswordViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
-    }
-
-    func addEyeButton() {
-        passwordTextField.rightView = eyeButton
-        passwordTextField.rightViewMode = .always
-        eyeButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -16, bottom: 0, right: 0)
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class UserDefaultsHelper {
-
+    
     // MARK: - Properties
 
     let standard = UserDefaults.standard
@@ -20,6 +20,7 @@ class UserDefaultsHelper {
 
     enum Key: String {
         case isLoggedIn
+        case isLoggedOut
     }
 
     var isLoggedIn: Bool {
@@ -28,5 +29,13 @@ class UserDefaultsHelper {
 
     func set(isLoggedIn: Bool) {
         standard.set(isLoggedIn, forKey: Key.isLoggedIn.rawValue)
+    }
+
+    var isLoggedOut: Bool {
+        standard.bool(forKey: Key.isLoggedOut.rawValue)
+    }
+
+    func set(isLoggedOut: Bool) {
+        standard.set(isLoggedOut, forKey: Key.isLoggedOut.rawValue)
     }
 }

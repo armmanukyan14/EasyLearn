@@ -5,14 +5,14 @@
 //  Created by MacBook on 31.08.21.
 //
 
-import UIKit
-import RxSwift
-import MobileCoreServices
 import AVKit
 import Firebase
+import MobileCoreServices
+import RxSwift
+import UIKit
+import CameraKit_iOS
 
 class AddVideoViewController: UIViewController {
-
     private let disposeBag = DisposeBag()
 
     @IBOutlet private var phraseTextField: UITextField!
@@ -27,31 +27,23 @@ class AddVideoViewController: UIViewController {
     private func openCamera() {
         nextButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let picker = UIImagePickerController()
-                picker.sourceType = .camera
-                picker.mediaTypes = [kUTTypeMovie as String]
-                picker.allowsEditing = true
-                picker.delegate = self
-                self?.present(picker, animated: true)
 
-                //                let cameraViewController = UIStoryboard.base.instantiateViewController(identifier: "CameraViewController")
-                //                cameraViewController.modalPresentationStyle = .fullScreen
-                //                self?.navigationController?.present(cameraViewController, animated: true)
+//                let picker = UIImagePickerController()
+//                picker.sourceType = .camera
+//                picker.mediaTypes = [kUTTypeMovie as String]
+//                picker.allowsEditing = true
+//                picker.delegate = self
+//                self?.present(picker, animated: true)
+
+                let vc = CameraKitViewController.getInstance(from: .base)
+                self?.navigationController?.pushViewController(vc, animated: true)
             })
             .disposed(by: disposeBag)
     }
 
     private func setupViews() {
         nextButton.layer.cornerRadius = 10.0
-        phraseTextField.layer.borderWidth = 1.0
-        phraseTextField.layer.cornerRadius = 10.0
-        phraseTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: phraseTextField.frame.height))
-        phraseTextField.leftView = textFieldPadding
-        phraseTextField.leftViewMode = .always
-        phraseTextField.attributedPlaceholder = NSAttributedString(
-            string: "word / phrase / sentence",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
+        UITextField.setupTextField(placeholder: "word / phrase / sentence", textField: phraseTextField)
     }
 }
 
@@ -69,13 +61,11 @@ extension AddVideoViewController: UIImagePickerControllerDelegate {
         let player = AVPlayer(url: URL(string: media)!)
         let layer = AVPlayerLayer(player: player)
         layer.frame = view.bounds
-        layer.masksToBounds = true
+        layer.masksToBounds = true 
         layer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(layer)
         player.play()
     }
 }
 
-extension AddVideoViewController: UINavigationControllerDelegate {
-
-}
+extension AddVideoViewController: UINavigationControllerDelegate {}

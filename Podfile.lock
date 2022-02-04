@@ -1,4 +1,5 @@
 PODS:
+  - CameraKit-iOS (1.2.1)
   - Firebase/Auth (8.8.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 8.8.0)
@@ -118,6 +119,7 @@ PODS:
     - RxSwift (~> 6)
 
 DEPENDENCIES:
+  - CameraKit-iOS
   - Firebase/Auth (= 8.8.0)
   - Firebase/Core (= 8.8.0)
   - Firebase/Database (= 8.8.0)
@@ -128,6 +130,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - CameraKit-iOS
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -149,6 +152,7 @@ SPEC REPOS:
     - STDevRxExt
 
 SPEC CHECKSUMS:
+  CameraKit-iOS: 7a8aeb4b6ac93c59088ada934efb6010ed2394c1
   Firebase: 629510f1a9ddb235f3a7c5c8ceb23ba887f0f814
   FirebaseAnalytics: 5506ea8b867d8423485a84b4cd612d279f7b0b8a
   FirebaseAuth: bcf0adeff88bda5dcb3beeabe5760f1226ab7b2f
@@ -169,6 +173,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   STDevRxExt: fc33083a285fcca497728d17250436679015cdd5
 
-PODFILE CHECKSUM: 9928e69491563652ffeed8538665612e08db6d66
+PODFILE CHECKSUM: 24fc2eba9703bf9934e61dd630e921af60393556
 
 COCOAPODS: 1.11.2

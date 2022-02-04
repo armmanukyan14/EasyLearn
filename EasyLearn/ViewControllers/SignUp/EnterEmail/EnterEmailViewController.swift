@@ -7,30 +7,54 @@
 
 import RxSwift
 import UIKit
+import FirebaseAuth
 
 class EnterEmailViewController: UIViewController {
+    // MARK: - Properties
+
     private let disposeBag = DisposeBag()
     var viewModel: EnterEmailViewModel!
 
+    // MARK: - Outlets
+
     @IBOutlet private var nextButton: UIButton!
-    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var emailErrorLabel: UILabel!
     @IBOutlet private var backButton: UIButton!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupViews()
+        doBindings()
+    }
+
+    // MARK: - Methods
+
+    private func setupViews() {
+        nextButton.layer.cornerRadius = 10
+        UITextField.setupTextField(placeholder: "Email", textField: emailTextField)
+    }
+
+    // MARK: - Reactive
+
+    private func doBindings() {
         bindOutputs()
         bindInputs()
-        setupEmailTextField()
         bindNavigation()
-        setupNextButton()
     }
+
+    // MARK: - Inputs
 
     private func bindInputs() {
         emailTextField.rx.text.orEmpty
             .bind(to: viewModel.email)
             .disposed(by: disposeBag)
     }
+
+    // MARK: - Outputs
 
     private func bindOutputs() {
         viewModel.emailError
@@ -46,9 +70,7 @@ class EnterEmailViewController: UIViewController {
             .disposed(by: disposeBag)
     }
 
-    private func setupNextButton() {
-        nextButton.layer.cornerRadius = 10.0
-    }
+    // MARK: - Navigation
 
     private func bindNavigation() {
         nextButton.rx.tap
@@ -64,6 +86,30 @@ class EnterEmailViewController: UIViewController {
                 dependencies.email = email
                 vc.viewModel = .init(dependencies: dependencies)
                 self.navigationController?.pushViewController(vc, animated: true)
+//                guard let emailToSend = self.emailTextField.text
+//                else { return }
+//                let auth = Auth.auth()
+//                let actionCodeSettings = ActionCodeSettings()
+//                actionCodeSettings.handleCodeInApp = true
+//                actionCodeSettings.url = URL(string: "https://tech42.page.link/easylearn")
+//
+//                auth.sendSignInLink(toEmail: emailToSend,
+//                                    actionCodeSettings: actionCodeSettings) { error in
+//                    if let error = error {
+//                        let alert = UIAlertController(title: "Error",
+//                                                      message: error.localizedDescription,
+//                                                      preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+//                        self.present(alert, animated: true)
+//                    }
+//
+//                    let alert = UIAlertController(title: "",
+//                                                  message: "A reset password email was sent!",
+//                                                  preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+//                    self.present(alert, animated: true)
+//                }
+
             })
             .disposed(by: disposeBag)
 
@@ -77,17 +123,4 @@ class EnterEmailViewController: UIViewController {
             })
             .disposed(by: disposeBag)
     }
-
-    private func setupEmailTextField() {
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.cornerRadius = 10.0
-        emailTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: emailTextField.frame.height))
-        emailTextField.leftView = textFieldPadding
-        emailTextField.leftViewMode = .always
-        emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "Email",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
-    }
-
 }

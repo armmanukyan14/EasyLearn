@@ -13,5 +13,6 @@ target 'EasyLearn' do
  pod 'RxSwift', '6.2.0'
  pod 'RxCocoa', '6.2.0'
  pod 'STDevRxExt'
+ pod 'CameraKit-iOS'
 
 end

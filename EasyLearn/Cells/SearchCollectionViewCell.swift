@@ -2,16 +2,15 @@
 //  SearchCollectionViewCell.swift
 //  EasyLearn
 //
-//  Created by MacBook on 24.08.21.
+//  Created by MacBook on 19.01.22.
 //
 
 import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet private var previewImage: UIImageView! { didSet {
-        previewImage.backgroundColor = .easyPurple
-        previewImage.layer.cornerRadius = 10.0
-    }
-    }
+    @IBOutlet var searchVideoView: UIView! { didSet {
+        searchVideoView.layer.cornerRadius = 10
+        searchVideoView.backgroundColor = .random()
+    }}
 }

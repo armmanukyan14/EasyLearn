@@ -48,13 +48,13 @@ final class LoginViewController: UIViewController {
 
     private func bindNavigation() {
         loginButton.rx.tap
-            .do(onNext: { [weak self] in
-                self?.userDefaultsHelper.set(isLoggedIn: true)
-            })
             .bind(to: viewModel.register)
             .disposed(by: disposeBag)
 
         viewModel.success
+            .do(onNext: { [weak self] in
+                self?.userDefaultsHelper.set(isLoggedIn: true)
+            })
             .subscribe(onNext: { [weak self] in
                 guard let email = self?.emailTextField.text,
                       let password = self?.passwordTextField.text
@@ -158,27 +158,9 @@ final class LoginViewController: UIViewController {
     }
 
     private func setupViews() {
-        loginButton.layer.cornerRadius = 10.0
-
-        emailTextField.layer.borderWidth = 1.0
-        emailTextField.layer.cornerRadius = 10.0
-        emailTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: emailTextField.frame.height))
-        emailTextField.leftView = textFieldPadding
-        emailTextField.leftViewMode = .always
-        emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "Email",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
-
-        passwordTextField.layer.borderWidth = 1.0
-        passwordTextField.layer.cornerRadius = 10.0
-        passwordTextField.layer.borderColor = UIColor.textFieldBorderColor.cgColor
-        let textFieldPadding1 = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: passwordTextField.frame.height))
-        passwordTextField.leftView = textFieldPadding1
-        passwordTextField.leftViewMode = .always
-        passwordTextField.attributedPlaceholder = NSAttributedString(
-            string: "Password",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.textFieldPlaceholderColor])
+        loginButton.layer.cornerRadius = 10
+        UITextField.setupTextField(placeholder: "Email", textField: emailTextField)
+        UITextField.setupTextField(placeholder: "Password", textField: passwordTextField)
     }
 
     func addEyeButton() {
