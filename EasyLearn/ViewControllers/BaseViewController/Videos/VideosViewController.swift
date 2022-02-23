@@ -35,8 +35,7 @@ class VideosViewController: UIViewController {
         setupViews()
         didAddGestureRecognizer()
         addSubViews()
-        //        didReplayVideo()
-
+//        didReplayVideo()
         uploadTestVideo()
     }
 
@@ -217,7 +216,6 @@ class VideosViewController: UIViewController {
     private func didDragTheCurrentView(recognizer: UIPanGestureRecognizer) {
         if recognizer.state == .began {
             player1.pause()
-
         } else if recognizer.state == .changed {
             if videoView1.center.x < 120 {
                 UIView.animate(withDuration: 0.5, animations: {

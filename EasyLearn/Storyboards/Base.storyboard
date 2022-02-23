@@ -156,23 +156,22 @@
         <!--Camera Kit View Controller-->
         <scene sceneID="SlE-b9-Uez">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BXn-vJ-kRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="CameraKitViewController" id="lfx-Fy-m2f" customClass="CameraKitViewController" customModule="EasyLearn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NgH-lX-xtC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xtZ-WN-f85">
-                                <rect key="frame" x="167" y="732" width="80" height="80"/>
+                                <rect key="frame" x="157" y="712" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="36c-Tn-iW2"/>
-                                    <constraint firstAttribute="height" constant="80" id="msl-ar-IPt"/>
+                                    <constraint firstAttribute="width" constant="100" id="36c-Tn-iW2"/>
+                                    <constraint firstAttribute="height" constant="100" id="msl-ar-IPt"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Asv-h3-GWY">
-                                <rect key="frame" x="344" y="89" width="50" height="50"/>
+                                <rect key="frame" x="349" y="47" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="F0e-FX-cmw"/>
                                     <constraint firstAttribute="width" constant="50" id="a6m-ZR-X6B"/>
@@ -180,31 +179,57 @@
                                 <state key="normal" image="turnCamera"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZW-9z-89k">
-                                <rect key="frame" x="344" y="154" width="50" height="50"/>
+                                <rect key="frame" x="349" y="112" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="dga-6Z-5JF"/>
                                     <constraint firstAttribute="width" constant="50" id="vQL-Tq-35h"/>
                                 </constraints>
                                 <state key="normal" image="light"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P8O-zw-gH1">
+                                <rect key="frame" x="15" y="54" width="36" height="36"/>
+                                <color key="backgroundColor" red="0.27058823529411763" green="0.25882352941176467" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="D2c-w8-Obb"/>
+                                    <constraint firstAttribute="height" constant="36" id="zWO-SV-QUd"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                <state key="normal" image="xmark" catalog="system"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAr-OG-RX5">
+                                <rect key="frame" x="344" y="737" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Bsw-s3-vjg"/>
+                                    <constraint firstAttribute="height" constant="50" id="bbZ-RX-0in"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="libraryButton"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tbI-MR-J3Q"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="tbI-MR-J3Q" firstAttribute="bottom" secondItem="xtZ-WN-f85" secondAttribute="bottom" constant="50" id="1bs-zj-79p"/>
-                            <constraint firstItem="tbI-MR-J3Q" firstAttribute="trailing" secondItem="qZW-9z-89k" secondAttribute="trailing" constant="20" id="BdV-AQ-b2S"/>
+                            <constraint firstItem="P8O-zw-gH1" firstAttribute="leading" secondItem="tbI-MR-J3Q" secondAttribute="leading" constant="15" id="76i-ri-dzm"/>
+                            <constraint firstItem="tbI-MR-J3Q" firstAttribute="trailing" secondItem="qZW-9z-89k" secondAttribute="trailing" constant="15" id="BdV-AQ-b2S"/>
                             <constraint firstItem="qZW-9z-89k" firstAttribute="top" secondItem="Asv-h3-GWY" secondAttribute="bottom" constant="15" id="IYq-qr-FxB"/>
-                            <constraint firstItem="tbI-MR-J3Q" firstAttribute="trailing" secondItem="Asv-h3-GWY" secondAttribute="trailing" constant="20" id="NsB-VC-Ho5"/>
-                            <constraint firstItem="Asv-h3-GWY" firstAttribute="top" secondItem="tbI-MR-J3Q" secondAttribute="top" constant="45" id="aoq-qb-lqq"/>
+                            <constraint firstItem="P8O-zw-gH1" firstAttribute="top" secondItem="tbI-MR-J3Q" secondAttribute="top" constant="10" id="J5I-9O-BV3"/>
+                            <constraint firstItem="tbI-MR-J3Q" firstAttribute="trailing" secondItem="Asv-h3-GWY" secondAttribute="trailing" constant="15" id="NsB-VC-Ho5"/>
+                            <constraint firstItem="kAr-OG-RX5" firstAttribute="centerY" secondItem="xtZ-WN-f85" secondAttribute="centerY" id="Q5g-dS-NNu"/>
+                            <constraint firstItem="Asv-h3-GWY" firstAttribute="centerY" secondItem="P8O-zw-gH1" secondAttribute="centerY" id="kXA-US-UVn"/>
                             <constraint firstItem="xtZ-WN-f85" firstAttribute="centerX" secondItem="NgH-lX-xtC" secondAttribute="centerX" id="miG-rs-7D7"/>
+                            <constraint firstItem="tbI-MR-J3Q" firstAttribute="trailing" secondItem="kAr-OG-RX5" secondAttribute="trailing" constant="20" id="y3Z-MF-rOB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="P8O-zw-gH1" id="et6-gq-kcA"/>
                         <outlet property="cameraPositionButton" destination="Asv-h3-GWY" id="UWc-zf-NFN"/>
                         <outlet property="flashlightButton" destination="qZW-9z-89k" id="6Yx-1O-NTu"/>
+                        <outlet property="photoLibraryButton" destination="kAr-OG-RX5" id="qYo-eM-Fst"/>
                         <outlet property="shutterButton" destination="xtZ-WN-f85" id="vjQ-Po-Fvl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BXn-vJ-kRj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1250.7246376811595" y="-2527.2321428571427"/>
         </scene>
@@ -339,11 +364,7 @@
                             <constraint firstItem="c1q-RK-is9" firstAttribute="top" secondItem="myY-7u-o5N" secondAttribute="top" id="pNL-Hl-L2a"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Saved" id="wo3-6f-ngY">
-                        <barButtonItem key="leftBarButtonItem" image="backButton" id="gy0-QX-g1a">
-                            <color key="tintColor" red="0.3411764706" green="0.31372549020000001" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Saved" id="wo3-6f-ngY"/>
                     <connections>
                         <outlet property="collectionView" destination="c1q-RK-is9" id="Nwo-Y9-E9F"/>
                     </connections>
@@ -854,7 +875,6 @@
     <resources>
         <image name="addPhoto" width="311" height="310"/>
         <image name="addVideo" width="28" height="28"/>
-        <image name="backButton" width="11" height="19"/>
         <image name="backButtonFill" width="57" height="75"/>
         <image name="download" width="24" height="23"/>
         <image name="home" width="25" height="27"/>

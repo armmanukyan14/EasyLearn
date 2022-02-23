@@ -65,7 +65,7 @@
 		FAA1A1D626F0D078006A5B36 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */; };
 		FAA1A1D826F22AF9006A5B36 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */; };
 		FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */; };
-		FAE4BA4C27A80BD9009524F9 /* ProfileCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4BA4B27A80BD9009524F9 /* ProfileCollectionReusableView.swift */; };
+		FAE4BA4C27A80BD9009524F9 /* ProfileCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4BA4B27A80BD9009524F9 /* ProfileCollectionViewHeader.swift */; };
 		FAE4BA4E27A94DEB009524F9 /* CameraKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4BA4D27A94DEB009524F9 /* CameraKitViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,7 +133,7 @@
 		FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FAA1A1D726F22AF9006A5B36 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		FAA279E9270DE302007BAD7D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		FAE4BA4B27A80BD9009524F9 /* ProfileCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionReusableView.swift; sourceTree = "<group>"; };
+		FAE4BA4B27A80BD9009524F9 /* ProfileCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewHeader.swift; sourceTree = "<group>"; };
 		FAE4BA4D27A94DEB009524F9 /* CameraKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -427,7 +427,7 @@
 			children = (
 				FA5054702799E34000BB0A9E /* Edit */,
 				FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */,
-				FAE4BA4B27A80BD9009524F9 /* ProfileCollectionReusableView.swift */,
+				FAE4BA4B27A80BD9009524F9 /* ProfileCollectionViewHeader.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -579,7 +579,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAE4BA4C27A80BD9009524F9 /* ProfileCollectionReusableView.swift in Sources */,
+				FAE4BA4C27A80BD9009524F9 /* ProfileCollectionViewHeader.swift in Sources */,
 				FA8EDFD32774B79900DAE9E0 /* RecorderViewController.swift in Sources */,
 				FAA279EA270DE302007BAD7D /* ForgotPasswordViewController.swift in Sources */,
 				FAE4BA4E27A94DEB009524F9 /* CameraKitViewController.swift in Sources */,

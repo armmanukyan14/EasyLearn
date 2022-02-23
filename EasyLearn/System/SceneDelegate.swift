@@ -25,20 +25,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         navigationController?.setNavigationBarHidden(true, animated: false)
 
-//        var initialVC: UIViewController
+        var initialVC: UIViewController
 //        if userDefaultsHelper.isLoggedOut {
 //            initialVC = WelcomeViewController.getInstance(from: .main)
 //        }
-//        if userDefaultsHelper.isLoggedIn {
-//            initialVC = BaseViewController.getInstance(from: .base)
-//        } else {
-//            initialVC = WelcomeViewController.getInstance(from: .main)
-//        }
+        if userDefaultsHelper.isLoggedIn {
+            initialVC = BaseViewController.getInstance(from: .base)
+        } else {
+            initialVC = WelcomeViewController.getInstance(from: .main)
+        }
 
-//        navigationController?.setViewControllers([initialVC], animated: false)
-
-        let initialVC = BaseViewController.getInstance(from: .base)
         navigationController?.setViewControllers([initialVC], animated: false)
+
+//        let initialVC = WelcomeViewController.getInstance(from: .main)
+//        navigationController?.setViewControllers([initialVC], animated: false)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {}

@@ -17,6 +17,7 @@ class AddVideoViewController: UIViewController {
 
     @IBOutlet private var phraseTextField: UITextField!
     @IBOutlet private var nextButton: UIButton!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,8 @@ class AddVideoViewController: UIViewController {
 //                self?.present(picker, animated: true)
 
                 let vc = CameraKitViewController.getInstance(from: .base)
-                self?.navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                self?.navigationController?.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
     }

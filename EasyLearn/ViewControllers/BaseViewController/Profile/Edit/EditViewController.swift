@@ -5,25 +5,36 @@
 //  Created by MacBook on 15.12.21.
 //
 
-import Firebase
-import RxSwift
-import UIKit
-import MediaPlayer
-import MobileCoreServices
 import AVFoundation
+import AVKit
 import CoreData
 import CoreMedia
-import AVKit
+import Firebase
+import MediaPlayer
+import MobileCoreServices
+import RxSwift
+import UIKit
+
+// MARK: - Protocol
 
 protocol EditViewControllerDelegate: AnyObject {
     func didSave(user: User)
 }
 
+// MARK: - Class
+
 class EditViewController: UIViewController {
+    
+    // MARK: - Delegate
+
     weak var delegate: EditViewControllerDelegate?
+
+    // MARK: - Properties
 
     private let disposeBag = DisposeBag()
     private let userDefaultsHelper = UserDefaultsHelper.shared
+
+    // MARK: - Outlets
 
     @IBOutlet var customNavigationBar: UINavigationBar!
     @IBOutlet private var backButton: UIBarButtonItem!
@@ -34,6 +45,8 @@ class EditViewController: UIViewController {
     @IBOutlet private var logOutButton: UIButton!
     @IBOutlet private var usernameLabel: UILabel!
 
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +55,8 @@ class EditViewController: UIViewController {
         bindNavigation()
         closeKeyboardWhenTapped()
     }
+
+    // MARK: - Methods
 
     func setupNavigationBar() {
         customNavigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -54,6 +69,45 @@ class EditViewController: UIViewController {
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
         UITextField.setupTextField(placeholder: "Username", textField: usernameTextField)
     }
+
+    private func showActionSheet() {
+        let actionSheet = UIAlertController(title: "Add photo", message: "Please add your profile photo", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            print("Cancel tapped")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Take photo", style: .default, handler: { [weak self] _ in
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.allowsEditing = true
+            picker.delegate = self
+            self?.present(picker, animated: true)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Choose from library", style: .default, handler: { [weak self] _ in
+            let picker = UIImagePickerController()
+            picker.sourceType = .photoLibrary
+            picker.allowsEditing = true
+            picker.delegate = self
+            self?.present(picker, animated: true)
+        }))
+        present(actionSheet, animated: true)
+    }
+
+    private func logOut() {
+        let auth = Auth.auth()
+        let vc = WelcomeViewController.getInstance(from: .main)
+        do {
+            try auth.signOut()
+            (UIApplication.shared.windows
+                .filter { $0.isKeyWindow }
+                .first?.rootViewController as? UINavigationController)?
+                            .setViewControllers([vc], animated: false)
+            dismiss(animated: true)
+        } catch {
+            print("logOut error")
+        }
+    }
+
+    // MARK: - Reactive
 
     private func bindNavigation() {
         editPhotoButton.rx.tap
@@ -83,28 +137,13 @@ class EditViewController: UIViewController {
             .disposed(by: disposeBag)
 
         logOutButton.rx.tap
-            .do(onNext: { [ weak self ] in
+            .do(onNext: { [weak self] in
                 self?.userDefaultsHelper.set(isLoggedOut: true)
             })
             .subscribe(onNext: { [weak self] in
                 self?.logOut()
             })
             .disposed(by: disposeBag)
-    }
-
-    private func logOut() {
-        let auth = Auth.auth()
-        let vc = WelcomeViewController.getInstance(from: .main)
-        do {
-            try auth.signOut()
-            (UIApplication.shared.windows
-                .filter { $0.isKeyWindow }
-                .first?.rootViewController as? UINavigationController)?
-                            .setViewControllers([vc], animated: false)
-            dismiss(animated: true)
-        } catch {
-            print("logOut error")
-        }
     }
 
     private func closeKeyboardWhenTapped() {
@@ -115,29 +154,9 @@ class EditViewController: UIViewController {
         })
             .disposed(by: disposeBag)
     }
-
-    private func showActionSheet() {
-        let actionSheet = UIAlertController(title: "Add photo", message: "Please add your profile photo", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            print("Cancel tapped")
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Take photo", style: .default, handler: { [weak self] _ in
-            let picker = UIImagePickerController()
-            picker.sourceType = .camera
-            picker.allowsEditing = true
-            picker.delegate = self
-            self?.present(picker, animated: true)
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Choose from library", style: .default, handler: { [weak self] _ in
-            let picker = UIImagePickerController()
-            picker.sourceType = .photoLibrary
-            picker.allowsEditing = true
-            picker.delegate = self
-            self?.present(picker, animated: true)
-        }))
-        present(actionSheet, animated: true)
-    }
 }
+
+// MARK: - Extensions
 
 extension EditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
