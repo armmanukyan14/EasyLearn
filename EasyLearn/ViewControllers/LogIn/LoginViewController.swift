@@ -152,8 +152,11 @@ final class LoginViewController: UIViewController {
     }
 
     private func showLoginErrorAlert() {
-        let alert = UIAlertController(title: "Login Error", message: "There are no users with this email and password", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        alert.setValue(NSAttributedString.setAlert(title: "There are no users with this email and password"),
+                       forKey: "attributedTitle")
+        UIAlertController.setAlertButtonColor()
         present(alert, animated: true)
     }
 

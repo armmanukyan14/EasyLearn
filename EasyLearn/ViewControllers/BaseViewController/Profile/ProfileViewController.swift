@@ -26,6 +26,9 @@ class ProfileViewController: UIViewController {
         setupViews()
         bindNavigation()
         setupCollectionView()
+
+        let titleView = ProfileTitleView()
+        navigationItem.titleView = titleView
     }
 
     // MARK: - Methods
@@ -55,7 +58,7 @@ class ProfileViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 let vc = EditViewController.getInstance(from: .base)
                 vc.modalPresentationStyle = .fullScreen
-//                vc.delegate = self
+                //                vc.delegate = self
                 self?.navigationController?.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
@@ -70,8 +73,24 @@ class ProfileViewController: UIViewController {
         else { fatalError() }
 
         view.set(username: "robert")
-        view.set(avatarImage: UIImage(named: "BU"))
-        view.set(videosCount: "0 \n Videos")
+
+        if let urlString = UserDefaults.standard.value(forKey: "imageUrl") as? String,
+           let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                guard let data = data, error == nil
+                else { return }
+
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    view.set(avatarImage: image)
+//                    self.collectionView.reloadData()
+//                    self.collectionView.reloadItems(at: [indexPath])
+                }
+            })
+            task.resume()
+        }
+
+        view.set(videosCount: "0\nVideos")
 
         return view
     }

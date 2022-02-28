@@ -5,13 +5,8 @@
 //  Created by MacBook on 15.12.21.
 //
 
-import AVFoundation
-import AVKit
-import CoreData
-import CoreMedia
 import Firebase
-import MediaPlayer
-import MobileCoreServices
+import FirebaseStorage
 import RxSwift
 import UIKit
 
@@ -33,6 +28,7 @@ class EditViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
     private let userDefaultsHelper = UserDefaultsHelper.shared
+    let storage = Storage.storage().reference()
 
     // MARK: - Outlets
 
@@ -71,7 +67,11 @@ class EditViewController: UIViewController {
     }
 
     private func showActionSheet() {
-        let actionSheet = UIAlertController(title: "Add photo", message: "Please add your profile photo", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        actionSheet.setValue(NSAttributedString.setAlert(title: "Please add your profile photo."),
+                             forKey: "attributedTitle")
+        UIAlertController.setAlertButtonColor()
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
             print("Cancel tapped")
         }))
@@ -105,6 +105,19 @@ class EditViewController: UIViewController {
         } catch {
             print("logOut error")
         }
+    }
+
+    private func showLogOutAlert() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Log out", style: .default, handler: { [weak self] _ in
+            self?.logOut()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default))
+        alert.setValue(NSAttributedString.setAlert(title: "Log out of [username]?"),
+                       forKey: "attributedTitle")
+        UIAlertController.setAlertButtonColor()
+
+        present(alert, animated: true)
     }
 
     // MARK: - Reactive
@@ -141,7 +154,7 @@ class EditViewController: UIViewController {
                 self?.userDefaultsHelper.set(isLoggedOut: true)
             })
             .subscribe(onNext: { [weak self] in
-                self?.logOut()
+                self?.showLogOutAlert()
             })
             .disposed(by: disposeBag)
     }
@@ -166,7 +179,28 @@ extension EditViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
+        else { return }
+
         avatarImageView.image = image
+
+        guard let imageData = image.pngData()
+        else { return }
+
+        storage.child("images/file.png").putData(imageData, metadata: nil, completion: { [weak self] _, error in
+            guard error == nil
+            else {
+                print("Failed to upload")
+                return
+            }
+            self?.storage.child("images/file.png").downloadURL(completion: { url, error in
+                guard let url = url, error == nil
+                else { return }
+
+                let urlString = url.absoluteString
+                UserDefaults.standard.set(urlString, forKey: "imageUrl")
+
+            })
+        })
     }
 }

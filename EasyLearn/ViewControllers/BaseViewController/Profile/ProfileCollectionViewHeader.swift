@@ -42,7 +42,7 @@ class ProfileCollectionViewHeader: UICollectionReusableView {
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .label
+        label.textColor = .easyDarkGray
 
         return label
     }()
@@ -50,11 +50,18 @@ class ProfileCollectionViewHeader: UICollectionReusableView {
     let videosCountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        label.textColor = .label
+        label.textColor = .easyDarkGray
         label.numberOfLines = 2
         label.textAlignment = .center
 
         return label
+    }()
+
+    let lineView: UIView = {
+        let lineView = UIView()
+        lineView.backgroundColor = .separator
+
+        return lineView
     }()
 
     // MARK: - Layout
@@ -74,12 +81,15 @@ class ProfileCollectionViewHeader: UICollectionReusableView {
             stackView.heightAnchor.constraint(equalToConstant: 220),
             stackView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             avatarImageView.heightAnchor.constraint(equalToConstant: 120),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 120)
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
+            lineView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            lineView.heightAnchor.constraint(equalToConstant: 1)
         ])
 
         stackView.addArrangedSubview(avatarImageView)
         stackView.addArrangedSubview(usernameLabel)
         stackView.addArrangedSubview(videosCountLabel)
+        stackView.addArrangedSubview(lineView)
     }
 
     required init?(coder: NSCoder) {

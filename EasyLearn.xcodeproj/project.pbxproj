@@ -45,6 +45,9 @@
 		FA58B52426F606C7004FC4C9 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA58B52326F606C7004FC4C9 /* SignUp.storyboard */; };
 		FA7472A627495347004206A0 /* LoginDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7472A527495347004206A0 /* LoginDependencies.swift */; };
 		FA7472A8274BCE8A004206A0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */; };
+		FA7A41A627C97231006478E1 /* NSAttributedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A41A527C97231006478E1 /* NSAttributedString+Extension.swift */; };
+		FA7A41A827C97267006478E1 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A41A727C97267006478E1 /* UIAlertController+Extension.swift */; };
+		FA7A41AA27CBE94B006478E1 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7A41A927CBE94A006478E1 /* ProfileTitleView.swift */; };
 		FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */; };
 		FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */; };
 		FA846EC226D90AC700213E15 /* cutPaper.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC126D90AC700213E15 /* cutPaper.mp4 */; };
@@ -52,7 +55,6 @@
 		FA846EC626D90F1B00213E15 /* carDrive.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC526D90F1B00213E15 /* carDrive.mp4 */; };
 		FA846EC826D917BD00213E15 /* treeAndGrass.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */; };
 		FA846ECA26D9341E00213E15 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846EC926D9341E00213E15 /* EnterPasswordViewModel.swift */; };
-		FA846ECC26DA21BC00213E15 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */; };
 		FA846ED026DE29F500213E15 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ECF26DE29F500213E15 /* LoginViewController.swift */; };
 		FA846ED226DE33B100213E15 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED126DE33B100213E15 /* LogInViewModel.swift */; };
 		FA846ED526DE555300213E15 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA846ED426DE555300213E15 /* BaseViewController.swift */; };
@@ -113,6 +115,9 @@
 		FA58B52326F606C7004FC4C9 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		FA7472A527495347004206A0 /* LoginDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDependencies.swift; sourceTree = "<group>"; };
 		FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		FA7A41A527C97231006478E1 /* NSAttributedString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extension.swift"; sourceTree = "<group>"; };
+		FA7A41A727C97267006478E1 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
+		FA7A41A927CBE94A006478E1 /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
 		FA846EBD26D8F14800213E15 /* EnterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailViewModel.swift; sourceTree = "<group>"; };
 		FA846EBF26D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterConfirmationCodeViewModel.swift; sourceTree = "<group>"; };
 		FA846EC126D90AC700213E15 /* cutPaper.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = cutPaper.mp4; sourceTree = "<group>"; };
@@ -120,7 +125,6 @@
 		FA846EC526D90F1B00213E15 /* carDrive.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = carDrive.mp4; sourceTree = "<group>"; };
 		FA846EC726D917BD00213E15 /* treeAndGrass.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = treeAndGrass.mp4; sourceTree = "<group>"; };
 		FA846EC926D9341E00213E15 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
-		FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		FA846ECF26DE29F500213E15 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FA846ED126DE33B100213E15 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		FA846ED426DE555300213E15 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +210,8 @@
 			children = (
 				FA3FA03E26CCE64500BA513B /* UIColor+Extension.swift */,
 				FA54FEA426CFF9E800E3A6D6 /* UIStoryboard+Extension.swift */,
-				FA846ECB26DA21BC00213E15 /* UIView+Extension.swift */,
+				FA7A41A527C97231006478E1 /* NSAttributedString+Extension.swift */,
+				FA7A41A727C97267006478E1 /* UIAlertController+Extension.swift */,
 				FA7472A7274BCE8A004206A0 /* UIViewController+Extension.swift */,
 				FA505475279C0A9600BB0A9E /* UICollectionViewCompositionalLayout+Extension.swift */,
 				FA5054682796FA7500BB0A9E /* CGFloat+Extension.swift */,
@@ -427,6 +432,7 @@
 			children = (
 				FA5054702799E34000BB0A9E /* Edit */,
 				FAA1A1D526F0D078006A5B36 /* ProfileViewController.swift */,
+				FA7A41A927CBE94A006478E1 /* ProfileTitleView.swift */,
 				FAE4BA4B27A80BD9009524F9 /* ProfileCollectionViewHeader.swift */,
 			);
 			path = Profile;
@@ -592,6 +598,7 @@
 				FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */,
 				FAA1A1D426F0A95F006A5B36 /* AddedPhotoViewController.swift in Sources */,
 				FA87C58D276A3287005B98CF /* EditViewController.swift in Sources */,
+				FA7A41A627C97231006478E1 /* NSAttributedString+Extension.swift in Sources */,
 				FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */,
 				FA846EDD26DE69A400213E15 /* AddVideoViewController.swift in Sources */,
 				FA93A878270203B200374D5C /* Video.swift in Sources */,
@@ -611,14 +618,15 @@
 				FA846ED026DE29F500213E15 /* LoginViewController.swift in Sources */,
 				FA7472A8274BCE8A004206A0 /* UIViewController+Extension.swift in Sources */,
 				FA54FEAF26D5013B00E3A6D6 /* SearchViewController.swift in Sources */,
+				FA7A41AA27CBE94B006478E1 /* ProfileTitleView.swift in Sources */,
 				FA846EBE26D8F14800213E15 /* EnterEmailViewModel.swift in Sources */,
 				FA846ECA26D9341E00213E15 /* EnterPasswordViewModel.swift in Sources */,
 				FAA1A1D826F22AF9006A5B36 /* CameraViewController.swift in Sources */,
+				FA7A41A827C97267006478E1 /* UIAlertController+Extension.swift in Sources */,
 				FA846ED226DE33B100213E15 /* LogInViewModel.swift in Sources */,
 				FA54FEA326CFD2CA00E3A6D6 /* EnterPasswordViewController.swift in Sources */,
 				FA58B51926F48D43004FC4C9 /* User.swift in Sources */,
 				FA3FA04526CD111E00BA513B /* VideosViewController.swift in Sources */,
-				FA846ECC26DA21BC00213E15 /* UIView+Extension.swift in Sources */,
 				FA50546F2799E2A000BB0A9E /* ProfileCollectionViewCell.swift in Sources */,
 				FA54FEA826D0EF6900E3A6D6 /* EnterNameViewModel.swift in Sources */,
 				FA3FA03F26CCE64500BA513B /* UIColor+Extension.swift in Sources */,

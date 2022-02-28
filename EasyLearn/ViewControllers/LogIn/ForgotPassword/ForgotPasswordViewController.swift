@@ -32,12 +32,20 @@ class ForgotPasswordViewController: UIViewController {
                 let auth = Auth.auth()
                 auth.sendPasswordReset(withEmail: emailToSend) { error in
                     if let error = error {
-                        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+                        alert.setValue(NSAttributedString.setAlert(title: error.localizedDescription),
+                                       forKey: "attributedTitle")
+                        UIAlertController.setAlertButtonColor()
+                        
                         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                         self?.present(alert, animated: true)
                     }
 
-                    let alert = UIAlertController(title: "", message: "A reset password email was sent!", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+                    alert.setValue(NSAttributedString.setAlert(title: "A reset password email was sent!"),
+                                   forKey: "attributedTitle")
+                    UIAlertController.setAlertButtonColor()
+
                     alert.addAction(UIAlertAction(title: "OK", style: .cancel))
                     self?.present(alert, animated: true)
                 }
