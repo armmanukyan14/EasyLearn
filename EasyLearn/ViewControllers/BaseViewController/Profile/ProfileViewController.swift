@@ -27,48 +27,14 @@ class ProfileViewController: UIViewController {
         setupViews()
         bindNavigation()
         setupCollectionView()
+        refreshCollectionView()
 
         titleView.isHidden = true
-
-//        let offset = collectionView.contentOffset
-//        let center = collectionView.center
-//        if offset == center {
-//            titleView.isHidden = false
-//        } else {
-//            titleView.isHidden = true
-//        }
-
-
-//        scrolling(collectionView)
-
-
-//        let visible = collectionView.visibleSupplementaryViews(ofKind: ProfileCollectionViewHeader.kind)
-//
-//        if visible.count == 0 {
-//            titleView.isHidden = false
-//        } else {
-//            titleView.isHidden = true
-//        }
-
-//        collectionView.scrollToItem(at: , at: .top, animated: true)
 
         navigationItem.titleView = titleView
     }
 
-//    func scrolling(_ collectionView: UICollectionView) {
-//        let height = collectionView.frame.size.height
-//        let offset = collectionView.contentOffset.y
-//        let distanceFromBottom = collectionView.contentSize.height - offset
-//        if distanceFromBottom < height {
-//            titleView.isHidden = false
-//        } else {
-//            titleView.isHidden = true
-//        }
-//    }
-
     // MARK: - Methods
-
-
 
     private func setupCollectionView() {
         collectionView.dataSource = self
@@ -86,6 +52,21 @@ class ProfileViewController: UIViewController {
 
     private func setupViews() {
         navigationController?.navigationBar.tintColor = .systemBackground
+    }
+
+    private func refreshCollectionView() {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self,
+                                                 action: #selector(pullToRefresh),
+                                                 for: .valueChanged)
+    }
+
+    @objc
+    private func pullToRefresh() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 
     // MARK: - Reactive
@@ -121,8 +102,7 @@ class ProfileViewController: UIViewController {
                     let image = UIImage(data: data)
                     header.set(avatarImage: image)
                     self.titleView.set(avatarIcon: image)
-//                    self.collectionView.reloadData()
-//                    self.collectionView.reloadItems(at: [indexPath])
+//                    header.reloadInputViews()
                 }
             })
             task.resume()
@@ -151,24 +131,13 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
 
     func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
-        self.titleView.isHidden = false
+        titleView.isHidden = false
     }
 
     func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
-        self.titleView.isHidden = true
+        titleView.isHidden = true
     }
 }
-
-//extension ProfileViewController: UIScrollViewDelegate {
-
-//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//        if self.collectionView.contentInset.top < -50 {
-//            self.titleView.isHidden = false
-//        } else {
-//            self.titleView.isHidden = true
-//        }
-//    }
-//}
 
 // extension ProfileViewController: EditViewControllerDelegate {
 //   func didSave(user: User) {

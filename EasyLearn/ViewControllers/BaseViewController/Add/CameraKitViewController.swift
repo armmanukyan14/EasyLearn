@@ -145,10 +145,18 @@ class CameraKitViewController: UIViewController {
 
             shutterButton.layer.borderColor = UIColor.clear.cgColor
             shutterButton.backgroundColor = .easyGray
+
+            backButton.isHidden = true
+            photoLibraryButton.isHidden = true
+
             strokeLayer.add(animation, forKey: "circleAnimation")
         case .ended:
+            backButton.isHidden = false
+            photoLibraryButton.isHidden = false
+
             shutterButton.layer.borderColor = UIColor.white.cgColor
             shutterButton.backgroundColor = .clear
+
             strokeLayer.removeAllAnimations()
 
             session.stopRecording()
