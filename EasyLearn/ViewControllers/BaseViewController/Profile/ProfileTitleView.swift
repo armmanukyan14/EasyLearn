@@ -57,7 +57,6 @@ class ProfileTitleView: UIView {
             stackView.widthAnchor.constraint(equalToConstant: 300),
             avatarIconImageView.widthAnchor.constraint(equalToConstant: 40),
             avatarIconImageView.heightAnchor.constraint(equalToConstant: 40)
-//          this is some comment
         ])
 
         stackView.addArrangedSubview(avatarIconImageView)
@@ -72,5 +71,8 @@ class ProfileTitleView: UIView {
 
     func set(username: String?) {
         usernameLabel.text = username
+    }
+    func set(avatarIcon: UIImage?) {
+        avatarIconImageView.image = avatarIcon
     }
 }

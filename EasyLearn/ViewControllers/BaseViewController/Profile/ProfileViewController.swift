@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
+    let titleView = ProfileTitleView()
 
     // MARK: - Outlets
 
@@ -27,11 +28,47 @@ class ProfileViewController: UIViewController {
         bindNavigation()
         setupCollectionView()
 
-        let titleView = ProfileTitleView()
+        titleView.isHidden = true
+
+//        let offset = collectionView.contentOffset
+//        let center = collectionView.center
+//        if offset == center {
+//            titleView.isHidden = false
+//        } else {
+//            titleView.isHidden = true
+//        }
+
+
+//        scrolling(collectionView)
+
+
+//        let visible = collectionView.visibleSupplementaryViews(ofKind: ProfileCollectionViewHeader.kind)
+//
+//        if visible.count == 0 {
+//            titleView.isHidden = false
+//        } else {
+//            titleView.isHidden = true
+//        }
+
+//        collectionView.scrollToItem(at: , at: .top, animated: true)
+
         navigationItem.titleView = titleView
     }
 
+//    func scrolling(_ collectionView: UICollectionView) {
+//        let height = collectionView.frame.size.height
+//        let offset = collectionView.contentOffset.y
+//        let distanceFromBottom = collectionView.contentSize.height - offset
+//        if distanceFromBottom < height {
+//            titleView.isHidden = false
+//        } else {
+//            titleView.isHidden = true
+//        }
+//    }
+
     // MARK: - Methods
+
+
 
     private func setupCollectionView() {
         collectionView.dataSource = self
@@ -65,14 +102,14 @@ class ProfileViewController: UIViewController {
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let view = collectionView.dequeueReusableSupplementaryView(
+        guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: ProfileCollectionViewHeader.kind,
             withReuseIdentifier: ProfileCollectionViewHeader.reuseIdentifier,
             for: indexPath
         ) as? ProfileCollectionViewHeader
         else { fatalError() }
 
-        view.set(username: "robert")
+        header.set(username: "robert")
 
         if let urlString = UserDefaults.standard.value(forKey: "imageUrl") as? String,
            let url = URL(string: urlString) {
@@ -82,7 +119,8 @@ class ProfileViewController: UIViewController {
 
                 DispatchQueue.main.async {
                     let image = UIImage(data: data)
-                    view.set(avatarImage: image)
+                    header.set(avatarImage: image)
+                    self.titleView.set(avatarIcon: image)
 //                    self.collectionView.reloadData()
 //                    self.collectionView.reloadItems(at: [indexPath])
                 }
@@ -90,9 +128,9 @@ class ProfileViewController: UIViewController {
             task.resume()
         }
 
-        view.set(videosCount: "0\nVideos")
+        header.set(videosCount: "0\nVideos")
 
-        return view
+        return header
     }
 }
 
@@ -111,7 +149,26 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         else { fatalError() }
         return cell
     }
+
+    func collectionView(_ collectionView: UICollectionView, didEndDisplayingSupplementaryView view: UICollectionReusableView, forElementOfKind elementKind: String, at indexPath: IndexPath) {
+        self.titleView.isHidden = false
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplaySupplementaryView view: UICollectionReusableView, forElementKind elementKind: String, at indexPath: IndexPath) {
+        self.titleView.isHidden = true
+    }
 }
+
+//extension ProfileViewController: UIScrollViewDelegate {
+
+//    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+//        if self.collectionView.contentInset.top < -50 {
+//            self.titleView.isHidden = false
+//        } else {
+//            self.titleView.isHidden = true
+//        }
+//    }
+//}
 
 // extension ProfileViewController: EditViewControllerDelegate {
 //   func didSave(user: User) {
