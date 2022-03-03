@@ -32,6 +32,12 @@ class CameraKitViewController: UIViewController {
         pressShutterButton()
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        session.stop()
+    }
+
     private func setupViews() {
         shutterButton.layer.cornerRadius = shutterButton.bounds.size.height / 2
         shutterButton.backgroundColor = .clear

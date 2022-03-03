@@ -9,6 +9,7 @@ import AVFoundation
 import AVKit
 import FirebaseAuth
 import FirebaseStorage
+import RxSwift
 import UIKit
 
 class VideosViewController: UIViewController {
@@ -16,6 +17,8 @@ class VideosViewController: UIViewController {
     let player2 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "takeAndPut", ofType: "mp4")!))
     let player3 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "carDrive", ofType: "mp4")!))
     let player4 = AVPlayer(url: URL(fileURLWithPath: Bundle.main.path(forResource: "cutPaper", ofType: "mp4")!))
+
+    lazy var players = [player1, player2, player3, player4]
 
     @IBOutlet private var videoView1: UIView!
     @IBOutlet private var videoView2: UIView!
@@ -36,31 +39,68 @@ class VideosViewController: UIViewController {
         didAddGestureRecognizer()
         addSubViews()
 //        didReplayVideo()
-        uploadTestVideo()
+//        uploadTestVideo()
     }
 
-    private func uploadTestVideo() {
-        Auth.auth().signIn(withEmail: "armmanukyan2214@gmail.com", password: "katlet") { [weak self] _, error in
-            let treeAndGrassReference = self?.storageReference.child("videos/treeAndGrass.mp4")
-            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!)
-            guard let file = try? Data(contentsOf: url) else { return }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
 
-            treeAndGrassReference?.putData(file, metadata: nil) { _, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    print("Successfully uploaded")
-                    treeAndGrassReference?.getData(maxSize: 10 * 1024 * 1024) { data, _ in
-                        if let data = data {
-                            print("Successfully downloaded")
-                        }
-                    }.resume()
-                }
-            }.resume()
+        for player in players {
+            player.pause()
+        }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        setupVideoLayers()
+        player1.seek(to: CMTime.zero)
+        player1.play()
+
+        if videoView1.isHidden == true {
+            player2.seek(to: CMTime.zero)
+            player2.play()
+        } else {
+            player2.pause()
         }
 
-        let randomID = UUID().uuidString
+        if videoView2.isHidden == true {
+            player3.seek(to: CMTime.zero)
+            player3.play()
+        } else {
+            player3.pause()
+        }
+
+        if videoView3.isHidden == true {
+            player4.seek(to: CMTime.zero)
+            player4.play()
+        } else {
+            player4.pause()
+        }
     }
+
+//    private func uploadTestVideo() {
+//        Auth.auth().signIn(withEmail: "armmanukyan2214@gmail.com", password: "katlet") { [weak self] _, error in
+//            let treeAndGrassReference = self?.storageReference.child("videos/treeAndGrass.mp4")
+//            let url = URL(fileURLWithPath: Bundle.main.path(forResource: "treeAndGrass", ofType: "mp4")!)
+//            guard let file = try? Data(contentsOf: url) else { return }
+//
+//            treeAndGrassReference?.putData(file, metadata: nil) { _, error in
+//                if let error = error {
+//                    print(error.localizedDescription)
+//                } else {
+//                    print("Successfully uploaded")
+//                    treeAndGrassReference?.getData(maxSize: 10 * 1024 * 1024) { data, _ in
+//                        if let data = data {
+//                            print("Successfully downloaded")
+//                        }
+//                    }.resume()
+//                }
+//            }.resume()
+//        }
+//
+//        let randomID = UUID().uuidString
+//    }
 
     private func addSubViews() {
         videoView1.addSubview(okLabel)
@@ -73,7 +113,6 @@ class VideosViewController: UIViewController {
         setupLabels()
         setupRedAndGreenViews()
         setupVideoViews()
-        setupVideoLayers()
     }
 
     private func setupLabels() {
@@ -171,7 +210,7 @@ class VideosViewController: UIViewController {
         )
     }
 
-    @objc func video4DidEnd(notification: NSNotification) {
+    @objc func video4DidEnd() {
         player4.seek(to: CMTime.zero)
         player4.play()
     }
