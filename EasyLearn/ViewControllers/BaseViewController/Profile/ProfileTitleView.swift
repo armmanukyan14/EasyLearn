@@ -25,7 +25,6 @@ class ProfileTitleView: UIView {
         imageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         imageView.layer.cornerRadius = imageView.bounds.width / 2
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .easyPurple
 
         return imageView
     }()
@@ -34,7 +33,6 @@ class ProfileTitleView: UIView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
         label.textColor = .easyDarkGray
-        label.text = "robert"
 
         return label
     }()
@@ -43,8 +41,6 @@ class ProfileTitleView: UIView {
         super.init(frame: frame)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
-
-//        backgroundColor = .red
 
         addSubview(stackView)
 

@@ -12,26 +12,27 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol EditViewControllerDelegate: AnyObject {
-    func didSave(user: User)
-}
+//protocol EditViewControllerDelegate: AnyObject {
+//    func didSave(user: User)
+//}
 
 // MARK: - Class
 
 class EditViewController: UIViewController {
     
     // MARK: - Delegate
-
-    weak var delegate: EditViewControllerDelegate?
-
+    
+    //    weak var delegate: EditViewControllerDelegate?
+    
     // MARK: - Properties
-
+    
     private let disposeBag = DisposeBag()
     private let userDefaultsHelper = UserDefaultsHelper.shared
     let storage = Storage.storage().reference()
-
+    let profileHeader = ProfileCollectionViewHeader()
+    
     // MARK: - Outlets
-
+    
     @IBOutlet var customNavigationBar: UINavigationBar!
     @IBOutlet private var backButton: UIBarButtonItem!
     @IBOutlet private var saveButton: UIBarButtonItem!
@@ -40,32 +41,47 @@ class EditViewController: UIViewController {
     @IBOutlet private var usernameTextField: UITextField!
     @IBOutlet private var logOutButton: UIButton!
     @IBOutlet private var usernameLabel: UILabel!
-
+    
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupViews()
         setupNavigationBar()
         bindNavigation()
         closeKeyboardWhenTapped()
     }
-
+    
     // MARK: - Methods
-
+    
     func setupNavigationBar() {
         customNavigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         customNavigationBar.shadowImage = UIImage()
     }
-
+    
     private func setupViews() {
         editPhotoButton.layer.cornerRadius = 10.0
         logOutButton.layer.cornerRadius = 10.0
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.width / 2
         UITextField.setupTextField(placeholder: "Username", textField: usernameTextField)
+        usernameTextField.text = Auth.auth().currentUser?.displayName
+        
+        let imagesRef = storage.child("images")
+        if let uid = Auth.auth().currentUser?.uid {
+            let imageRef = imagesRef.child(uid)
+            imageRef.getData(maxSize: 1 * 2048 * 2048) { [weak self] data, error in
+                if let data = data, error == nil {
+                    let image = UIImage(data: data)
+                    self?.avatarImageView.image = image
+                } else {
+                    let image = UIImage(named: "addPhoto")
+                    self?.avatarImageView.image = image
+                }
+            }
+        }
     }
-
+    
     private func showActionSheet() {
         let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         actionSheet.setValue(NSAttributedString.setAlert(title: "Please add your profile photo."),
@@ -91,7 +107,7 @@ class EditViewController: UIViewController {
         }))
         present(actionSheet, animated: true)
     }
-
+    
     private func logOut() {
         let auth = Auth.auth()
         let vc = WelcomeViewController.getInstance(from: .main)
@@ -100,65 +116,86 @@ class EditViewController: UIViewController {
             (UIApplication.shared.windows
                 .filter { $0.isKeyWindow }
                 .first?.rootViewController as? UINavigationController)?
-                            .setViewControllers([vc], animated: false)
+                .setViewControllers([vc], animated: false)
             dismiss(animated: true)
         } catch {
             print("logOut error")
         }
     }
-
+    
     private func showLogOutAlert() {
         let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Log out", style: .default, handler: { [weak self] _ in
             self?.logOut()
+            self?.userDefaultsHelper.set(isLoggedIn: false)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .default))
-        alert.setValue(NSAttributedString.setAlert(title: "Log out of [username]?"),
+        if let username = Auth.auth().currentUser?.displayName {
+        alert.setValue(NSAttributedString.setAlert(title: "Log out of \(username)?"),
                        forKey: "attributedTitle")
+        }
         UIAlertController.setAlertButtonColor()
-
+        
         present(alert, animated: true)
     }
-
+    
     // MARK: - Reactive
-
+    
     private func bindNavigation() {
         editPhotoButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.showActionSheet()
             })
             .disposed(by: disposeBag)
-
+        
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 self?.dismiss(animated: true)
             })
             .disposed(by: disposeBag)
-
+        
         saveButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let image = self?.avatarImageView.image,
-                      let username = self?.usernameTextField.text
-                else { fatalError() }
-
-                let user = User(name: username, image: image, videos: [])
-
-                self?.delegate?.didSave(user: user)
-
+                
+                if let image = self?.avatarImageView.image,
+                   let imageData = image.pngData(),
+                   let uid = Auth.auth().currentUser?.uid,
+                   let imagesRef =  self?.storage.child("images") {
+                    
+                    let imageRef = imagesRef.child(uid)
+                    
+                    imageRef.putData(imageData, metadata: nil)
+                    
+//                    imageRef.downloadURL { url, error in
+//                        if let url = url,
+//                           error == nil {
+//                            UserDefaults.standard.setValue(url, forKey: uid)
+//                        }
+//                    }
+                }
+                
+                if let username = self?.usernameTextField.text {
+                    
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = username
+                    //                changeRequest?.photoURL = url
+                    changeRequest?.commitChanges { error in
+                        guard let error = error else { return }
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
-
+        
         logOutButton.rx.tap
-            .do(onNext: { [weak self] in
-                self?.userDefaultsHelper.set(isLoggedOut: true)
-            })
             .subscribe(onNext: { [weak self] in
                 self?.showLogOutAlert()
             })
             .disposed(by: disposeBag)
     }
-
+    
     private func closeKeyboardWhenTapped() {
         let tapBackground = UITapGestureRecognizer()
         view.addGestureRecognizer(tapBackground)
@@ -175,32 +212,13 @@ extension EditViewController: UIImagePickerControllerDelegate, UINavigationContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage
         else { return }
-
+        
         avatarImageView.image = image
-
-        guard let imageData = image.pngData()
-        else { return }
-
-        storage.child("images/file.png").putData(imageData, metadata: nil, completion: { [weak self] _, error in
-            guard error == nil
-            else {
-                print("Failed to upload")
-                return
-            }
-            self?.storage.child("images/file.png").downloadURL(completion: { url, error in
-                guard let url = url, error == nil
-                else { return }
-
-                let urlString = url.absoluteString
-                UserDefaults.standard.set(urlString, forKey: "imageUrl")
-
-            })
-        })
     }
 }

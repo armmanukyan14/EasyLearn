@@ -21,7 +21,6 @@ class EnterPasswordViewModel {
     // MARK: - Outputs
 
     let passwordError = BehaviorRelay<String?>(value: nil)
-    let emailError = BehaviorRelay<String?>(value: nil)
     let success = PublishRelay<Void>()
 
     // MARK: - Guts
@@ -45,9 +44,7 @@ class EnterPasswordViewModel {
             .bind(to: passwordError)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(passwordError, emailError) {
-            $0 == nil && $1 == nil
-        }
+        passwordError.map { $0 == nil }
         .bind(to: isValid)
         .disposed(by: disposeBag)
 

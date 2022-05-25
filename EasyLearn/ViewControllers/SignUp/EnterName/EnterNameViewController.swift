@@ -6,7 +6,7 @@
 //
 
 import Firebase
-import FirebaseDatabase
+//import FirebaseDatabase
 import RxCocoa
 import RxSwift
 import UIKit
@@ -86,9 +86,6 @@ final class EnterNameViewController: UIViewController {
                 let vc = EnterEmailViewController.getInstance(from: .signUp)
                 vc.viewModel = .init(dependencies: .init(name: name))
                 self?.navigationController?.pushViewController(vc, animated: true)
-
-//                let editVC = EditViewController.getInstance(from: .base)
-//                editVC.viewModel = .init(dependencies: .init(name: name))
             })
             .disposed(by: disposeBag)
 

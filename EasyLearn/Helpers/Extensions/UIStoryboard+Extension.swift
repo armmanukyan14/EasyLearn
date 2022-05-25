@@ -20,7 +20,7 @@ extension UIStoryboard {
     static var signUp: UIStoryboard {
         UIStoryboard(name: "SignUp", bundle: nil)
     }
-    static var a: UIStoryboard {
-        UIStoryboard(name: "A", bundle: nil)
+    static var noInternet: UIStoryboard {
+        UIStoryboard(name: "NoInternet", bundle: nil)
     }
 }

@@ -8,5 +8,6 @@
 import Foundation
 
 struct Video {
-    let url: String
+    let url: URL?
+    var phrase: String
 }

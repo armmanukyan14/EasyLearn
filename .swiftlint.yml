@@ -1,0 +1,56 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - fastlane
+  - Pods
+  - DerivedData
+disabled_rules: # rule identifiers to exclude from running
+  - identifier_name
+  - large_tuple
+  - vertical_parameter_alignment
+  - package
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+opt_in_rules:
+  - attributes
+  - closure_body_length
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - empty_collection_literal
+  - empty_string
+  - empty_xctest_method
+  - enum_case_associated_values_count
+  - explicit_init
+  - file_name
+  - file_name_no_space
+  - first_where
+  - flatmap_over_map_reduce
+  - force_unwrapping
+  - function_default_parameter_at_end
+  - identical_operands
+  - joined_default_parameter
+  - last_where
+  - legacy_random
+  - modifier_order
+  - operator_usage_whitespace
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - reduce_into
+  - sorted_first_last
+  - sorted_imports
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+  - vertical_whitespace_closing_braces
+  - yoda_condition
+  - static_operator
+line_length: 130
+cyclomatic_complexity:
+  ignores_case_statements: true
+nesting:
+    type_level:
+        warning: 2
+        error: 5

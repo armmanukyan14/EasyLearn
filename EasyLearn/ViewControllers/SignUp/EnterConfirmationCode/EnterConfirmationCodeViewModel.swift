@@ -21,7 +21,6 @@ class EnterConfirmationCodeViewModel {
     // MARK: - Outputs
 
     let confirmationError = BehaviorRelay<String?>(value: nil)
-    let passwordError = BehaviorRelay<String?>(value: nil)
     let success = PublishRelay<Void>()
 
     // MARK: - Guts
@@ -41,13 +40,11 @@ class EnterConfirmationCodeViewModel {
 
     private func doBindings() {
         register.withLatestFrom(code)
-            .map { Validator.validate(field: $0) }
+            .map { Validator.validate(username: $0) }
             .bind(to: confirmationError)
             .disposed(by: disposeBag)
 
-        Observable.combineLatest(confirmationError, passwordError) {
-            $0 == nil && $1 == nil
-        }
+        confirmationError.map { $0 == nil }
         .bind(to: isValid)
         .disposed(by: disposeBag)
 

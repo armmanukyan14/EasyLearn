@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,19 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EasyLearn" translatesAutoresizingMaskIntoConstraints="NO" id="kkA-EM-pLC">
-                                <rect key="frame" x="115" y="407" width="160" height="30"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EduVid" translatesAutoresizingMaskIntoConstraints="NO" id="Chx-rZ-OTn">
+                                <rect key="frame" x="95" y="378" width="200" height="88"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="20H-bf-B4c"/>
-                                    <constraint firstAttribute="height" constant="30" id="kp6-bf-crU"/>
+                                    <constraint firstAttribute="height" constant="88" id="a8S-L1-qFG"/>
+                                    <constraint firstAttribute="width" constant="200" id="o2I-Ai-av3"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="kkA-EM-pLC" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="DLW-Ns-Yvp"/>
-                            <constraint firstItem="kkA-EM-pLC" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="hpw-HB-Rkz"/>
+                            <constraint firstItem="Chx-rZ-OTn" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="iXc-SH-a8T"/>
+                            <constraint firstItem="Chx-rZ-OTn" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ymz-08-lnD"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="EasyLearn" width="152.66667175292969" height="19.666666030883789"/>
+        <image name="EduVid" width="123" height="30"/>
     </resources>
 </document>

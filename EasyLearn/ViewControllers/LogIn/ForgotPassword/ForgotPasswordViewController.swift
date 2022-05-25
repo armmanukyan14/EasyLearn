@@ -30,24 +30,11 @@ class ForgotPasswordViewController: UIViewController {
                 guard let emailToSend = self?.emailTextField.text
                 else { return }
                 let auth = Auth.auth()
-                auth.sendPasswordReset(withEmail: emailToSend) { error in
+                auth.sendPasswordReset(withEmail: emailToSend) { [weak self] error in
                     if let error = error {
-                        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-                        alert.setValue(NSAttributedString.setAlert(title: error.localizedDescription),
-                                       forKey: "attributedTitle")
-                        UIAlertController.setAlertButtonColor()
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                        self?.present(alert, animated: true)
+                        self?.showAlert(title: error.localizedDescription)
                     }
-
-                    let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
-                    alert.setValue(NSAttributedString.setAlert(title: "A reset password email was sent!"),
-                                   forKey: "attributedTitle")
-                    UIAlertController.setAlertButtonColor()
-
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-                    self?.present(alert, animated: true)
+                    self?.showAlert(title: "A reset password email was sent!")
                 }
             })
             .disposed(by: disposeBag)
@@ -57,6 +44,16 @@ class ForgotPasswordViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.setValue(NSAttributedString.setAlert(title: title),
+                       forKey: "attributedTitle")
+        UIAlertController.setAlertButtonColor()
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 
     private func setupViews() {

@@ -19,14 +19,28 @@ class SavedVideosViewController: UIViewController {
         super.viewDidLoad()
 
         setupCollectionView()
+        refreshCollectionView()
     }
 
     // MARK: - Methods
     
     private func setupCollectionView() {
         collectionView.dataSource = self
-        collectionView.setCollectionViewLayout(UICollectionViewCompositionalLayout.getCompositionalLayout(height: 130),
+        collectionView.setCollectionViewLayout(UICollectionViewCompositionalLayout.getCompositionalLayout(height: 150),
                                                animated: false)
+    }
+
+    private func refreshCollectionView() {
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    }
+
+    @objc
+    private func pullToRefresh() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 }
 

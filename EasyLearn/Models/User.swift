@@ -7,10 +7,9 @@
 
 import UIKit
 
-struct User {
-    let name: String
-//    let email: String
-//    let password: String
-    var image: UIImage?
-    let videos: [Video]
+struct User: Encodable {
+    let id: String
+    var name: String
+    var image: String
+    var videos: [URL]
 }

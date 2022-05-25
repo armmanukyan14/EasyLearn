@@ -35,8 +35,21 @@ enum Validator {
         }
     }
 
-    static func validate(field: String) -> String? {
-        let isValid = !field.isEmpty
-        return isValid ? nil : "This field cannot be empty!"
+    static func validate(username: String) -> String? {
+        let isValid = !username.isEmpty
+        return isValid ? nil : "This field is required!"
+    }
+
+    static func validate(phrase: String) -> String? {
+        let phraseRegEx = ".{30,}"
+        let phrasePredicate = NSPredicate(format: "SELF MATCHES %@", phraseRegEx)
+        let isValid = phrasePredicate.evaluate(with: phrase)
+        if phrase.isEmpty {
+            return "This field is required!"
+        } else if isValid {
+            return "The name is too long!"
+        } else {
+            return nil
+        }
     }
 }

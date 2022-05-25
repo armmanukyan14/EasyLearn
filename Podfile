@@ -6,13 +6,8 @@ target 'EasyLearn' do
   use_frameworks!
 
   # Pods for EasyLearn
- pod 'Firebase/Core', '8.8.0'
- pod 'Firebase/Auth', '8.8.0'
- pod 'Firebase/Database', '8.8.0'
- pod 'Firebase/Storage', '8.8.0'
- pod 'RxSwift', '6.2.0'
- pod 'RxCocoa', '6.2.0'
- pod 'STDevRxExt'
- pod 'CameraKit-iOS'
+
+pod 'CameraKit-iOS'
+#pod 'FirebaseUI/Storage', '12.1.1'
 
 end

@@ -78,6 +78,23 @@ class EnterEmailViewController: UIViewController {
             .disposed(by: disposeBag)
 
         viewModel.success
+            .do(onNext: { [weak self] in
+                guard let emailToSend = self?.emailTextField.text
+                else { return }
+                let auth = Auth.auth()
+                let actionCodeSettings = ActionCodeSettings()
+                actionCodeSettings.handleCodeInApp = true
+                actionCodeSettings.url = URL(string: "https://tech42.page.link/easylearn")
+
+                auth.sendSignInLink(toEmail: emailToSend,
+                                    actionCodeSettings: actionCodeSettings) { [weak self] error in
+                    if let error = error {
+                        self?.showAlert(title: error.localizedDescription)
+                    }
+
+                    self?.showAlert(title: "Email verification link was sent!")
+                }
+            })
             .withLatestFrom(viewModel.email)
             .subscribe(onNext: { [weak self] email in
                 guard let self = self else { return }
@@ -86,30 +103,6 @@ class EnterEmailViewController: UIViewController {
                 dependencies.email = email
                 vc.viewModel = .init(dependencies: dependencies)
                 self.navigationController?.pushViewController(vc, animated: true)
-//                guard let emailToSend = self.emailTextField.text
-//                else { return }
-//                let auth = Auth.auth()
-//                let actionCodeSettings = ActionCodeSettings()
-//                actionCodeSettings.handleCodeInApp = true
-//                actionCodeSettings.url = URL(string: "https://tech42.page.link/easylearn")
-//
-//                auth.sendSignInLink(toEmail: emailToSend,
-//                                    actionCodeSettings: actionCodeSettings) { error in
-//                    if let error = error {
-//                        let alert = UIAlertController(title: "Error",
-//                                                      message: error.localizedDescription,
-//                                                      preferredStyle: .alert)
-//                        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-//                        self.present(alert, animated: true)
-//                    }
-//
-//                    let alert = UIAlertController(title: "",
-//                                                  message: "A reset password email was sent!",
-//                                                  preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .cancel))
-//                    self.present(alert, animated: true)
-//                }
-
             })
             .disposed(by: disposeBag)
 
@@ -122,5 +115,15 @@ class EnterEmailViewController: UIViewController {
                 self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
+    }
+
+    private func showAlert(title: String) {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.setValue(NSAttributedString.setAlert(title: title),
+                       forKey: "attributedTitle")
+        UIAlertController.setAlertButtonColor()
+
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+        present(alert, animated: true)
     }
 }

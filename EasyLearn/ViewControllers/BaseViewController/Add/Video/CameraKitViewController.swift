@@ -6,12 +6,26 @@
 //
 
 import CameraKit_iOS
+import Firebase
+import FirebaseStorage
+//import RxGesture
 import RxSwift
 import UIKit
 
+protocol CameraKitViewControllerDelegate: AnyObject {
+    func didSaveVideo(url: URL)
+}
+
 class CameraKitViewController: UIViewController {
+
+    var viewModel: CameraKitViewModel!
+
+    weak var delegate: CameraKitViewControllerDelegate?
+
     private let disposeBag = DisposeBag()
     private let session = CKFVideoSession()
+
+    let videos = [String]()
 
     @IBOutlet private var shutterButton: UIButton!
     @IBOutlet private var flashlightButton: UIButton!
@@ -30,6 +44,12 @@ class CameraKitViewController: UIViewController {
         changeCameraPosition()
         toggleFlashlight()
         pressShutterButton()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        session.start()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -66,7 +86,7 @@ class CameraKitViewController: UIViewController {
     private func bindNavigation() {
         backButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                self?.dismiss(animated: true)
+                self?.navigationController?.popViewController(animated: true)
             })
             .disposed(by: disposeBag)
     }
@@ -82,6 +102,22 @@ class CameraKitViewController: UIViewController {
                 }
             })
             .disposed(by: disposeBag)
+
+        //        view.rx
+        //            .tapGesture()
+        //            .when(.recognized)
+        //            .subscribe(onNext: { [weak self] _ in
+        //                self?.session.togglePosition()
+        //            })
+        //            .disposed(by: disposeBag)
+
+//        view.rx
+//            .anyGesture(.tap(), .swipe(direction: .down))
+//          .when(.recognized)
+//          .subscribe(onNext: { _ in
+//              self.session.togglePosition()
+//          })
+//          .disposed(by: disposeBag)
     }
 
     private func toggleFlashlight() {
@@ -137,8 +173,13 @@ class CameraKitViewController: UIViewController {
 
         switch recognizer.state {
         case .began:
+//            let storageRef = Storage.storage().reference()
+//            let videosRef = storageRef.child("addedVideos")
+//            let fileName = "takenVideo"
+//            let takenVideoRef = videosRef.child(fileName)
+
             session.record(url: URL(string: ""), { url in
-                print(url)
+                self.delegate?.didSaveVideo(url: url)
             }) { error in
                 print(error.localizedDescription)
             }
@@ -160,9 +201,27 @@ class CameraKitViewController: UIViewController {
             strokeLayer.removeAllAnimations()
 
             session.stopRecording()
+
+            let vc = TakenVideoViewController.getInstance(from: .base)
+            self.delegate = vc
+            vc.viewModel = .init(dependency: self.viewModel.dependency)
+            
+            self.navigationController?.pushViewController(vc, animated: false)
+
         default: break
         }
     }
+
+    @objc func video(_ videoPath: String, didFinishSavingWithError error: Error?, contextInfo info: AnyObject) {
+        let title = (error == nil) ? "Success" : "Error"
+        let message = (error == nil) ? "Video was saved" : "Video failed to save"
+
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    var videoNumber = 0
 }
 
 extension CameraKitViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -173,5 +232,56 @@ extension CameraKitViewController: UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
+
+        guard let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as? URL
+        else { return }
+
+        let storageRef = Storage.storage().reference()
+        if let uid = Auth.auth().currentUser?.uid {
+            let videosRef = storageRef.child("Chosen Videos")
+            let fileName = "\(uid)"
+            let userVideosRef = videosRef.child(fileName)
+            let chosenVideoRef = userVideosRef.child("\(videoNumber)")
+            
+            videoNumber += 1
+            
+            chosenVideoRef.putFile(from: videoURL, metadata: nil)
+
+        chosenVideoRef.putFile(from: videoURL, metadata: nil) { metadata, error in
+            guard error == nil
+            else {
+                print("metadata error")
+                return
+            }
+        }
+
+            chosenVideoRef.downloadURL { url, error in
+                guard let url = url, error == nil
+                else {
+                    print("download url error")
+                    return
+                }
+
+                let urlString = url.absoluteString
+                UserDefaults.standard.set(urlString, forKey: "chosenVideoUrl")
+            }
+        }
+        
+
+
+
+        //        let vc = TakenVideoViewController.getInstance(from: .base)
+        //        self.delegate = vc
+        //        vc.viewModel = .init(dependency: self.viewModel.dependency)
+        //        self.navigationController?.pushViewController(vc, animated: false)
+        //
+        //        self.delegate?.didSaveVideo(url: videoURL)
     }
+}
+
+
+func getVideosDirectory() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    let documentsDirectory = paths[0]
+    return documentsDirectory.appendingPathComponent("videos")
 }
