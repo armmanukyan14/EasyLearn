@@ -40,32 +40,7 @@ class SearchViewController: UIViewController {
         setupSearchController()
         refreshCollectionView()
         collectionViewItemSelected()
-//        didReplayVideo()
-//        turnOffVolume()
-        
-//        if NetworkMonitor.shared.isConnected {
-//            print("Satisfied")
-//        } else {
-//            print("Unsatisfied")
-//        }
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-
-//        players.forEach { player in
-//            player.pause()
-//        }
-    }
-//
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//
-//        players.forEach { player in
-//            player.seek(to: CMTime.zero)
-//            player.play()
-//        }
-//    }
 
     // MARK: - Methods
 
@@ -101,19 +76,6 @@ class SearchViewController: UIViewController {
 //            name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
 //            object: nil
 //        )
-//    }
-
-//    @objc func videoDidEnd() {
-//        players.forEach { player in
-//            player.seek(to: CMTime.zero)
-//            player.play()
-//        }
-//    }
-
-//    private func turnOffVolume() {
-//        players.forEach { player in
-//            player.volume = 0
-//        }
 //    }
 
     private func collectionViewItemSelected() {
@@ -155,7 +117,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         videoLayer.cornerRadius = 10.0
         videoLayer.videoGravity = .resizeAspectFill
         cell.layer.addSublayer(videoLayer)
+        videoLayer.addSublayer(cell.videoNameLabel.layer)
         playerItem.pause()
+
+        cell.setVideoNameLabel(name: playerItem.description)
 
         return cell
     }

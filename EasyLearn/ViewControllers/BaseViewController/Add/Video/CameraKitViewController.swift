@@ -8,7 +8,6 @@
 import CameraKit_iOS
 import Firebase
 import FirebaseStorage
-//import RxGesture
 import RxSwift
 import UIKit
 
@@ -103,21 +102,13 @@ class CameraKitViewController: UIViewController {
             })
             .disposed(by: disposeBag)
 
-        //        view.rx
-        //            .tapGesture()
-        //            .when(.recognized)
-        //            .subscribe(onNext: { [weak self] _ in
-        //                self?.session.togglePosition()
-        //            })
-        //            .disposed(by: disposeBag)
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(didDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTap)
+    }
 
-//        view.rx
-//            .anyGesture(.tap(), .swipe(direction: .down))
-//          .when(.recognized)
-//          .subscribe(onNext: { _ in
-//              self.session.togglePosition()
-//          })
-//          .disposed(by: disposeBag)
+    @objc private func didDoubleTap() {
+        session.togglePosition()
     }
 
     private func toggleFlashlight() {
@@ -173,11 +164,6 @@ class CameraKitViewController: UIViewController {
 
         switch recognizer.state {
         case .began:
-//            let storageRef = Storage.storage().reference()
-//            let videosRef = storageRef.child("addedVideos")
-//            let fileName = "takenVideo"
-//            let takenVideoRef = videosRef.child(fileName)
-
             session.record(url: URL(string: ""), { url in
                 self.delegate?.didSaveVideo(url: url)
             }) { error in
@@ -238,44 +224,20 @@ extension CameraKitViewController: UIImagePickerControllerDelegate, UINavigation
 
         let storageRef = Storage.storage().reference()
         if let uid = Auth.auth().currentUser?.uid {
-            let videosRef = storageRef.child("Chosen Videos")
+            let videosRef = storageRef.child("Taken Videos")
             let fileName = "\(uid)"
             let userVideosRef = videosRef.child(fileName)
-            let chosenVideoRef = userVideosRef.child("\(videoNumber)")
-            
-            videoNumber += 1
-            
-            chosenVideoRef.putFile(from: videoURL, metadata: nil)
+            guard let phrase = viewModel.dependency.phrase
+            else { return }
+            let phraseWithoutWhiteSpace = phrase.trimmingCharacters(in: .whitespaces)
+            let takenVideoRef = userVideosRef.child("\(phraseWithoutWhiteSpace)")
 
-        chosenVideoRef.putFile(from: videoURL, metadata: nil) { metadata, error in
-            guard error == nil
-            else {
-                print("metadata error")
-                return
-            }
+            takenVideoRef.putFile(from: videoURL, metadata: nil)
+
+            let urlString = videoURL.absoluteString
+
+            userVideos += [urlString]
         }
-
-            chosenVideoRef.downloadURL { url, error in
-                guard let url = url, error == nil
-                else {
-                    print("download url error")
-                    return
-                }
-
-                let urlString = url.absoluteString
-                UserDefaults.standard.set(urlString, forKey: "chosenVideoUrl")
-            }
-        }
-        
-
-
-
-        //        let vc = TakenVideoViewController.getInstance(from: .base)
-        //        self.delegate = vc
-        //        vc.viewModel = .init(dependency: self.viewModel.dependency)
-        //        self.navigationController?.pushViewController(vc, animated: false)
-        //
-        //        self.delegate?.didSaveVideo(url: videoURL)
     }
 }
 

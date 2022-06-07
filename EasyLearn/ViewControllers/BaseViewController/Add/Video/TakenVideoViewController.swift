@@ -17,14 +17,14 @@ class TakenVideoViewController: UIViewController {
     
     private let disposeBag = DisposeBag()
     
-    var videoNumber = 0
-    
     @IBOutlet private var backButton: UIButton!
     @IBOutlet private var replayButton: UIButton!
     @IBOutlet private var downloadButton: UIButton!
     @IBOutlet private var playButton: UIButton!
     @IBOutlet private var saveButton: UIButton!
     @IBOutlet private var phraseLabel: UILabel!
+
+    let vid = BehaviorRelay<Int>(value: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,11 +103,11 @@ extension TakenVideoViewController: CameraKitViewControllerDelegate {
             .disposed(by: disposeBag)
         
         downloadButton.rx.tap
-            .subscribe(onNext: {
+            .subscribe(onNext: { [weak self] in
                 UISaveVideoAtPathToSavedPhotosAlbum(
                     url.path,
                     self,
-                    #selector(self.video(_:didFinishSavingWithError:contextInfo:)),
+                    #selector(self?.video(_:didFinishSavingWithError:contextInfo:)),
                     nil)
             })
             .disposed(by: disposeBag)
@@ -119,20 +119,16 @@ extension TakenVideoViewController: CameraKitViewControllerDelegate {
                     let videosRef = storageRef.child("Taken Videos")
                     let fileName = "\(uid)"
                     let userVideosRef = videosRef.child(fileName)
-                    guard var videoNumber = self?.videoNumber else { return }
-                    let takenVideoRef = userVideosRef.child("\(videoNumber)")
-                    
-                    videoNumber += 1
+                    guard let phrase = self?.viewModel.dependency.phrase
+                    else { return }
+                    let phraseWithoutWhiteSpace = phrase.trimmingCharacters(in: .whitespaces)
+                    let takenVideoRef = userVideosRef.child("\(phraseWithoutWhiteSpace)")
                     
                     takenVideoRef.putFile(from: url, metadata: nil)
                     
-                    takenVideoRef.downloadURL { url, error in
-                      if let url = url,
-                        error == nil {
-                          let urlString = url.absoluteString
-                          UserDefaults.standard.set(urlString, forKey: uid)
-                      }
-                    }
+                    let urlString = url.absoluteString
+
+                    userVideos += [urlString]
                 }
             })
                 .subscribe(onNext: { [weak self] in

@@ -50,12 +50,12 @@ class VideosViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//        setupVideoLayers()
+        //        setupVideoLayers()
 
         //        registerForNotification()
 
-//        currentPlayer.seek(to: .zero)
-//        currentPlayer.play()
+        //        currentPlayer.seek(to: .zero)
+        //        currentPlayer.play()
 
         if videoView1.isHidden == true {
             nextPlayer.seek(to: .zero)
@@ -66,7 +66,7 @@ class VideosViewController: UIViewController {
     }
 
     private func addSubViews() {
-        videoView1.addSubview(okLabel)                              
+        videoView1.addSubview(okLabel)
         videoView1.addSubview(laterLabel)
         videoView1.addSubview(phraseLabel)
         videoView1.addSubview(saveVideoButton)
@@ -105,48 +105,13 @@ class VideosViewController: UIViewController {
     }
 
     private func setupVideoLayers() {
-        let videosRef = Storage.storage().reference().child("addedVideos")
-        let fileName = "takenVideo"
-        let takenVideoRef = videosRef.child(fileName)
-
-//        takenVideoRef.getData(maxSize: 1 * 2048 * 2048) { data, error in
-//            if let error = error {
-//                print("BU \(error.localizedDescription)")
-//            } else {
-//                print("BO")
-//            }
-//        }
-
-        let url = getVideosDirectory().appendingPathComponent(fileName, isDirectory: false)
-
-        takenVideoRef.write(toFile: url) { url, error in
-            guard error == nil,
-                  let url = url
-            else { print("lllllll")
-                return }
-
-            DispatchQueue.main.async {
-
-                let player = AVPlayer(url: url)
-
-                let videoLayer = AVPlayerLayer(player: player)
-                videoLayer.frame = self.videoView1.bounds
-                videoLayer.masksToBounds = true
-                videoLayer.cornerRadius = 10.0
-                videoLayer.videoGravity = .resizeAspectFill
-                self.videoView1.layer.addSublayer(videoLayer)
-
-                player.play()
-            }
-        }
-
-//      let videoLayer1 = AVPlayerLayer(player: currentPlayer)
-//      videoLayer1.frame = videoView1.bounds
-//      videoLayer1.masksToBounds = true
-//      videoLayer1.cornerRadius = 10.0
-//      videoLayer1.videoGravity = .resizeAspectFill
-//      videoView1.layer.addSublayer(videoLayer1)
-//      currentPlayer.play()
+        let videoLayer1 = AVPlayerLayer(player: currentPlayer)
+        videoLayer1.frame = videoView1.bounds
+        videoLayer1.masksToBounds = true
+        videoLayer1.cornerRadius = 10.0
+        videoLayer1.videoGravity = .resizeAspectFill
+        videoView1.layer.addSublayer(videoLayer1)
+        currentPlayer.play()
 
         let videoLayer2 = AVPlayerLayer(player: nextPlayer)
         videoLayer2.frame = videoView2.bounds

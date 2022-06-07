@@ -8,6 +8,15 @@ target 'EasyLearn' do
   # Pods for EasyLearn
 
 pod 'CameraKit-iOS'
-#pod 'FirebaseUI/Storage', '12.1.1'
+pod 'Firebase'
+pod 'Firebase/Storage'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Database'
+pod 'RxSwift'
+pod 'RxCocoa'
+pod 'STDevRxExt'
+
+# pod 'FirebaseUI/Storage', '12.1.1'
 
 end

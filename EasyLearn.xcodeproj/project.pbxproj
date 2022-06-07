@@ -3,21 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1B430C6C2833AC8F007AD19E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B430C6B2833AC8F007AD19E /* NetworkMonitor.swift */; };
-		1BC69968280D806E00CD6887 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC69967280D806E00CD6887 /* FirebaseAuth */; };
-		1BC6996A280D806E00CD6887 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC69969280D806E00CD6887 /* FirebaseDatabase */; };
-		1BC6996C280D806E00CD6887 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC6996B280D806E00CD6887 /* FirebaseFirestore */; };
-		1BC6996E280D806E00CD6887 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC6996D280D806E00CD6887 /* FirebaseFirestoreSwift-Beta */; };
-		1BC69970280D806E00CD6887 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 1BC6996F280D806E00CD6887 /* FirebaseStorage */; };
 		1BC6999128104FD100CD6887 /* NoInternet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BC6999028104FD100CD6887 /* NoInternet.storyboard */; };
 		1BC69993281051B600CD6887 /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC69992281051B600CD6887 /* NoInternetViewController.swift */; };
-		1BFBBE61282BD50D00BAA201 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1BFBBE60282BD50D00BAA201 /* Kingfisher */; };
 		EC1B4587E6FF8B76C0B1FC65 /* Pods_EasyLearn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75B230DE63225C30DA4CDC33 /* Pods_EasyLearn.framework */; };
 		FA15454A27DB642A00644B8F /* TakenVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15454927DB642A00644B8F /* TakenVideoViewController.swift */; };
+		FA36D408283FD11C0065E4B4 /* VideoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36D407283FD11C0065E4B4 /* VideoStorage.swift */; };
 		FA3FA02826CCD86200BA513B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02726CCD86200BA513B /* AppDelegate.swift */; };
 		FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02926CCD86200BA513B /* SceneDelegate.swift */; };
 		FA3FA02C26CCD86200BA513B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3FA02B26CCD86200BA513B /* WelcomeViewController.swift */; };
@@ -83,9 +78,6 @@
 		FAB3903227EFA41200F3D4C9 /* VideoDependecy.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3903127EFA41200F3D4C9 /* VideoDependecy.swift */; };
 		FAB3903427F03AA400F3D4C9 /* CameraKitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3903327F03AA400F3D4C9 /* CameraKitViewModel.swift */; };
 		FAB3903627F03E5A00F3D4C9 /* TakenVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB3903527F03E5A00F3D4C9 /* TakenVideoViewModel.swift */; };
-		FAC8A22228084D69001F2471 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = FAC8A22128084D69001F2471 /* RxCocoa */; };
-		FAC8A22428084D69001F2471 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = FAC8A22328084D69001F2471 /* RxRelay */; };
-		FAC8A2272808506F001F2471 /* STDevRxExt in Frameworks */ = {isa = PBXBuildFile; productRef = FAC8A2262808506F001F2471 /* STDevRxExt */; };
 		FAE4BA4C27A80BD9009524F9 /* ProfileCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4BA4B27A80BD9009524F9 /* ProfileCollectionViewHeader.swift */; };
 		FAE4BA4E27A94DEB009524F9 /* CameraKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4BA4D27A94DEB009524F9 /* CameraKitViewController.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +90,7 @@
 		741C3C105E45D728B4F33647 /* Pods-EasyLearn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyLearn.release.xcconfig"; path = "Target Support Files/Pods-EasyLearn/Pods-EasyLearn.release.xcconfig"; sourceTree = "<group>"; };
 		75B230DE63225C30DA4CDC33 /* Pods_EasyLearn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyLearn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA15454927DB642A00644B8F /* TakenVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakenVideoViewController.swift; sourceTree = "<group>"; };
+		FA36D407283FD11C0065E4B4 /* VideoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoStorage.swift; sourceTree = "<group>"; };
 		FA3FA02426CCD86200BA513B /* EasyLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3FA02726CCD86200BA513B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA3FA02926CCD86200BA513B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,16 +168,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BC6996A280D806E00CD6887 /* FirebaseDatabase in Frameworks */,
-				FAC8A22428084D69001F2471 /* RxRelay in Frameworks */,
-				1BC69970280D806E00CD6887 /* FirebaseStorage in Frameworks */,
-				1BC69968280D806E00CD6887 /* FirebaseAuth in Frameworks */,
-				1BFBBE61282BD50D00BAA201 /* Kingfisher in Frameworks */,
-				FAC8A22228084D69001F2471 /* RxCocoa in Frameworks */,
-				FAC8A2272808506F001F2471 /* STDevRxExt in Frameworks */,
-				1BC6996E280D806E00CD6887 /* FirebaseFirestoreSwift-Beta in Frameworks */,
 				EC1B4587E6FF8B76C0B1FC65 /* Pods_EasyLearn.framework in Frameworks */,
-				1BC6996C280D806E00CD6887 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +367,7 @@
 				FA58B51B26F4ADD6004FC4C9 /* Validator.swift */,
 				1B430C6B2833AC8F007AD19E /* NetworkMonitor.swift */,
 				FA4A0275278C471800DDD3B1 /* UserDefaultsHelper.swift */,
+				FA36D407283FD11C0065E4B4 /* VideoStorage.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -549,15 +534,6 @@
 			);
 			name = EasyLearn;
 			packageProductDependencies = (
-				FAC8A22128084D69001F2471 /* RxCocoa */,
-				FAC8A22328084D69001F2471 /* RxRelay */,
-				FAC8A2262808506F001F2471 /* STDevRxExt */,
-				1BC69967280D806E00CD6887 /* FirebaseAuth */,
-				1BC69969280D806E00CD6887 /* FirebaseDatabase */,
-				1BC6996B280D806E00CD6887 /* FirebaseFirestore */,
-				1BC6996D280D806E00CD6887 /* FirebaseFirestoreSwift-Beta */,
-				1BC6996F280D806E00CD6887 /* FirebaseStorage */,
-				1BFBBE60282BD50D00BAA201 /* Kingfisher */,
 			);
 			productName = EasyLearn;
 			productReference = FA3FA02426CCD86200BA513B /* EasyLearn.app */;
@@ -587,11 +563,6 @@
 			);
 			mainGroup = FA3FA01B26CCD86200BA513B;
 			packageReferences = (
-				FAC8A21D28084BC6001F2471 /* XCRemoteSwiftPackageReference "RxGesture" */,
-				FAC8A22028084D69001F2471 /* XCRemoteSwiftPackageReference "RxSwift" */,
-				FAC8A2252808506F001F2471 /* XCRemoteSwiftPackageReference "STDevRxExt" */,
-				1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				1BFBBE5F282BD50D00BAA201 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = FA3FA02526CCD86200BA513B /* Products */;
 			projectDirPath = "";
@@ -694,6 +665,7 @@
 				FA87C58D276A3287005B98CF /* EditViewController.swift in Sources */,
 				FA7A41A627C97231006478E1 /* NSAttributedString+Extension.swift in Sources */,
 				FA846EC026D8F4BF00213E15 /* EnterConfirmationCodeViewModel.swift in Sources */,
+				FA36D408283FD11C0065E4B4 /* VideoStorage.swift in Sources */,
 				FA846EDD26DE69A400213E15 /* PhraseViewController.swift in Sources */,
 				FA93A878270203B200374D5C /* Video.swift in Sources */,
 				FA3FA02A26CCD86200BA513B /* SceneDelegate.swift in Sources */,
@@ -935,97 +907,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = exactVersion;
-				version = 8.9.1;
-			};
-		};
-		1BFBBE5F282BD50D00BAA201 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		FAC8A21D28084BC6001F2471 /* XCRemoteSwiftPackageReference "RxGesture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/RxSwiftCommunity/RxGesture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-		FAC8A22028084D69001F2471 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.0.0;
-			};
-		};
-		FAC8A2252808506F001F2471 /* XCRemoteSwiftPackageReference "STDevRxExt" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/STDevTM/STDevRxExt";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		1BC69967280D806E00CD6887 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		1BC69969280D806E00CD6887 /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		1BC6996B280D806E00CD6887 /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		1BC6996D280D806E00CD6887 /* FirebaseFirestoreSwift-Beta */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = "FirebaseFirestoreSwift-Beta";
-		};
-		1BC6996F280D806E00CD6887 /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BC69966280D806E00CD6887 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-		1BFBBE60282BD50D00BAA201 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1BFBBE5F282BD50D00BAA201 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
-		FAC8A22128084D69001F2471 /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAC8A22028084D69001F2471 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		FAC8A22328084D69001F2471 /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAC8A22028084D69001F2471 /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		FAC8A2262808506F001F2471 /* STDevRxExt */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FAC8A2252808506F001F2471 /* XCRemoteSwiftPackageReference "STDevRxExt" */;
-			productName = STDevRxExt;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA3FA01C26CCD86200BA513B /* Project object */;
 }

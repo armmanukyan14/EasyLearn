@@ -9,6 +9,8 @@ import UIKit
 
 class BaseViewController: UITabBarController {
 
+    static let shared = BaseViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         removeTitle()

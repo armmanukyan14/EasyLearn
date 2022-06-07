@@ -9,14 +9,14 @@ import RxSwift
 import UIKit
 import AVKit
 import Firebase
-import Kingfisher
+//import Kingfisher
 //import Network
 
 class ProfileViewController: UIViewController {
     
-//    let monitor = NWPathMonitor()
+    //    let monitor = NWPathMonitor()
     
-//    var players = [AVPlayer]()
+    //    var players = [AVPlayer]()
     
     // MARK: - Properties
     
@@ -43,17 +43,17 @@ class ProfileViewController: UIViewController {
         refreshCollectionView()
         self.tabBarController?.delegate = self
         
-//        monitor.pathUpdateHandler = { [weak self] path in
-//            if path.status == .satisfied {
-//                print("We're connected!")
-//            } else {
-//                let vc = NoInternetViewController.getInstance(from: .noInternet)
-//                vc.modalPresentationStyle = .fullScreen
-//                self?.navigationController?.present(vc, animated: false)
-//            }
-//        }
-//        let queue = DispatchQueue.main
-//        monitor.start(queue: queue)
+        //        monitor.pathUpdateHandler = { [weak self] path in
+        //            if path.status == .satisfied {
+        //                print("We're connected!")
+        //            } else {
+        //                let vc = NoInternetViewController.getInstance(from: .noInternet)
+        //                vc.modalPresentationStyle = .fullScreen
+        //                self?.navigationController?.present(vc, animated: false)
+        //            }
+        //        }
+        //        let queue = DispatchQueue.main
+        //        monitor.start(queue: queue)
     }
     
     // MARK: - Methods
@@ -106,7 +106,7 @@ class ProfileViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 let vc = EditViewController.getInstance(from: .base)
                 vc.modalPresentationStyle = .fullScreen
-                //                vc.delegate = self
+                //                                vc.delegate = self
                 self?.navigationController?.present(vc, animated: true)
             })
             .disposed(by: disposeBag)
@@ -128,10 +128,6 @@ class ProfileViewController: UIViewController {
         let imagesRef = storage.child("images")
         
         if let uid = Auth.auth().currentUser?.uid {
-            //           let url = UserDefaults.standard.value(forKey: uid)
-            //            let avatarImageView = header.avatarImageView
-            //            let placeholderImage = UIImage(named: "addPhoto")
-            //            avatarImageView.kf.setImage(with: url, placeholder: placeholderImage)
             let imageRef = imagesRef.child(uid)
             
             imageRef.getData(maxSize: 1 * 2048 * 2048) { [weak self] data, error in
@@ -147,22 +143,6 @@ class ProfileViewController: UIViewController {
             }
         }
         
-        
-        //        if let urlString = UserDefaults.standard.value(forKey: "imageUrl") as? String,
-        //           let url = URL(string: urlString) {
-        //            let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-        //                guard let data = data, error == nil
-        //                else { return }
-        //
-        //                DispatchQueue.main.async {
-        //                    let image = UIImage(data: data) ?? UIImage(named: "addPhoto")
-        //                    header.set(avatarImage: image)
-        //                    self.titleView.set(avatarIcon: image)
-        //                }
-        //            })
-        //            task.resume()
-        //        }
-        
         header.set(videosCount: "0\nVideos")
         
         return header
@@ -174,7 +154,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        1
+        userVideos.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -184,41 +164,41 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
             for: indexPath
         ) as? ProfileCollectionViewCell
         else { fatalError() }
-        
-        if let uid = Auth.auth().currentUser?.uid {
-            let videosRef = storage.child("Taken Videos")
-            let fileName = "\(uid)"
-            let userVideosRef = videosRef.child(fileName)
-            let takenVideoRef = userVideosRef.child("1")
-            
-            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            let documentsDirectory = paths[0]
-            
-            
-//            if let urlString = UserDefaults.standard.value(forKey: uid) as? String,
-//               let url = URL(string: urlString) {
-                takenVideoRef.write(toFile: documentsDirectory) { url, error in
-                    if let url = url, error == nil {
-                        let player = AVPlayer(url: url)
-                        let players = [player]
-                        
-                        let playerItem = players[indexPath.item]
 
-                        let videoLayer = AVPlayerLayer(player: playerItem)
-                        videoLayer.frame = cell.bounds
-                        videoLayer.masksToBounds = true
-                        videoLayer.cornerRadius = 10.0
-                        videoLayer.videoGravity = .resizeAspectFill
-                        cell.layer.addSublayer(videoLayer)
-                        playerItem.pause()
-                        print("must play")
+                if let uid = Auth.auth().currentUser?.uid {
+                    let videosRef = storage.child("Taken Videos")
+                    let fileName = "\(uid)"
+                    let userVideosRef = videosRef.child(fileName)
+                    userVideosRef.listAll { result, error in
+                        if error == nil {
+                            if let url = URL(string: userVideos[indexPath.item]) {
+                                let urls = userVideos[0...userVideos.count - 1]
+                                result.items.forEach { $0.write(toFile: url) { url, error in
+                                    if let playerUrl = URL(string: urls[indexPath.item]),
+                                       error == nil {
+
+                                        let players = [AVPlayer(url: playerUrl)]
+
+                                        let player = players[indexPath.item]
+
+                                        let videoLayer = AVPlayerLayer(player: player)
+                                        videoLayer.frame = cell.bounds
+                                        videoLayer.masksToBounds = true
+                                        videoLayer.cornerRadius = 10.0
+                                        videoLayer.videoGravity = .resizeAspectFill
+                                        cell.layer.addSublayer(videoLayer)
+                                        player.play()
+                                        print("must play")
+                                    }
+                                }.resume()
+                                }
+                            }
+                        }
                     }
-                }.resume()
-//            }
-            return cell
-        } else {
-            return cell
-        }
+                    return cell
+                } else {
+                    return cell
+                }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -252,3 +232,5 @@ extension ProfileViewController: UITabBarControllerDelegate {
         }
     }
 }
+
+

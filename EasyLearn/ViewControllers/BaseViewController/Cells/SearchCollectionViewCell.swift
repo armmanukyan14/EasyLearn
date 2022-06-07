@@ -13,4 +13,13 @@ class SearchCollectionViewCell: UICollectionViewCell {
         searchVideoView.layer.cornerRadius = 10
         searchVideoView.backgroundColor = .random()
     }}
+
+    @IBOutlet var videoNameLabel: UILabel! { didSet{
+        videoNameLabel.layer.cornerRadius = 5
+        videoNameLabel.clipsToBounds = true
+    }}
+
+    func setVideoNameLabel(name: String) {
+        videoNameLabel.text = name
+    }
 }

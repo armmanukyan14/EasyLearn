@@ -37,37 +37,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         navigationController?.setViewControllers([initialVC], animated: false)
         
-//        let noInternetVC = NoInternetViewController.getInstance(from: .noInternet)
+        let noInternetVC = NoInternetViewController.getInstance(from: .noInternet)
   
         let queue = DispatchQueue.main
         monitor.start(queue: queue)
-        
         monitor.pathUpdateHandler = { path in
-//            if path.usesInterfaceType(.wifi) {
             switch path.status {
-//            case .satisfied:
-//                print("Satisfied")
-//                noInternetVC.dismiss(animated: false)
+            case .satisfied:
+                noInternetVC.dismiss(animated: false)
             case .unsatisfied:
-                print("Unsatisfied")
-//                noInternetVC.modalPresentationStyle = .fullScreen
-//                navigationController?.present(noInternetVC, animated: false)
-//            case .requiresConnection:
-//                print("Requires")
+                if navigationController?.presentedViewController != noInternetVC {
+                noInternetVC.modalPresentationStyle = .fullScreen
+                navigationController?.present(noInternetVC, animated: false)
+                }
             default:
-                print("Default")
-//            }
+                print("Something went wrong with internet connection")
             }
         }
-        
-//        monitor.pathUpdateHandler = { path in
-//
-//            if path.status == .satisfied && path.usesInterfaceType(.wifi) {
-//                print("Satisfied")
-//            } else {
-//                print("Unsatisfied")
-//            }
-//        }
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {}

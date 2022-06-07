@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -693,6 +693,16 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciq-N2-dMn">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3f-za-VYF">
+                                                            <rect key="frame" x="30" y="50" width="68" height="28"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemBackgroundColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="0.4039215686" green="0.1764705882" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                             </subviews>
@@ -705,6 +715,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="searchVideoView" destination="ciq-N2-dMn" id="Fbk-8l-znQ"/>
+                                            <outlet property="videoNameLabel" destination="J3f-za-VYF" id="4TX-rd-osQ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -739,35 +750,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQw-CS-c3e">
-                                <rect key="frame" x="54" y="176" width="306" height="544"/>
+                                <rect key="frame" x="36" y="144" width="342" height="608"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="544" id="Yap-sf-uHM"/>
-                                    <constraint firstAttribute="width" constant="306" id="mDd-Xr-U91"/>
+                                    <constraint firstAttribute="height" constant="608" id="Yap-sf-uHM"/>
+                                    <constraint firstAttribute="width" constant="342" id="mDd-Xr-U91"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEJ-vj-Ov2">
-                                <rect key="frame" x="15" y="59" width="36" height="36"/>
-                                <color key="backgroundColor" red="0.27058823529999998" green="0.25882352939999997" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="36" id="Qdh-0A-65g"/>
-                                    <constraint firstAttribute="height" constant="36" id="aMd-L9-WWH"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                <state key="normal" image="xmark" catalog="system"/>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="U23-ar-ZVp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IEJ-vj-Ov2" firstAttribute="top" secondItem="U23-ar-ZVp" secondAttribute="top" constant="15" id="12o-fa-X2l"/>
                             <constraint firstItem="WQw-CS-c3e" firstAttribute="centerY" secondItem="IXN-7e-H33" secondAttribute="centerY" id="2gm-hz-OTU"/>
-                            <constraint firstItem="IEJ-vj-Ov2" firstAttribute="leading" secondItem="U23-ar-ZVp" secondAttribute="leading" constant="15" id="aCA-rM-kiA"/>
                             <constraint firstItem="WQw-CS-c3e" firstAttribute="centerX" secondItem="IXN-7e-H33" secondAttribute="centerX" id="yQ0-0O-VDP"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="IEJ-vj-Ov2" id="dvi-oG-4CA"/>
                         <outlet property="videoView" destination="WQw-CS-c3e" id="PQ6-kF-Cgo"/>
                     </connections>
                 </viewController>
